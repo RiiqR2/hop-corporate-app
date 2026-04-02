@@ -111,7 +111,7 @@ export default {
       EXPO_METAMAP_FLOW_ID: '686346b0716d90b218919d52',
       EXPO_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL: 'https://apihop.hopmobilityapp.com/api',
-      
+      EXPO_PUBLIC_API_URL_MAP: '',
       sentryDns: 'https://6f5ac5a95d9be4178572453ed05e38ee@o4509590339584000.ingest.us.sentry.io/4509590415671296',
     },
     owner: 'joseoquendo',
