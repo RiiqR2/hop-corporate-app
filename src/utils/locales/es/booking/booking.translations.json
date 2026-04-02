@@ -1,0 +1,42 @@
+{
+  "title": "Reservas",
+  "card": {
+    "passengers": "Pasajeros",
+    "passenger": "Pasajero",
+    "luggage": "Maleta",
+    "luggages": "Maletas",
+    "button": "Contactar al pasajero",
+    "cancel": "Cancelar viaje",
+    "commission": "Comisión correspondiente",
+    "room": "Habitación {{room}}"
+  },
+  "hopper": {
+    "bookings": {
+      "title": "Bookings",
+      "description": "Aún no tienes viajes reservados"
+    }
+  },
+  "modal_hopper": {
+    "modalTitle": "Nueva solicitud",
+    "travelChange": "Se han modificado los detalles del viaje.",
+    "newTravelAssigned": "{{name}} te ha asignado un nuevo viaje.",
+    "departurePoint": "Punto de salida",
+    "destination": "Destino",
+    "passengers": "{{count}} Pasajeros",
+    "suitcases": "{{count}} Maletas",
+    "tripValue": "Valor del viaje ${{amount}}",
+    "acceptTripButton": "Aceptar viaje",
+    "rejectTripButton": "Rechazar viaje",
+    "sendLink": "Enviar link de pago",
+    "paymentState": "Estado del pago",
+    "see_route": "Ver ruta en el mapa",
+    "cancel": "Cancelar viaje",
+    "at_point": "En el punto de partida"
+  },
+  "paymentStatus": {
+    "PENDING": "Pendiente",
+    "DONE": "Realizado",
+    "CANCELLED": "Cancelado",
+    "ACCEPT": "Aceptado"
+  }
+}

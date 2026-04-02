@@ -1,0 +1,135 @@
+{
+  "title": "Hoppy Registration",
+  "title_hopper": "Hopper Registration",
+  "subtitle": "(receptionist)",
+  "subtitle_hopper": "(driver)",
+  "step_message": "To request registration, you need to complete the following fields",
+  "step_message_hopper": "To request registration you must upload the indicated documents",
+  "step_message_final": "Follow the link to confirm your identity and complete the registration request",
+  "step_label": "Step {{step}} of {{totalSteps}}",
+  "step_1": {
+    "title": "Personal information",
+    "name": {
+      "label": "Name"
+    },
+    "last_name": {
+      "label": "Surname"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "password": {
+      "label": "Password"
+    },
+    "phone": {
+      "label": "Phone"
+    },
+    "rut": {
+      "label": "RUT"
+    },
+    "address": {
+      "label": "Address"
+    },
+    "birth_date": {
+      "label": "Birth Date"
+    },
+    "next": "Next",
+    "already_have_account": "¿Already have an account?",
+    "sign_in": "Sign in",
+    "mark_map": "Mark on the map",
+    "select_map": "Select a point on the map",
+    "confirm_address": "Confirm Address",
+    "email_exists": "The email is already associated with an account. Please try to log in or reset your password."
+  },
+  "step_2": {
+    "title": "Bank Account",
+    "fields": {
+      "accountHolder": {
+        "label": "Account Holder",
+        "placeholder": ""
+      },
+      "bankName": {
+        "label": "Bank Name",
+        "placeholder": ""
+      },
+      "accountNumber": {
+        "label": "Account Number",
+        "placeholder": ""
+      },
+      "accountType": {
+        "label": "Account Type",
+        "placeholder": "Select an option"
+      },
+      "rut": {
+        "label": "Holder's RUT",
+        "placeholder": ""
+      }
+    },
+    "accountTypes": {
+      "checking": "Checking Account",
+      "savings_rut": "Savings Account (RUT)",
+      "savings": "Savings Account",
+      "prepaid": "Prepaid"
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "skip": "Skip"
+    }
+  },
+  "step_3": {
+    "documentation_hopper": "Documentation",
+    "fields": {
+      "driver_licence": "Driver's License Photos",
+      "seremi": "Seremi Transport Decree",
+      "curriculum_vitae": "Driver's Resume",
+      "permission": "Valid Circulation Permit",
+      "secure": "Passenger Insurance",
+      "vehicle_picture": "Vehicle Photos",
+      "identification_picture": "Identification Photos"
+    },
+    "upload": "Upload",
+    "title": "Hotel's Information",
+    "reference_code": "Reference code (Optional)",
+    "hotel_name": {
+      "label": "Hotel's Name"
+    },
+    "address": {
+      "label": "Address"
+    },
+    "button": "Send Request"
+  },
+  "step_4": {
+    "title": "Verify your Identity",
+    "go_site": "Go to the site",
+    "go_home": "Go to the beginning",
+    "register": "Register"
+  },
+  "step_4_hopper": {
+    "title": "Vehicle detail",
+    "fields": {
+      "type": {
+        "label": "Type of vehicle",
+        "placeholder": "Select a vehicle type"
+      },
+      "passengers": {
+        "label": "Number of passengers"
+      },
+      "accessibility": {
+        "label": "Accessibility"
+      },
+      "luggage_space": {
+        "label": "Space for suitcases"
+      },
+      "luggage_special": {
+        "label": "Special luggage"
+      }
+    }
+  },
+  "finishOnboarding": {
+    "header": "Thank you for signing up!",
+    "description": "We're reviewing your information. This may take a few days. You'll be able to log in once your account has been validated by our team.",
+    "button": "Go to the beginning"
+  },
+  "terms": "Accept HOP's <custom>Terms and Conditions</custom>"
+}

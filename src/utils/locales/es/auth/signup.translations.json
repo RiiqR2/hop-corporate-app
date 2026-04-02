@@ -1,0 +1,135 @@
+{
+  "title": "Registro de Hoppy",
+  "title_hopper": "Registro de Hopper",
+  "subtitle": "(recepcionista)",
+  "subtitle_hopper": "(conductor)",
+  "step_message": "Para solicitar el registro debes completar los campos siguientes",
+  "step_message_hopper": "Para solicitar el registro debes cargar los documentos señalados",
+  "step_message_final": "Revisa los términos y condiciones y finaliza la solicitud de registro",
+  "step_label": "Paso {{step}} de {{totalSteps}}",
+  "step_1": {
+    "title": "Información Personal",
+    "name": {
+      "label": "Nombre"
+    },
+    "last_name": {
+      "label": "Apellido"
+    },
+    "email": {
+      "label": "Correo Electrónico"
+    },
+    "password": {
+      "label": "Contraseña"
+    },
+    "phone": {
+      "label": "Télefono"
+    },
+    "rut": {
+      "label": "RUT"
+    },
+    "address": {
+      "label": "Dirección"
+    },
+    "birth_date": {
+      "label": "Fecha de Nacimiento"
+    },
+    "next": "Siguiente",
+    "already_have_account": "¿Ya tienes cuenta?",
+    "sign_in": "Iniciar Sesión",
+    "mark_map": "Marcar en el mapa",
+    "select_map": "Seleccione un punto en el mapa",
+    "confirm_address": "Confirmar Direccion",
+    "email_exists": "El correo ya está asociado a una cuenta. Intente iniciar sesión o recuperar contraseña."
+  },
+  "step_2": {
+    "title": "Cuenta Bancaria",
+    "fields": {
+      "accountHolder": {
+        "label": "Titular de la cuenta",
+        "placeholder": ""
+      },
+      "bankName": {
+        "label": "Nombre del Banco",
+        "placeholder": ""
+      },
+      "accountNumber": {
+        "label": "Número de la cuenta",
+        "placeholder": ""
+      },
+      "accountType": {
+        "label": "Tipo de cuenta",
+        "placeholder": "Seleccione una opción"
+      },
+      "rut": {
+        "label": "RUT del titular",
+        "placeholder": ""
+      }
+    },
+    "accountTypes": {
+      "checking": "Cuenta Corriente",
+      "savings_rut": "Cuenta Vista (RUT)",
+      "savings": "Cuenta de Ahorro",
+      "prepaid": "Prepago"
+    },
+    "buttons": {
+      "back": "Atrás",
+      "skip": "Saltar",
+      "next": "Siguiente"
+    }
+  },
+  "step_3": {
+    "documentation_hopper": "Documentación",
+    "fields": {
+      "driver_licence": "Fotos de la licencia de conducir",
+      "seremi": "Decreto Seremi de Transporte",
+      "curriculum_vitae": "Hoja de vida del Conductor",
+      "permission": "Permiso de Circulación vigente",
+      "secure": "Seguro de Pasajeros",
+      "vehicle_picture": "Fotos del vehículo",
+      "identification_picture": "Fotos de la identificación"
+    },
+    "upload": "Subir",
+    "title": "Información del Hotel",
+    "hotel_name": {
+      "label": "Nombre del Hotel"
+    },
+    "address": {
+      "label": "Dirección"
+    },
+    "reference_code": "Código de referido (Opcional)",
+    "button": "Enviar Solicitud"
+  },
+  "step_4": {
+    "title": "Términos y condiciones",
+    "go_site": "Ir al sitio",
+    "go_home": "Ir al inicio",
+    "register": "Registrarse"
+  },
+  "step_4_hopper": {
+    "title": "Detalle del vehículo",
+    "fields": {
+      "type": {
+        "label": "Tipo de vehículo",
+        "placeholder": "Seleccione un tipo de vehículo"
+      },
+      "passengers": {
+        "label": "Número de pasajeros"
+      },
+      "accessibility": {
+        "label": "Accesibilidad"
+      },
+      "luggage_space": {
+        "label": "Espacio para maletas"
+      },
+      "luggage_special": {
+        "label": "Equipaje especial"
+      }
+    }
+  },
+  "finishOnboarding": {
+    "header": "¡Gracias por registrarte!",
+    "description": "Estamos revisando tu información. Esto puede tardar unos días. Podrás iniciar sesión una vez que tu cuenta sea validada por nuestro equipo.",
+    "button": "Ir al inicio"
+  },
+  "terms": "<text>Aceptar </text><custom>Términos y Condiciones</custom><text> de HOP</text>"
+}

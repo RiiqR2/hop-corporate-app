@@ -1,0 +1,30 @@
+# --- NO ignores de android/ ni ios/ (se versionan completos) ---
+
+# Dependencias
+node_modules/
+
+# Expo / Metro / web
+.expo/
+.expo-shared/
+.metro-health-check*
+dist/
+web-build/
+expo-env.d.ts
+
+# Entornos y llaves
+.env
+.env*.local
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# (Recomendación) versiona TU lockfile (elige UNO y bórrale el ignore si existía)
+# package-lock.json / yarn.lock / pnpm-lock.yaml

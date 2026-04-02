@@ -1,0 +1,22 @@
+{
+  "title": "History",
+  "service_detail": "Service Details",
+  "trip_value": "Trip Value",
+  "service_fees": "Service Fees",
+  "tolls": "Tolls",
+  "net_earnings": "Net Earnings",
+  "passenger": "Passenger",
+  "driver": "Driver",
+  "hopper": {
+    "bookings": {
+      "title": "Bookings",
+      "description": "You don’t have completed bookings"
+    }
+  },
+  "travel_status": {
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "start": "In Progress",
+    "end": "Completed"
+  }
+}

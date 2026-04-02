@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="188.22" height="188.22" viewBox="0 0 188.22 188.22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="181" y2="182">
+      <stop offset="0" stop-color="#BDF6F0" />
+      <stop offset="0.55" stop-color="#5FE7D9" />
+      <stop offset="1" stop-color="#10CFC0" />
+    </linearGradient>
+  </defs>
+  <g>
+    <g>
+      <path d="M0 71.5C0 71.5 0 35.75 0 35.75C0 25.8779 3.47113 17.4516 10.4134 10.4709C17.3557 3.49031 25.7357 0 35.5536 0C35.5536 0 145.446 0 145.446 0C155.264 0 163.644 3.49031 170.587 10.4709C177.529 17.4516 181 25.8779 181 35.75C181 35.75 181 146.25 181 146.25C181 156.122 177.529 164.548 170.587 171.529C163.644 178.51 155.264 182 145.446 182C145.446 182 35.5536 182 35.5536 182C25.7357 182 17.3557 178.51 10.4134 171.529C3.47113 164.548 0 156.122 0 146.25C0 146.25 0 71.5 0 71.5Z" fill="#8A8787" fill-rule="evenodd" transform="translate(2 2)" />
+      <path d="M0 71.5C0 71.5 0 35.75 0 35.75C0 25.8779 3.47113 17.4516 10.4134 10.4709C17.3557 3.49031 25.7357 0 35.5536 0C35.5536 0 145.446 0 145.446 0C155.264 0 163.644 3.49031 170.587 10.4709C177.529 17.4516 181 25.8779 181 35.75C181 35.75 181 146.25 181 146.25C181 156.122 177.529 164.548 170.587 171.529C163.644 178.51 155.264 182 145.446 182C145.446 182 35.5536 182 35.5536 182C25.7357 182 17.3557 178.51 10.4134 171.529C3.47113 164.548 0 156.122 0 146.25C0 146.25 0 71.5 0 71.5Z" fill="url(#gradient_1)" fill-rule="evenodd" />
+      <g transform="translate(26.11 38.11)">
+        <g>
+          <line x1="1.241" y1="0" x2="1.241" y2="55" fill="none" stroke-width="5" stroke="#0B4B43" stroke-linecap="round" transform="translate(26.26 0)" />
+          <line x1="0" y1="1.241" x2="55" y2="1.241" fill="none" stroke-width="5" stroke="#0B4B43" stroke-linecap="round" transform="translate(0 26.259)" />
+          <line x1="0" y1="0" x2="38.823" y2="38.823" fill="none" stroke-width="5" stroke="#0B4B43" stroke-linecap="round" transform="translate(8.088 8.088)" />
+          <line x1="0" y1="0" x2="9.149" y2="0" fill="none" stroke-width="2.828" stroke="#0B4B43" stroke-linecap="round" transform="translate(39.6 15.284)" />
+          <line x1="0" y1="9.149" x2="0" y2="0" fill="none" stroke-width="2.828" stroke="#0B4B43" stroke-linecap="round" transform="translate(39.786 5.744)" />
+          <line x1="9.149" y1="0" x2="0" y2="0" fill="none" stroke-width="2.828" stroke="#0B4B43" stroke-linecap="round" transform="translate(6.587 40.113)" />
+          <line x1="0" y1="0" x2="0" y2="9.149" fill="none" stroke-width="2.828" stroke="#0B4B43" stroke-linecap="round" transform="translate(15.55 39.263)" />
+          <line x1="0" y1="38.823" x2="38.823" y2="0" fill="none" stroke-width="5" stroke="#0B4B43" stroke-linecap="round" transform="translate(8.088 8.088)" />
+          <line x1="0" y1="0" x2="9.149" y2="0" fill="none" stroke-width="2.828" stroke="#0B4B43" stroke-linecap="round" transform="translate(40.69 40.576)" />
+          <line x1="0" y1="0" x2="0" y2="9.149" fill="none" stroke-width="2.828" stroke="#0B4B43" stroke-linecap="round" transform="translate(40.875 39.726)" />
+          <line x1="6.47" y1="6.47" x2="0" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(21.103 2.87)" />
+          <line x1="0" y1="6.47" x2="6.47" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(27.31 2.607)" />
+          <line x1="0" y1="6.47" x2="6.47" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(46.31 21.03)" />
+          <line x1="0" y1="0" x2="6.47" y2="6.47" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(46.31 27.5)" />
+          <line x1="9.149" y1="0" x2="0" y2="0.155" fill="none" stroke-width="2.876" stroke="#0B4B43" stroke-linecap="round" transform="translate(6.326 15.839)" />
+          <line x1="0.155" y1="9.149" x2="0" y2="0" fill="none" stroke-width="2.876" stroke="#0B4B43" stroke-linecap="round" transform="translate(15.211 6.376)" />
+          <line x1="6.47" y1="0" x2="0" y2="6.47" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(21.293 46.31)" />
+          <line x1="0" y1="0" x2="6.47" y2="6.47" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(27.763 46.31)" />
+          <line x1="6.47" y1="6.47" x2="0" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(3.461 21.03)" />
+          <line x1="6.47" y1="0" x2="0" y2="6.47" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(3.461 27.5)" />
+        </g>
+        <g transform="translate(72 56)">
+          <path d="M0 12.0556C0 5.3975 5.3975 0 12.0556 0C18.7138 0 24.1113 5.3975 24.1113 12.0556C24.1113 18.7138 18.7138 24.1113 12.0556 24.1113C5.3975 24.1113 0 18.7138 0 12.0556Z" fill="#0B4B43" fill-rule="evenodd" stroke-width="0.5" stroke="#0B4B43" transform="translate(18.944 18.944)" />
+          <g>
+            <line x1="1.19" y1="8.611" x2="1.19" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(29.81 0)" />
+            <line x1="1.19" y1="0" x2="1.19" y2="8.611" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(29.81 53.389)" />
+            <line x1="8.611" y1="1.19" x2="0" y2="1.19" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(0 29.81)" />
+            <line x1="0" y1="1.19" x2="8.611" y2="1.19" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(53.389 29.81)" />
+            <line x1="6.888" y1="6.888" x2="0" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(8.611 8.611)" />
+            <line x1="0" y1="6.888" x2="6.888" y2="0" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(46.501 8.611)" />
+            <line x1="6.888" y1="0" x2="0" y2="6.888" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(8.611 46.501)" />
+            <line x1="0" y1="0" x2="6.888" y2="6.888" fill="none" stroke-width="4" stroke="#0B4B43" stroke-linecap="round" transform="translate(46.501 46.501)" />
+          </g>
+        </g>
+        <path d="M1.17831 98.0354C0.292307 97.3182 -0.0940342 96.249 0.0192699 94.828C0.132574 93.407 0.712355 92.0502 1.75858 90.7578C1.75858 90.7578 72.9875 2.76915 72.9875 2.76915C74.0335 1.47699 75.24 0.627238 76.6062 0.220637C77.9724 -0.185933 79.0985 -0.0306139 79.9845 0.686625C80.8704 1.40385 81.2568 2.47293 81.1436 3.89382C81.0304 5.31475 80.4505 6.67167 79.4045 7.96382C79.4045 7.96382 8.17554 95.9525 8.17554 95.9525C7.1293 97.2449 5.92303 98.0945 4.55674 98.5012C3.19044 98.9079 2.0643 98.7526 1.17831 98.0354C1.17831 98.0354 1.17831 98.0354 1.17831 98.0354Z" fill="#0B4B43" fill-rule="evenodd" stroke-width="0.315" stroke="#0B4B43" transform="translate(27 4)" />
+      </g>
+    </g>
+  </g>
+</svg>

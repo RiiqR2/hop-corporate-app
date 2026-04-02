@@ -1,0 +1,159 @@
+{
+  "header": "Hello",
+  "balance": "Balance",
+  "booking": {
+    "title": "Booking",
+    "booking_hopper": "Book a Hopper",
+    "destinity_placeholder": "Indicates a destination..."
+  },
+  "services": {
+    "title": "Services",
+    "shortcuts": {
+      "pickup": "Pick Up",
+      "dropoff": "Drop Off",
+      "snow": "Snow tour",
+      "season": "Season tour",
+      "vineyard": "Vineyard tour"
+    }
+  },
+  "map_home": {
+    "first_sheet": {
+      "title": "Book a Hopper",
+      "fields": {
+        "starting_point": "Starting Point...",
+        "destination_point": "Destination",
+        "destination": "Indicates a destination...",
+        "distance": "Distance"
+      },
+      "usual_destinations": "Usual Destinations",
+      "mark_map": "Mark the address on the map",
+      "usual_location": "Usual Starting Points"
+    },
+    "second_sheet": {
+      "title": "Passenger data",
+      "fields": {
+        "name": {
+          "label": "Full name"
+        },
+        "contact": {
+          "label": "Contact"
+        },
+        "airline": {
+          "label": "Airline"
+        },
+        "flightNumber": {
+          "label": "Flight number"
+        },
+        "room": {
+          "label": "Room number"
+        },
+        "passengers": {
+          "label": "Number of passengers"
+        },
+        "luggage": {
+          "label": "Number of luggages"
+        }
+      }
+    },
+    "third_sheet": {
+      "title": "Choose the type of vehicle",
+      "payment": {
+        "seccion_tittle": "Opción de pago",
+        "check_tittle": "Cargo a la habitación" 
+      },
+      "accessibility": "Reduced mobility apt.",
+      "vehicle": {
+        "sedan": {
+          "title": "Sedan",
+          "passengers": "1-3 passengers",
+          "luggage": "30 Kg."
+        },
+        "electric_car": {
+          "title": "Electric Car",
+          "passengers": "1-3 passengers",
+          "luggage": "30 Kg."
+        },
+        "suv": {
+          "title": "SUV",
+          "passengers": "1-3 passengers",
+          "luggage": "30 Kg."
+        },
+        "van": {
+          "title": "Van",
+          "passengers": "1-10 passengers",
+          "luggage": "50 Kg."
+        }
+      },
+      "cancel": "Cancel travel",
+      "search": "Make another reservation",
+      "text": "This may take a few minutes. We will notify you when the trip is confirmed."
+    },
+    "fourthy_sheet": {
+      "title": "Waiting for confirmation from a Hopper",
+      "confirm": "Confirm trip"
+    },
+    "fifty_sheet": {
+      "accept_reservation": "has accepted the reservation",
+      "trips": "Trips",
+      "value": "Value of the trip"
+    }
+  },
+  "confirmation": {
+    "title": "Reservation confirmed successfully",
+    "subtitle": "You earned commission for this trip",
+    "go_payments": "My wallet",
+    "go_home": "Go to the beginning",
+    "start": "Start travel",
+    "cancel": "Cancel",
+    "go_to_route": "Go to starting point",
+    "go_to_finish_route": "Go to route",
+    "cancel_travel": "Cancel travel",
+    "confirm": "Confirm payment",
+    "accept": "Accept",
+    "try": "Try again",
+    "pending": "Waiting for payment confirmation",
+    "success": "Payment was completed successfully",
+    "charged": "Room charged",
+    "card": "Card",
+    "cash": "Cash",
+    "fail": "We couldn't process your payment",
+    "finished": "Trip successfully completed",
+    "payment": "Payment with {{gateway}}",
+    "value_of_travel": "Value of the trip",
+    "more_info": "More info",
+    "end_travel": "End Travel"
+  },
+  "hopper": {
+    "void": "Fill in the vehicle details to start traveling",
+    "vehicle": "vehicle",
+    "bookings": {
+      "title": "Bookings",
+      "description": "You don't have any trips booked yet"
+    },
+    "bookings_request": {
+      "title": "Travel Requests",
+      "description": "There are no trips registered yet."
+    },
+    "advice": {
+      "title": "Tips for a Hopper",
+      "description": "Be friendly and professional, keep your car clean. ¡Small details make a difference!"
+    }
+  },
+  "hoppy": {
+    "title": "Tips for a Hoppy",
+    "description": "Please consider the Guest's needs when booking a Hopper. Small details make a difference!"
+  },
+    "fixed_travel": {
+    "description_tittle": "Travel details"
+  },
+  "waiting_validation": {
+    "account_review": "Your account is under review",
+    "review_info": "We are reviewing your information. This process may take a few days. You will be able to log in once your account has been validated by our team.",
+    "accept": "Accept"
+  },
+  "modal_hoppy": {
+    "see_commission": "See commission",
+    "more_info": "More information"
+  },
+  "next": "Next"
+}

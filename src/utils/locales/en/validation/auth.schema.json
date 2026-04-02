@@ -1,0 +1,116 @@
+{
+  "signin": {
+    "email": {
+      "invalid": "Please enter a valid email address.",
+      "required": "Email is required."
+    },
+    "password": {
+      "min_length": "The password must be at least 6 characters long.",
+      "required": "Password is required."
+    }
+  },
+  "signup": {
+    "firstName": {
+      "min_length": "The first name must be at least 2 characters.",
+      "max_length": "The first name cannot exceed 20 characters.",
+      "required": "The first name is required."
+    },
+    "lastName": {
+      "min_length": "The last name must be at least 2 characters.",
+      "max_length": "The last name cannot exceed 20 characters.",
+      "required": "The last name is required."
+    },
+    "password": {
+      "required": "The password is required.",
+      "min_length": "The password must be at least 8 characters long.",
+      "uppercase": "The password must contain at least one uppercase letter.",
+      "lowercase": "The password must contain at least one lowercase letter.",
+      "number": "The password must contain at least one number.",
+      "special_char": "The password must contain at least one special character.",
+      "validate": "* Password must contain at least 8 characters, including one capital letter, one number, and one symbol."
+    },
+    "email": {
+      "invalid": "The email format is invalid.",
+      "required": "The email is required."
+    },
+    "rut": {
+      "validate": "The RUT is invalid",
+      "required": "The RUT is required."
+    },
+    "address": {
+      "min_length": "The address must be at least 2 characters.",
+      "max_length": "The address cannot exceed 50 characters.",
+      "required": "The address is required."
+    },
+    "birthDate": {
+      "required": "The birth date is required."
+    }
+  },
+  "step_2": {
+    "title": "Bank account",
+    "bank_account_holder": {
+      "required": "The account holder is required",
+      "min_length": "The account holder must have at least 3 characters",
+      "max_length": "The account holder cannot exceed 100 characters."
+    },
+    "bank_name": {
+      "required": "The bank name is required",
+      "min_length": "The bank name must have at least 3 characters"
+    },
+    "bank_account_number": {
+      "required": "The account number is required",
+      "min_length": "The account number must have at least 8 characters",
+      "max_length": "The account number cannot exceed 20 characters"
+    },
+    "bank_account_type": {
+      "required": "The account type is required",
+      "current_account": "Current account",
+      "savings_account": "Savings account",
+      "prepaid": "Prepaid",
+      "view_account_rut": "View account RUT"
+    },
+    "bank_account_rut": {
+      "required": "The account holder's RUT is required",
+      "length": "The RUT must be exactly 12 characters long",
+      "format": "The RUT must be a valid 12-digit number"
+    }
+  },
+  "step_3": {
+    "hotel_name": {
+      "min": "Hotel name must be at least 2 characters.",
+      "max": "Hotel name cannot exceed 50 characters.",
+      "required": "Hotel name is required."
+    },
+    "reference_code": {
+      "max": "Reference code cannot exceed 10 characters."
+    },
+    "address": {
+      "required": "Address is required"
+    }
+  },
+  "booking": {
+    "fullName": "Fullname is required",
+    "contact": "Contact is required",
+    "contact_min": "The number must have at least 8 digits",
+    "contact_max": "The number cannot have more than 20 digits",
+    "fullNameTooShort": "The name must be at least 2 characters long.",
+    "fullNameTooLong": "The name cannot be longer than 30 characters.",
+    "roomNumber": "Room number is required",
+    "airline": "Airline is required",
+    "passengers": "Number of passengers is required",
+    "luggages": "Number of luggages is required",
+    "flightNumber": "The flight number is required.",
+    "roomNumberMin": "Must be at least 1 character.",
+    "roomNumberMax": "Cannot be more than 5 characters.",
+    "flightNumberAlphanumeric": "The flight number must contain only alphanumeric characters.",
+    "flightNumberMaxLength": "The flight number cannot be longer than 6 characters.",
+    "contact_invalid": "You must enter min a valid 8-digit phone number."
+  },
+  "step_4": {
+    "type": "Vehicle type is required.",
+    "passengers": "Number of passengers is required.",
+    "accessibility": "Accessibility selection is required.",
+    "luggageSpace": "Luggage space selection is required.",
+    "specialLuggage": "Special luggage indication is required."
+  }
+}

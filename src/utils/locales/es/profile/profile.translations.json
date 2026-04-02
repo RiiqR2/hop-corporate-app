@@ -1,0 +1,72 @@
+{
+  "drawer": {
+    "link": {
+      "privacy": "Privacidad y Contraseñas",
+      "permissions": "Ajustes",
+      "report_issue": "Reportar un problema",
+      "terms_conditions": "Terminos y Condiciones",
+      "contract": "Contrato",
+      "delete_account": "Eliminar cuenta",
+      "logout": "Cerrar Sesión"
+    }
+  },
+  "home": {
+    "title": "Perfil",
+    "shortcuts": {
+      "personal_data": "Información Personal",
+      "hotel": "Datos del Hotel",
+      "vehicle": "Datos del vehículo",
+      "reservations": "Reservas",
+      "history": "Historial",
+      "bank_account": "Cuenta Bancaria"
+    }
+  },
+  "personal_data": {
+    "title": "Información Personal",
+    "picture": "Cambiar foto de perfil",
+    "fields": {
+      "name": {
+        "label": "Nombre"
+      },
+      "last_name": {
+        "label": "Apellido"
+      },
+      "email": {
+        "label": "Correo Electrónico"
+      },
+      "password": {
+        "label": "Contraseña"
+      },
+      "rut": {
+        "label": "RUT"
+      },
+      "address": {
+        "label": "Dirección"
+      },
+      "birth_date": {
+        "label": "Fecha de Nacimiento"
+      }
+    },
+    "button": "Guardar Cambios"
+  },
+  "vehicle": {
+    "title": "Datos del vehículo",
+    "see_docs": "Ver documentación"
+  },
+  "documentation": {
+    "title": "Documentación"
+  },
+  "account": {
+    "title": "Cuenta Bancaria",
+    "switch": "Soy el titular de la cuenta",
+    "empty": "Debes completar los campos requeridos"
+  },
+  "hotel": {
+    "title": "Datos del hotel"
+  },
+  "delete_account": {
+    "title": "Eliminar cuenta",
+    "message": "Para eliminar tu cuenta de forma permanente, es necesario coordinar la devolución del material proporcionado por HOP. Nuestro equipo comercial te asistirá en este proceso.",
+    "button": "Eliminar cuenta"
+  }
+}

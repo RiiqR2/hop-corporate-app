@@ -1,0 +1,88 @@
+{
+  "server_error": "Something went wrong, please try again later.",
+  "gallery": "Gallery",
+  "document": "Document",
+  "schedule_error": "Please select a travel time later than the current time.",
+  "max_documents_reached": "You can only select 1 files.",
+  "tooltip_description": "Photos of the front, rear, sides and interior of the vehicle",
+  "accessibility": "Yes: the driver is able to assist a passenger with reduced mobility",
+  "special_luggage": "Considered as: baby stroller, wheelchair, bicycle, etc",
+  "tabbar": {
+    "home": "Home",
+    "profile": "Profile",
+    "wallet": "Wallet",
+    "history": "History",
+    "booking": "Booking"
+  },
+  "settings": {
+    "title": "Settings",
+    "account_state": "Account state",
+    "report_issue": "Report Issue",
+    "issue_describe": "Please describe the problem so we can help you.",
+    "issue_info": "We will be attentive to your message and will do everything possible to help you as soon as possible.",
+    "activate_notification": "Activate Notification",
+    "shared_localization": "(Share background localization)",
+    "on_line": "Active",
+    "account_active": "Account active",
+    "deactivate_account": "If you deactivate your account, you will not be able to access the app's features. However, your account and data will not be deleted.\nYou can reactivate it whenever you need to.",
+    "field_required": "This field is required!"
+  },
+  "vehicles": {
+    "SEDAN": "Sedan",
+    "ELECTRIC": "Electric Car",
+    "SUV": "SUV",
+    "VANS": "Van",
+    "passengers": "Passengers",
+    "luggageSpace": "Luggage Space",
+    "specialLuggage": "Special Luggage",
+    "yes": "Yes",
+    "no": "No",
+    "low_bags": "1-3 Bags",
+    "high_bags": "4+ Bags"
+  },
+  "map_sheet": "Search address...",
+  "empty": "All fields are required!",
+  "accept": "Accept",
+  "send": "Send",
+  "travelStatus": {
+    "pickup": "Pick Up",
+    "dropoff": "Drop Off",
+    "programmed": "Programmed"
+  },
+  "notifications": {
+    "title": "Notificaciones"
+  },
+  "modal_hopper": {
+    "modalTitle": "New request",
+    "travelChange": "The trip details have been modified.",
+    "newTravelAssigned": "You have been assigned a new trip by {{name}}.",
+    "departurePoint": "Departure point",
+    "destination": "Destination",
+    "passengers": "{{count}} Passengers",
+    "suitcases": "{{count}} Suitcases",
+    "tripValue": "Trip value ${{amount}}",
+    "acceptTripButton": "Accept Trip",
+    "rejectTripButton": "Reject Trip",
+    "charge_travel": "Charge for a trip"
+  },
+  "more": "more",
+  "less": "less",
+  "message": {
+    "driverMessage": "Dear {{userName}},\nThank you for booking your ride with Hop!\nYour driver, {{driverName}}, will be handling your trip. You can reach them at {{contactNumber}}.\nFor a smooth experience, complete your payment securely here:\n{{paymentLink}}\nPayments are processed through a 100% secure platform.\nIf you need any assistance, we're here to help! Contact us at soporte@hopmobilityapp.com.\nEnjoy your ride!",
+    "reservationMessage": "Thank you for booking your ride with Hop! Your driver, {{name}}, will be handling your trip on {{date}} in a {{carType}}. They will pick you up at {{fromAddress}} and take you to {{toAddress}}. If you need any assistance, we're here to help! Contact us at 📩 soporte@hopmobilityapp.com. Enjoy your ride!"
+  },
+  "notification_empty": "You don't have any notifications yet",
+  "notifications_text": {
+    "DEPOSIT_RECEIVED": "Good news! <custom>${{price}}</custom> has been credited to your bank account.",
+    "HOPPER_CANCELLED": "The hopper <custom>{{name}}</custom> has cancelled the trip.",
+    "HOPPY_CANCELLED": "The hoppy <custom>{{name}}</custom> has cancelled the trip.",
+    "USER_COMPLETE_TRAVEL": "The user has marked the trip as completed.",
+    "HOPPER_ACCEPT_TRAVEL": "The hopper <custom>{{name}}</custom> has accepted the trip. Thank you for your commitment!",
+    "COMMISSIONS": "You have received a new commission.",
+    "HOPPER_IN_SITE": "The hopper <custom>{{name}}</custom> has arrived at the trip location.",
+    "TRAVEL_CHANGE": "The trip details have been modified.",
+    "NEW_TRAVEL": "You have a new trip assigned by <custom>{{name}}</custom>.",
+    "TRAVEL_REASSIGNED": "Travel for passenger <custom>{{passenger.passengerName}}</custom> has been reassigned",
+    "TRAVEL_ASSIGNED": "You have a new travel assigned by system"
+  }
+}

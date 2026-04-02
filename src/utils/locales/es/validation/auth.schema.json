@@ -1,0 +1,116 @@
+{
+  "signin": {
+    "email": {
+      "invalid": "Por favor, ingresa un email válido.",
+      "required": "El email es obligatorio."
+    },
+    "password": {
+      "min_length": "La contraseña debe tener al menos 6 caracteres.",
+      "required": "La contraseña es obligatoria."
+    }
+  },
+  "signup": {
+    "firstName": {
+      "min_length": "El nombre debe tener al menos 2 caracteres.",
+      "max_length": "El nombre no puede exceder los 20 caracteres.",
+      "required": "El nombre es obligatorio."
+    },
+    "lastName": {
+      "min_length": "El apellido debe tener al menos 2 caracteres.",
+      "max_length": "El apellido no puede exceder los 20 caracteres.",
+      "required": "El apellido es obligatorio."
+    },
+    "email": {
+      "invalid": "Por favor, ingrese un correo electrónico válido.",
+      "required": "El correo electrónico es obligatorio."
+    },
+    "password": {
+      "required": "La contraseña es obligatoria.",
+      "min_length": "La contraseña debe tener al menos 8 caracteres.",
+      "uppercase": "La contraseña debe tener al menos una letra mayúscula.",
+      "lowercase": "La contraseña debe tener al menos una letra minúscula.",
+      "number": "La contraseña debe tener al menos un número.",
+      "special_char": "La contraseña debe tener al menos un carácter especial.",
+      "validate": "* La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula, un número y un símbolo."
+    },
+    "rut": {
+      "validate": "El RUT invalido",
+      "required": "El RUT es obligatorio."
+    },
+    "address": {
+      "min_length": "La dirección debe tener al menos 2 caracteres.",
+      "max_length": "La dirección no puede exceder los 50 caracteres.",
+      "required": "La dirección es obligatoria."
+    },
+    "birthDate": {
+      "required": "La fecha de nacimiento es obligatoria."
+    }
+  },
+  "step_2": {
+    "title": "Cuenta Bancaria",
+    "bank_account_holder": {
+      "required": "El titular de la cuenta es obligatorio",
+      "min_length": "El titular de la cuenta debe tener al menos 3 caracteres",
+      "max_length": "El titular de la cuenta no puede exceder los 100 caracteres."
+    },
+    "bank_name": {
+      "required": "El nombre del banco es obligatorio",
+      "min_length": "El nombre del banco debe tener al menos 3 caracteres"
+    },
+    "bank_account_number": {
+      "required": "El número de la cuenta es obligatorio",
+      "min_length": "El número de cuenta debe tener al menos 8 caracteres",
+      "max_length": "El número de cuenta no puede exceder los 20 caracteres"
+    },
+    "bank_account_type": {
+      "required": "El tipo de cuenta es obligatorio",
+      "current_account": "Cuenta corriente",
+      "savings_account": "Cuenta de ahorros",
+      "prepaid": "Prepago",
+      "view_account_rut": "Cuenta Vista (RUT)"
+    },
+    "bank_account_rut": {
+      "required": "El RUT del titular es obligatorio",
+      "length": "El RUT debe tener exactamente 12 caracteres",
+      "format": "El RUT debe ser un número válido de 12 dígitos"
+    }
+  },
+  "step_3": {
+    "reference_code": {
+      "max": "El código del referido no puede exceder los 10 caracteres."
+    },
+    "hotel_name": {
+      "min": "El nombre del hotel debe tener al menos 2 caracteres.",
+      "max": "El nombre del hotel no puede exceder los 50 caracteres.",
+      "required": "El nombre del hotel es obligatorio."
+    },
+    "address": {
+      "required": "La direccion es requerida"
+    }
+  },
+  "booking": {
+    "fullName": "El nombre completo es obligatorio",
+    "contact": "El contacto es obligatorio",
+    "contact_min": "El número debe tener al menos 8 dígitos",
+    "contact_max": "El número no puede tener más de 20 dígitos",
+    "fullNameTooShort": "El nombre debe tener al menos 2 caracteres.",
+    "fullNameTooLong": "El nombre no puede tener más de 30 caracteres.",
+    "roomNumber": "El número de habitación es obligatorio",
+    "airline": "La aerolina es obligatoria",
+    "passengers": "El número de pasajeros es obligatorio",
+    "luggages": "La cantidad de equipaje es obligatoria",
+    "flightNumber": "El número de vuelo es obligatorio.",
+    "flightNumberAlphanumeric": "El número de vuelo debe contener solo caracteres alfanuméricos.",
+    "roomNumberMin": "Debe tener al menos 1 carácter.",
+    "roomNumberMax": "No puede tener más de 5 caracteres.",
+    "flightNumberMaxLength": "El número de vuelo no puede tener más de 6 caracteres.",
+    "contact_invalid": "Debe ingresar como mínimo un número de teléfono válido de 10 dígitos."
+  },
+  "step_4": {
+    "type": "El tipo de vehículo es obligatorio.",
+    "passengers": "El número de pasajeros es obligatorio.",
+    "accessibility": "La accesibilidad es obligatoria.",
+    "luggageSpace": "El espacio para equipaje es obligatorio.",
+    "specialLuggage": "La indicación de equipaje especial es obligatoria."
+  }
+}
