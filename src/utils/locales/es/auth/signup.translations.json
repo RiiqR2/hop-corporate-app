@@ -1,7 +1,7 @@
 {
-  "title": "Registro de Hoppy",
-  "title_hopper": "Registro de Hopper",
-  "subtitle": "(recepcionista)",
+  "title": "Registro de coordinador",
+  "title_hopper": "Registro de conductor",
+  "subtitle": "(coordinador corporativo)",
   "subtitle_hopper": "(conductor)",
   "step_message": "Para solicitar el registro debes completar los campos siguientes",
   "step_message_hopper": "Para solicitar el registro debes cargar los documentos señalados",
@@ -89,9 +89,9 @@
       "identification_picture": "Fotos de la identificación"
     },
     "upload": "Subir",
-    "title": "Información del Hotel",
+    "title": "Información de la empresa",
     "hotel_name": {
-      "label": "Nombre del Hotel"
+      "label": "Nombre de la empresa"
     },
     "address": {
       "label": "Dirección"

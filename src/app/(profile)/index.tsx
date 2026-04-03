@@ -113,7 +113,7 @@ export default function Profile() {
           )
           : null}
         <Text textColor={Colors.SECONDARY} fontWeight={600} fontSize={20}>
-          {user?.role === userRoles.USER_HOPPER ? 'Hopper' : 'Hoppy'}
+          {user?.role === userRoles.USER_HOPPER ? 'Conductor' : 'Coordinador'}
         </Text>
       </Box>
       <View style={styles.panel}>

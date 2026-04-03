@@ -14,7 +14,7 @@
     "title": "Perfil",
     "shortcuts": {
       "personal_data": "Información Personal",
-      "hotel": "Datos del Hotel",
+      "hotel": "Datos de la empresa",
       "vehicle": "Datos del vehículo",
       "reservations": "Reservas",
       "history": "Historial",
@@ -62,7 +62,7 @@
     "empty": "Debes completar los campos requeridos"
   },
   "hotel": {
-    "title": "Datos del hotel"
+    "title": "Datos de la empresa"
   },
   "delete_account": {
     "title": "Eliminar cuenta",

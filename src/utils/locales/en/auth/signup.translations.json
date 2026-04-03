@@ -1,7 +1,7 @@
 {
-  "title": "Hoppy Registration",
-  "title_hopper": "Hopper Registration",
-  "subtitle": "(receptionist)",
+  "title": "Coordinator Registration",
+  "title_hopper": "Driver Registration",
+  "subtitle": "(corporate coordinator)",
   "subtitle_hopper": "(driver)",
   "step_message": "To request registration, you need to complete the following fields",
   "step_message_hopper": "To request registration you must upload the indicated documents",
@@ -89,10 +89,10 @@
       "identification_picture": "Identification Photos"
     },
     "upload": "Upload",
-    "title": "Hotel's Information",
+    "title": "Company Information",
     "reference_code": "Reference code (Optional)",
     "hotel_name": {
-      "label": "Hotel's Name"
+      "label": "Company Name"
     },
     "address": {
       "label": "Address"

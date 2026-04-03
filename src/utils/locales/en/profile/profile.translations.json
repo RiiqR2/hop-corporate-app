@@ -14,7 +14,7 @@
     "title": "Profile",
     "shortcuts": {
       "personal_data": "Personal Information",
-      "hotel": "Hotel data",
+      "hotel": "Company data",
       "vehicle": "Vehicle data",
       "reservations": "Reservations",
       "history": "History",
@@ -62,7 +62,7 @@
     "empty": "You must complete the required fields"
   },
   "hotel": {
-    "title": "Hotel Data"
+    "title": "Company data"
   },
   "delete_account": {
     "title": "Delete account",
