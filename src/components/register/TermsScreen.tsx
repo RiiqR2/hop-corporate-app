@@ -18,15 +18,15 @@ const TermsScreen = () => {
       </Text>
       <Text style={styles.section}>2. Descripción del servicio</Text>
       <Text style={styles.text}>
-        HOP es una plataforma tecnológica que conecta hoteles, recepcionistas (Hoppys), conductores profesionales (Hoppers) y pasajeros, con el fin de coordinar servicios de traslado turístico y corporativo.{"\n\n"}
+        HOP es una plataforma tecnológica que conecta empresas, coordinadores de viaje corporativo y conductores profesionales, con el fin de coordinar servicios de traslado empresariales.{"\n\n"}
         La App permite gestionar reservas, asignar conductores y optimizar la comunicación entre los actores involucrados.{"\n\n"}
         HOP Mobility SpA no presta servicios de transporte, sino que actúa únicamente como intermediario tecnológico entre las partes.
       </Text>
       <Text style={styles.section}>3. Definiciones</Text>
       <Text style={styles.text}>
-        • <Text style={styles.bold}>Hotel:</Text> establecimiento que contrata o utiliza la App para gestionar los traslados de sus huéspedes o clientes.{"\n"}
-        • <Text style={styles.bold}>Hoppy:</Text> recepcionista o colaborador del hotel autorizado para utilizar la App y coordinar servicios de traslado.{"\n"}
-        • <Text style={styles.bold}>Hopper:</Text> conductor profesional registrado en la App, encargado de ejecutar los traslados.{"\n"}
+        • <Text style={styles.bold}>Empresa:</Text> organización que contrata o utiliza la App para gestionar los traslados de sus colaboradores, clientes o visitas.{"\n"}
+        • <Text style={styles.bold}>Coordinador:</Text> colaborador de la empresa autorizado para utilizar la App y coordinar servicios de traslado.{"\n"}
+        • <Text style={styles.bold}>Conductor:</Text> profesional registrado en la App, encargado de ejecutar los traslados.{"\n"}
         • <Text style={styles.bold}>Pasajero:</Text> persona que utiliza los servicios de traslado gestionados a través de la App.{"\n"}
         • <Text style={styles.bold}>Procesador de pagos autorizado:</Text> plataforma tecnológica de terceros que permite realizar y recibir pagos de forma electrónica y segura.
       </Text>
@@ -40,22 +40,22 @@ const TermsScreen = () => {
       </Text>
       <Text style={styles.section}>5. Obligaciones de los usuarios</Text>
       <Text style={styles.text}>
-        <Text style={styles.bold}>a) Hoteles y Hoppys:</Text>{"\n"}
-        • Utilizar la App únicamente con fines relacionados a su actividad hotelera o turística.{"\n"}
+        <Text style={styles.bold}>a) Empresas y coordinadores:</Text>{"\n"}
+        • Utilizar la App únicamente con fines relacionados a su operación corporativa.{"\n"}
         • Asegurar que los datos de los pasajeros y servicios ingresados sean correctos.{"\n"}
         • No ofrecer servicios no autorizados ni manipular el sistema de comisiones.{"\n\n"}
-        <Text style={styles.bold}>b) Hoppers:</Text>{"\n"}
+        <Text style={styles.bold}>b) Conductores:</Text>{"\n"}
         • Cumplir con las normativas legales de transporte vigentes en Chile.{"\n"}
         • Mantener los vehículos en condiciones seguras, limpias y operativas.{"\n"}
-        • Cumplir los horarios y condiciones pactadas con los hoteles o pasajeros.{"\n\n"}
+        • Cumplir los horarios y condiciones pactadas con las empresas o pasajeros.{"\n\n"}
         <Text style={styles.bold}>c) Pasajeros:</Text>{"\n"}
         • Respetar las condiciones del servicio contratado.{"\n"}
-        • Mantener una conducta adecuada hacia los conductores y el personal del hotel.
+        • Mantener una conducta adecuada hacia los conductores y el personal de la empresa.
       </Text>
       <Text style={styles.section}>6. Pagos y comisiones</Text>
       <Text style={styles.text}>
         Los pagos y comisiones que se generen por los servicios de traslado se procesan a través de un procesador de pagos electrónico autorizado, designado por HOP Mobility SpA.{"\n\n"}
-        Los hoteles son responsables de los pagos hacia los conductores, y los incentivos correspondientes a los recepcionistas (Hoppys) se acreditarán de acuerdo con las condiciones establecidas en la App.{"\n\n"}
+        Las empresas son responsables de los pagos hacia los conductores, y los incentivos correspondientes a los coordinadores se acreditarán de acuerdo con las condiciones establecidas en la App.{"\n\n"}
         HOP Mobility SpA no asume responsabilidad por pagos realizados fuera de la plataforma ni por errores derivados de información incorrecta proporcionada por los usuarios.
       </Text>
       <Text style={styles.section}>7. Propiedad intelectual</Text>

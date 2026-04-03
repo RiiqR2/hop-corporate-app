@@ -3,7 +3,7 @@
   "balance": "Saldo",
   "booking": {
     "title": "Reservas",
-    "booking_hopper": "Reservar un Hopper",
+    "booking_hopper": "Reservar un conductor",
     "destinity_placeholder": "Indica un destino..."
   },
   "services": {
@@ -15,7 +15,7 @@
   },
   "map_home": {
     "first_sheet": {
-      "title": "Reservar un Hopper",
+      "title": "Reservar un conductor",
       "fields": {
         "starting_point": "Punto de partida...",
         "destination_point": "Destino",
@@ -77,7 +77,7 @@
       "search": "Volver al inicio"
     },
     "fourthy_sheet": {
-      "title": "Esperando confirmación de un Hopper",
+      "title": "Esperando confirmación de un conductor",
       "confirm": "Confirmar viaje"
     },
     "fifty_sheet": {
@@ -123,13 +123,13 @@
       "description": "Aún no hay viajes registrados."
     },
     "advice": {
-      "title": "Consejos para un Hopper",
+      "title": "Consejos para un conductor",
       "description": "Sé amable y profesional, mantén tu auto limpio. ¡Los pequeños detalles marcan la diferencia!"
     }
   },
   "hoppy": {
-    "title": "Consejos para un Hoppy",
-    "description": "Ten en cuenta las necesidades del Huésped al reservar un Hopper. ¡Pequeños detalles hacen la diferencia!"
+    "title": "Consejos para un coordinador",
+    "description": "Ten en cuenta las necesidades del pasajero al reservar un conductor. ¡Pequeños detalles hacen la diferencia!"
   },
   "fixed_travel": {
     "description_tittle": "Detalles del viaje"

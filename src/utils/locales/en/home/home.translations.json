@@ -3,7 +3,7 @@
   "balance": "Balance",
   "booking": {
     "title": "Booking",
-    "booking_hopper": "Book a Hopper",
+    "booking_hopper": "Book a driver",
     "destinity_placeholder": "Indicates a destination..."
   },
   "services": {
@@ -18,7 +18,7 @@
   },
   "map_home": {
     "first_sheet": {
-      "title": "Book a Hopper",
+      "title": "Book a driver",
       "fields": {
         "starting_point": "Starting Point...",
         "destination_point": "Destination",
@@ -89,7 +89,7 @@
       "text": "This may take a few minutes. We will notify you when the trip is confirmed."
     },
     "fourthy_sheet": {
-      "title": "Waiting for confirmation from a Hopper",
+      "title": "Waiting for confirmation from a driver",
       "confirm": "Confirm trip"
     },
     "fifty_sheet": {
@@ -135,13 +135,13 @@
       "description": "There are no trips registered yet."
     },
     "advice": {
-      "title": "Tips for a Hopper",
+      "title": "Tips for a driver",
       "description": "Be friendly and professional, keep your car clean. ¡Small details make a difference!"
     }
   },
   "hoppy": {
-    "title": "Tips for a Hoppy",
-    "description": "Please consider the Guest's needs when booking a Hopper. Small details make a difference!"
+    "title": "Tips for a coordinator",
+    "description": "Please consider passenger needs when booking a driver. Small details make a difference!"
   },
     "fixed_travel": {
     "description_tittle": "Travel details"
