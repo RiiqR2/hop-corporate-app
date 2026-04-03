@@ -50,7 +50,7 @@ export default function AccountState() {
     <Container>
       <Box style={styles.box} className="items-start justify-center gap-4 mt-8">
         <HStack className="justify-between w-full">
-          <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('settings.account_active', { ns: 'utils' })}
           </Text>
           <Switch

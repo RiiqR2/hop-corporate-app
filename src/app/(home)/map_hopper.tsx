@@ -199,12 +199,12 @@ export default function MapHopper() {
             </Box>
             <Box className="flex-row gap-2">
               <Badge className="gap-2 rounded-full items-center justify-center px-2" style={styles.badge}>
-                <Calendar width={16} height={16} color={Colors.DARK_GREEN} />
-                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_GREEN}>{date}</Text>
+                <Calendar width={16} height={16} color={Colors.DARK_PURPLE} />
+                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_PURPLE}>{date}</Text>
               </Badge>
               <Badge className="gap-2 rounded-full items-center justify-center px-2" style={styles.badge}>
-                <Clock width={16} height={16} color={Colors.DARK_GREEN} />
-                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_GREEN}>{time}</Text>
+                <Clock width={16} height={16} color={Colors.DARK_PURPLE} />
+                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_PURPLE}>{time}</Text>
               </Badge>
             </Box>
           </ModalHeader>
@@ -341,7 +341,7 @@ export default function MapHopper() {
                   variant="ghost"
                   onPress={() => setIsPaymentPickerOpen(true)}
                   className="rounded-full px-3 h-[44px] bg-[#E1F5F3] border"
-                  style={{ borderColor: '#D6EDE9' }}
+                  style={{ borderColor: '#dfd9f7' }}
                 >
                   <HStack className="items-center gap-1">
                     <Text fontSize={16}>{paymentIconEmoji}</Text>
@@ -397,7 +397,7 @@ export default function MapHopper() {
       {startTravel && (
         <View style={[styles.actionSheet, { paddingBottom: insets.bottom + 12 }]}>
           <HStack className="justify-between">
-            <Text fontSize={24} fontWeight={600} className="mb-6" textColor={Colors.DARK_GREEN}>
+            <Text fontSize={24} fontWeight={600} className="mb-6" textColor={Colors.DARK_PURPLE}>
               {formatTime(data?.time!)}
             </Text>
             <CustomButton
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#D6EDE9', // un borde suave
+    borderColor: '#ddd6ed', // un borde suave
     paddingVertical: 12,
     paddingHorizontal: 14,
     flexDirection: 'row',
@@ -474,7 +474,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   optionEmoji: { fontSize: 18, marginRight: 8 },
-  optionText: { fontSize: 16, fontWeight: '700', color: '#0E3B35' },
+  optionText: { fontSize: 16, fontWeight: '700', color: '#0e0e3b' },
   cancelLink: { alignSelf: 'flex-end', paddingVertical: 6, paddingHorizontal: 4 },
 
   // --- Chip superpuesto dentro del CTA ---
@@ -492,10 +492,10 @@ const styles = StyleSheet.create({
   chipCaret: { color: '#fff', marginLeft: 4, opacity: 0.9 },
 
   modalCard: {
-    backgroundColor: '#E1F5F3',     // celeste claro (como el fondo)
+    backgroundColor: '#e4e1f5',     // celeste claro (como el fondo)
     borderRadius: 20,
     borderWidth: 2,                  // contorno definido
-    borderColor: 'rgba(0, 137, 123, 0.35)', // verde-teal suave (ajústalo si tu Colors.SECONDARY es otro)
+    borderColor: 'rgba(14, 0, 137, 0.35)', // verde-teal suave (ajústalo si tu Colors.SECONDARY es otro)
     shadowColor: '#000',             // separación del fondo
     shadowOpacity: 0.10,
     shadowRadius: 12,

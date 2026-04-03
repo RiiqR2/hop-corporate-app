@@ -131,7 +131,7 @@ export default function Booking() {
         <Card variant="outline" style={styles.card} key={item.id}>
           <HStack className="gap-1 items-center justify-between">
             <Box>
-              <Text className="items-center gap-2" textColor={Colors.DARK_GREEN} fontWeight={600} fontSize={20}>
+              <Text className="items-center gap-2" textColor={Colors.DARK_PURPLE} fontWeight={600} fontSize={20}>
                 {travelType}
               </Text>
               <Text fontSize={12} fontWeight={400} textColor={Colors.GRAY}>
@@ -148,11 +148,11 @@ export default function Booking() {
             <VStack>
               <Box className="flex-row gap-2 items-center">
                 <Calendar width={16} />
-                <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_GREEN}>
+                <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>
                   {date}
                 </Text>
               </Box>
-              <Text fontWeight={400} fontSize={14} textColor={Colors.DARK_GREEN} textAlign="right">
+              <Text fontWeight={400} fontSize={14} textColor={Colors.DARK_PURPLE} textAlign="right">
                 {time}
               </Text>
             </VStack>

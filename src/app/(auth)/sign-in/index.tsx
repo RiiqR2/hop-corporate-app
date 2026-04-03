@@ -97,7 +97,7 @@ export default function SignIn() {
             <Text
               fontSize={28}
               fontWeight={600}
-              textColor={Colors.DARK_GREEN}
+              textColor={Colors.DARK_PURPLE}
               className="mt-12"
             >
               {t("signin.welcome", { ns: "auth" })}
@@ -148,7 +148,7 @@ export default function SignIn() {
                       isRequired
                     />
                     <Text
-                      textColor={Colors.DARK_GREEN}
+                      textColor={Colors.DARK_PURPLE}
                       underline
                       fontSize={14}
                       onPress={() =>

@@ -10,7 +10,7 @@ type TooltipProps = {
   textColor?: string;
 };
 
-export default function Tooltip({ documentation, setShowTooltip, bgColor = '#4B5563', textColor = Colors.WHITE }: TooltipProps) {
+export default function Tooltip({ documentation, setShowTooltip, bgColor = '#4b4b63', textColor = Colors.WHITE }: TooltipProps) {
   return (
     <Pressable style={[styles.tooltip, { backgroundColor: bgColor }]} onPress={() => setShowTooltip(false)}>
       <View style={[styles.tooltip_description, { borderTopColor: bgColor }]} />
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     padding: 8,
     bottom: 28,
-    backgroundColor: '#4B5563',
+    backgroundColor: '#4b4b63',
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 8,
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderTopColor: '#4B5563',
+    borderTopColor: '#4d4b63',
   },
 });

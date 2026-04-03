@@ -38,7 +38,7 @@ export default function Error({ route }: { route?: ErrorScreenRouteProp }) {
         <VStack space="lg" className="items-center mb-9">
           {IconTop && <IconTop />}
           <Box className="mt-12 gap-6">
-            <Text className="text-2xl font-semibold text-center color-[#10524B]">
+            <Text className="text-2xl font-semibold text-center color-[#141052ff]">
               {title}
             </Text>
             <Text className="text-lg font-semibold text-center color-[#303231]">
@@ -50,7 +50,7 @@ export default function Error({ route }: { route?: ErrorScreenRouteProp }) {
         <VStack space="lg" className="mt-28">
           <Button
             variant="solid"
-            className="rounded-xl bg-[#2EC4B6] self-center"
+            className="rounded-xl bg-[#7a5ce7] self-center"
             onPress={buttonAction}
           >
             <ButtonText className="font-semibold text-lg">

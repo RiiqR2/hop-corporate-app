@@ -36,7 +36,7 @@ export const travelStatusColor: Record<travelStatus, string> = {
 
 export const paymentTextColor: Record<paymentStatus, string> = {
   CANCELLED: Colors.LIGHT_RED,
-  DONE: Colors.DARK_GREEN,
+  DONE: Colors.DARK_PURPLE,
   PENDING: Colors.YELLOW,
   FINISHED: Colors.PRIMARY,
 };

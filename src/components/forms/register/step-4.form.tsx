@@ -173,7 +173,7 @@ export default function Step4() {
           <View
             style={{
               borderWidth: 1,
-              borderColor: Colors.DARK_GREEN,
+              borderColor: Colors.DARK_PURPLE,
               borderRadius: 10,
               padding: 12,
               maxHeight: 250, // puedes aumentar si quieres mostrar más texto visible
@@ -195,8 +195,8 @@ export default function Step4() {
               >
                 <CheckboxIndicator
                   style={{
-                    backgroundColor: checked ? Colors.DARK_GREEN : 'white',
-                    borderColor: checked ? 'transparent' : Colors.DARK_GREEN,
+                    backgroundColor: checked ? Colors.DARK_PURPLE : 'white',
+                    borderColor: checked ? 'transparent' : Colors.DARK_PURPLE,
                   }}
                 >
                   <CheckboxIcon as={CheckIcon} />

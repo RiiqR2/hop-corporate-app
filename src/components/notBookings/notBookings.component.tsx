@@ -22,8 +22,8 @@ interface NotBookingsProps {
 export const NotBookings = ({
   children,
   text,
-  backgroundColor = '#E1F5F3',
-  iconBackgroundColor = '#9FE4DD',
+  backgroundColor = '#e5e1f5',
+  iconBackgroundColor = '#b29fe4',
   textColor = Colors.GRAY,
   className = '',
   style,

@@ -11,7 +11,4 @@ export enum travelTypeValues {
   PICKUP = 'PICKUP',
   DROPOFF = 'DROPOFF',
   INSTANT = 'INSTANT',
-  SNOW = 'SNOW',
-  SEASON = 'SEASON',
-  VINEYARD = 'VINEYARD'
 }

@@ -54,7 +54,7 @@ export default function NewPassword() {
       <KeyboardContainer>
         <View style={styles.container}>
           <VStack space="lg" className="items-center mb-9">
-            <Text fontSize={28} fontWeight={600} textAlign="center" textColor={Colors.DARK_GREEN}>
+            <Text fontSize={28} fontWeight={600} textAlign="center" textColor={Colors.DARK_PURPLE}>
               {t('new_password.create_new_password', { ns: 'auth' })}
             </Text>
             <Text fontSize={16} fontWeight={400} textAlign="center">

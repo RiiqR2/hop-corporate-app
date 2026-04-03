@@ -20,7 +20,7 @@ export default function FinishRecoverPassword() {
             fontSize={28}
             fontWeight={600}
             textAlign="center"
-            textColor={Colors.DARK_GREEN}
+            textColor={Colors.DARK_PURPLE}
           >
             {t("new_password.password_changed_successfully")}
           </Text>

@@ -154,7 +154,7 @@ export default function Documentation() {
             {documentation.map((documentation, index) => (
               <Box key={index} className="gap-3">
                 <HStack className="gap-2">
-                  <Text fontWeight={600} fontSize={14} textColor={Colors.DARK_GREEN}>
+                  <Text fontWeight={600} fontSize={14} textColor={Colors.DARK_PURPLE}>
                     {documentation.value}
                   </Text>
                   {documentation.info && (
@@ -185,10 +185,10 @@ export default function Documentation() {
                   }}
                   disabled
                 >
-                  <Text textColor={Colors.DARK_GREEN} fontWeight={600}>
+                  <Text textColor={Colors.DARK_PURPLE} fontWeight={600}>
                     {t('signup.step_3.upload')}
                   </Text>
-                  <DocumentUpload color={Colors.DARK_GREEN} />
+                  <DocumentUpload color={Colors.DARK_PURPLE} />
                 </Pressable>
                 {index === 4 && data?.vehiclePictures && data?.vehiclePictures.length > 0 && (
                   <ScrollView contentContainerStyle={styles.gridContainer}>

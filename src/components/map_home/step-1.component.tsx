@@ -63,7 +63,7 @@ export const Step1Booking = (props: Step1BookingProps) => {
   const [time, setTime] = useState<Date | null>(null);
   const [type, setType] = useState<'date' | 'time'>('date');
   const [showCalendar, setShowCalendar] = useState(false);
-  const fixedTypes = ["SNOW", "VINEYARD", "SEASON", "PICKUP", "DROPOFF"];
+  const fixedTypes = ["PICKUP", "DROPOFF"];
 
   const [fixedTravelOptions, setFixedTravelOptions] = useState<FixedDestination[]>([]);
   const [selectedFixedDestination, setSelectedFixedDestination] = useState<FixedDestination | null>(null);
@@ -349,14 +349,14 @@ useEffect(() => {
           <HStack space="md" className="mt-6">
             <Badge style={styles.badge} className="rounded-full gap-1">
               <BadgeIcon as={CalendarActive} />
-              <Text fontSize={12} fontWeight={400} textColor={Colors.DARK_GREEN}>
+              <Text fontSize={12} fontWeight={400} textColor={Colors.DARK_PURPLE}>
                 {formattedDate}
               </Text>
             </Badge>
             <Badge style={styles.badge} className="rounded-full gap-1">
               <ClockActive height={16} width={16} />
 
-              <Text fontSize={12} fontWeight={400} textColor={Colors.DARK_GREEN}>
+              <Text fontSize={12} fontWeight={400} textColor={Colors.DARK_PURPLE}>
                 {formattedTime}
               </Text>
             </Badge>
@@ -445,7 +445,7 @@ useEffect(() => {
 
         {!fixedTypes.includes(params.type) ? (
           <><View className="mt-6">
-            <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+            <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
               {t('home.map_home.first_sheet.usual_destinations', {
                 ns: 'home',
               })}

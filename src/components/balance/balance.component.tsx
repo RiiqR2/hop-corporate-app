@@ -22,7 +22,7 @@ export const Balance = ({ id }: { id: string }) => {
         className="mr-4"
         fontSize={14}
         fontWeight={400}
-        textColor={Colors.DARK_GREEN}
+        textColor={Colors.DARK_PURPLE}
       >
         {t("home.balance", { ns: "home" })}:{" "}
         <Text fontSize={20} fontWeight={600}>
@@ -31,9 +31,9 @@ export const Balance = ({ id }: { id: string }) => {
       </Text>
       <Pressable onPress={() => setShowBalance(!showBalance)}>
         {showBalance ? (
-          <Icon as={EyeOffIcon} className="w-4 h-4" color={Colors.DARK_GREEN} />
+          <Icon as={EyeOffIcon} className="w-4 h-4" color={Colors.DARK_PURPLE} />
         ) : (
-          <Icon as={EyeIcon} className="w-4 h-4" color={Colors.DARK_GREEN} />
+          <Icon as={EyeIcon} className="w-4 h-4" color={Colors.DARK_PURPLE} />
         )}
       </Pressable>
     </HStack>

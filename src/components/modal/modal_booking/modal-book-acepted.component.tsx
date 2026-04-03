@@ -137,12 +137,12 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
                   )}
                 </HStack>
                 <HStack className="w-full justify-between items-center">
-                  <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_GREEN}>
+                  <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>
                     {t('home.map_home.fifty_sheet.value', { ns: 'home' })}
                   </Text>
                   <Badge style={styles.badge}>
                     <DolarCircle />
-                    <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                    <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                       ${formatCLP(Number(travel?.metadata?.travel?.price ?? 0))}
                     </Text>
                   </Badge>

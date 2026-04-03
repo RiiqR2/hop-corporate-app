@@ -24,7 +24,7 @@ export default function FinishOnboarding() {
       <View style={[styles.container]}>
         <VStack space="lg" className="items-center mb-9">
           <Hop color={Colors.SECONDARY} />
-          <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_GREEN} textAlign="center">
+          <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_PURPLE} textAlign="center">
             {t('home.waiting_validation.account_review', { ns: 'home' })}
           </Text>
         </VStack>

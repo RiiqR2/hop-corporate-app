@@ -121,8 +121,8 @@ export const TakeABooking = () => {
   return (
     <View style={styles.floating_content} className="p-3">
       <Badge className="gap-2 rounded-full items-center justify-center px-4" style={styles.badge}>
-        <Car width={16} height={16} color={Colors.DARK_GREEN} />
-        <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_GREEN}>
+        <Car width={16} height={16} color={Colors.DARK_PURPLE} />
+        <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>
           {t('home.booking.booking_hopper', { ns: 'home' })}
         </Text>
       </Badge>

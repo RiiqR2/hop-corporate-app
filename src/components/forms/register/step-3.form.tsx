@@ -315,7 +315,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mark_map: {
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
   },
   search_bar_container: {
     width: '100%',

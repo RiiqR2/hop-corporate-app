@@ -10,10 +10,7 @@
     "title": "Services",
     "shortcuts": {
       "pickup": "Pick Up",
-      "dropoff": "Drop Off",
-      "snow": "Snow tour",
-      "season": "Season tour",
-      "vineyard": "Vineyard tour"
+      "dropoff": "Drop Off"
     }
   },
   "map_home": {
@@ -140,8 +137,8 @@
     }
   },
   "hoppy": {
-    "title": "Tips for a coordinator",
-    "description": "Please consider passenger needs when booking a driver. Small details make a difference!"
+    "title": "Tips for Booking a Trip",
+    "description": "Consider booking your trip in advance to avoid wait times."
   },
     "fixed_travel": {
     "description_tittle": "Travel details"

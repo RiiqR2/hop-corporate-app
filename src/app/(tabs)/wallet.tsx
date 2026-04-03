@@ -101,10 +101,10 @@ export default function Wallet() {
     return (
       <HStack style={styles.item} key={item.id} className="justify-between items-center mt-3">
         <VStack>
-          <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_PURPLE}>
             {translatedStatus}
           </Text>
-          <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {date} - {time}
           </Text>
         </VStack>
@@ -120,7 +120,7 @@ export default function Wallet() {
             width={24}
             height={24}
           />
-          <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             ${user?.role === userRoles.USER_HOPPER ? Number(item.hopperCommission).toFixed(2) : Number(item.hoppyCommission).toFixed(2)}
           </Text>
         </Badge>
@@ -175,7 +175,7 @@ export default function Wallet() {
             <ArrowLeftFilled />
           </Pressable>
 
-          <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_GREEN} transform="capitalize">
+          <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_PURPLE} transform="capitalize">
             {`${dayjs().month(currentMonth).format('MMMM')} ${currentYear}`}
           </Text>
 
@@ -184,12 +184,12 @@ export default function Wallet() {
           </Pressable>
         </Box>
         <Box className="mt-6">
-          <Text textAlign="center" fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text textAlign="center" fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('total', { ns: 'wallet' })}
           </Text>
         </Box>
         <VStack className="items-center mt-7">
-          <Text fontSize={32} fontWeight={600} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={32} fontWeight={600} textColor={Colors.DARK_PURPLE}>
             ${userComissions?.month.totalCommission}
           </Text>
         </VStack>
@@ -201,8 +201,8 @@ export default function Wallet() {
             noOfSections={5}
             maxValue={maxValue}
             isAnimated
-            yAxisTextStyle={{ color: Colors.DARK_GREEN }}
-            xAxisLabelTextStyle={{ color: Colors.DARK_GREEN }}
+            yAxisTextStyle={{ color: Colors.DARK_PURPLE }}
+            xAxisLabelTextStyle={{ color: Colors.DARK_PURPLE }}
             yAxisLabelTexts={yAxisLabelTexts}
             lineBehindBars={false}
             color={Colors.PRIMARY}
@@ -223,7 +223,7 @@ export default function Wallet() {
         </View>
       </View>
       <Box className="mt-6">
-        <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_GREEN}>
+        <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_PURPLE}>
           {t('last_comissions', { ns: 'wallet' })}
         </Text>
         <FlatList
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: Colors.DARK_GREEN,
+    borderColor: Colors.DARK_PURPLE,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 6,
     borderTopColor: 'transparent',
     borderBottomColor: 'transparent',
-    borderRightColor: Colors.DARK_GREEN,
+    borderRightColor: Colors.DARK_PURPLE,
     marginRight: -1,
     shadowColor: '#000',
     shadowOffset: { width: 1, height: 1 },
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   },
 
   tooltipText: {
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
     fontSize: 14,
   },
 });

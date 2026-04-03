@@ -196,7 +196,7 @@ export const Step3Booking = (props: { setStepper: React.Dispatch<React.SetStateA
             <HStack space="md" className="items-center">
               <Icon height={85} width={86} />
               <VStack space="md">
-                <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_GREEN}>
+                <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_PURPLE}>
                   {name}
                 </Text>
               </VStack>

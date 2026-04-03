@@ -116,7 +116,7 @@ export default function Confirmation() {
 
   const insets = useSafeAreaInsets();
 
-  const priceColor = params.type === paymentStatus.FINISHED ? Colors.DARK_GREEN : data?.paymentStatus === paymentStatus.CANCELLED ? Colors.ERROR : Colors.GRAY;
+  const priceColor = params.type === paymentStatus.FINISHED ? Colors.DARK_PURPLE : data?.paymentStatus === paymentStatus.CANCELLED ? Colors.ERROR : Colors.GRAY;
 
   const PaymentStatusComponent = {
     [paymentStatus.PENDING]: (
@@ -176,7 +176,7 @@ export default function Confirmation() {
     <LinearGradient style={[styles.wrapper, { paddingTop: insets.top + 24 }]}>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <VStack space="lg" className="items-center mb-9 mx-[16px]">
-          <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_GREEN} textAlign="center">
+          <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_PURPLE} textAlign="center">
             {params.role === userRoles.USER_HOPPY ? t('home.confirmation.title', { ns: 'home' }) : message}
           </Text>
         </VStack>
@@ -185,7 +185,7 @@ export default function Confirmation() {
           {params.type === paymentStatus?.FINISHED ? (
             <>
               <View style={styles.middleElement}>
-                <Text fontSize={32} textColor={Colors.DARK_GREEN} fontWeight={600}>
+                <Text fontSize={32} textColor={Colors.DARK_PURPLE} fontWeight={600}>
                   $ {(user?.role === userRoles.USER_HOPPER ? formatCLP(Number(data?.hopperCommission)) : formatCLP(Number(data?.hoppyCommission))) || '0'}
                 </Text>
               </View>
@@ -292,6 +292,6 @@ const styles = StyleSheet.create({
   middleText: {
     fontSize: 32,
     fontWeight: 600,
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
   },
 });

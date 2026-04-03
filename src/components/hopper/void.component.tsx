@@ -11,7 +11,7 @@ export const Void = () => {
   const { t } = useTranslation();
   return (
     <LinearGradient
-      colors={['#134641', '#07A999']}
+      colors={['#131746', '#3d07a9']}
       locations={[0.0, 0.9]}
       style={{
         height: 138,

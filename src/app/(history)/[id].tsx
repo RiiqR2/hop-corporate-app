@@ -44,7 +44,7 @@ export default function History() {
 
   return (
     <Container>
-      <Text textColor={Colors.DARK_GREEN} fontSize={18} fontWeight={600}>
+      <Text textColor={Colors.DARK_PURPLE} fontSize={18} fontWeight={600}>
         {date} - {time}
       </Text>
       <HStack style={styles.card_description}>
@@ -70,39 +70,39 @@ export default function History() {
         </Box>
       </HStack>
       <VStack className="mt-8 gap-2">
-        <Text textColor={Colors.DARK_GREEN} fontSize={18} fontWeight={400}>
+        <Text textColor={Colors.DARK_PURPLE} fontSize={18} fontWeight={400}>
           {t('service_detail', { ns: 'history' })}
         </Text>
         <Badge className="bg-[#E1F5F3] rounded-md justify-between">
-          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('trip_value', { ns: 'history' })}
           </Text>
-          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             $ {formatCLP(Number(data?.price ?? 0))}
           </Text>
         </Badge>
         <Badge className="bg-[#E1F5F3] rounded-md justify-between">
-          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('service_fees', { ns: 'history' })}
           </Text>
-          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             -{((data?.appCommission || 0) + (data?.hoppyCommission || 0)).toFixed(2)}
           </Text>
         </Badge>
         <Badge className="bg-[#E1F5F3] rounded-md justify-between">
-          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('tolls', { ns: 'history' })}
           </Text>
-          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             ${data?.tollsCommission?.toFixed(2) ?? 0}
           </Text>
         </Badge>
       </VStack>
       <View className="h-auto bg-[#9FE4DD] mt-6 rounded-full flex-row justify-between py-1 px-2 items-center">
-        <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_GREEN}>
+        <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_PURPLE}>
           {t('net_earnings', { ns: 'history' })}
         </Text>
-        <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_GREEN}>
+        <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_PURPLE}>
           ${user?.role === userRoles.USER_HOPPER ? (data?.hopperCommission?.toFixed(2) ?? 0) : (data?.hoppyCommission?.toFixed(2) ?? 0)}
         </Text>
       </View>

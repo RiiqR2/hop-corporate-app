@@ -49,14 +49,14 @@ export const ModalBooking = ({ isOpen, handleClose, travel, user }: { isOpen: bo
             </Box>
             <Box className="flex-row gap-2">
               <Badge className="gap-2 rounded-full items-center justify-center px-2" style={styles.badge}>
-                <Calendar width={16} height={16} color={Colors.DARK_GREEN} />
-                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                <Calendar width={16} height={16} color={Colors.DARK_PURPLE} />
+                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                   {date}
                 </Text>
               </Badge>
               <Badge className="gap-2 rounded-full items-center justify-center px-2" style={styles.badge}>
-                <Clock width={16} height={16} color={Colors.DARK_GREEN} />
-                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                <Clock width={16} height={16} color={Colors.DARK_PURPLE} />
+                <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                   {time}
                 </Text>
               </Badge>
@@ -89,20 +89,20 @@ export const ModalBooking = ({ isOpen, handleClose, travel, user }: { isOpen: bo
             <VStack className="mt-4">
               <Box className="flex-row gap-2 items-center">
                 <People width={16} height={16} />
-                <Text textColor={Colors.DARK_GREEN} fontSize={18} fontWeight={400}>
+                <Text textColor={Colors.DARK_PURPLE} fontSize={18} fontWeight={400}>
                   {/* {travel?.metadata.travel.totalPassengers} Pasajeros */}
                   {t('booking.modal_hopper.passengers', { ns: 'booking', count: Number(travel?.metadata?.travel?.totalPassengers || 0) })}
                 </Text>
               </Box>
               <Box className="flex-row gap-2 items-center">
                 <ShoppingBag width={16} height={16} />
-                <Text textColor={Colors.DARK_GREEN} fontSize={18} fontWeight={400}>
+                <Text textColor={Colors.DARK_PURPLE} fontSize={18} fontWeight={400}>
                   {t('booking.modal_hopper.suitcases', { ns: 'booking', count: Number(travel?.metadata?.travel?.totalSuitCases || 0) })}
                 </Text>
               </Box>
               <Box className="flex-row gap-2 items-center">
                 <DolarCircle width={16} height={16} />
-                <Text textColor={Colors.DARK_GREEN} fontSize={18} fontWeight={400}>
+                <Text textColor={Colors.DARK_PURPLE} fontSize={18} fontWeight={400}>
                   {/* Valor del viaje ${travel?.metadata.travel.price?.toFixed(2)} */}
                   {t('booking.modal_hopper.tripValue', { ns: 'booking', amount: formatCLP(Number(travel?.metadata?.travel?.price ?? 0))})}
                 </Text>

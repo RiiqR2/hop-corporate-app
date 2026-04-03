@@ -51,7 +51,7 @@ export default function FinishOnboarding() {
           <Hop color={Colors.SECONDARY} />
           <Text
             fontSize={28}
-            textColor={Colors.DARK_GREEN}
+            textColor={Colors.DARK_PURPLE}
             fontWeight={600}
             textAlign="center"
           >

@@ -152,7 +152,7 @@ function SettingsMenu({ visible, onClose }: { visible: boolean; onClose: () => v
               }}
               className="p-2"
             >
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.permissions', { ns: 'profile' })}
               </Text>
               <Divider className="my-1" orientation="horizontal" style={styles.divider} />
@@ -168,7 +168,7 @@ function SettingsMenu({ visible, onClose }: { visible: boolean; onClose: () => v
               }}
               className="p-2"
             >
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.privacy', { ns: 'profile' })}
               </Text>
               <Divider className="my-1" style={styles.divider} />
@@ -181,21 +181,21 @@ function SettingsMenu({ visible, onClose }: { visible: boolean; onClose: () => v
               }}
               className="p-2"
             >
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.report_issue', { ns: 'profile' })}
               </Text>
               <Divider className="my-1" style={styles.divider} />
             </Pressable>
 
             <Pressable onPress={handleOpenTerms} className="p-2">
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.terms_conditions', { ns: 'profile' })}
               </Text>
               <Divider className="my-1" style={styles.divider} />
             </Pressable>
 
             <Pressable onPress={handleDownloadContract} className="p-2">
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.contract', { ns: 'profile' })}
               </Text>
               <Divider className="my-1" style={styles.divider} />
@@ -208,7 +208,7 @@ function SettingsMenu({ visible, onClose }: { visible: boolean; onClose: () => v
               }}
               className="p-2"
             >
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.delete_account', { ns: 'profile' })}
               </Text>
               <Divider className="my-1" style={styles.divider} />
@@ -219,7 +219,7 @@ function SettingsMenu({ visible, onClose }: { visible: boolean; onClose: () => v
 
           <View className="p-5">
             <Pressable onPress={handleLogout}>
-              <Text textColor={Colors.DARK_GREEN} fontSize={20} fontWeight={400}>
+              <Text textColor={Colors.DARK_PURPLE} fontSize={20} fontWeight={400}>
                 {t('profile.drawer.link.logout', { ns: 'profile' })}
               </Text>
             </Pressable>

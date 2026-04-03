@@ -13,7 +13,7 @@ export default {
     splash: {
       image: './assets/images/logo.png',
       resizeMode: 'contain',
-      backgroundColor: '#2EC4B6',
+      backgroundColor: '#7a5ce7',
     },
     ios: {
       bundleIdentifier: 'com.hopmobilityapp.hop',
@@ -61,7 +61,7 @@ export default {
       splash: {
         image: './assets/images/logo.png',
         resizeMode: 'contain',
-        backgroundColor: '#2EC4B6',
+        backgroundColor: '#7a5ce7',
       },
       blockedPermissions: [
         'android.permission.READ_MEDIA_IMAGES',

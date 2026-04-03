@@ -201,7 +201,7 @@ export default function SignUp() {
             <VStack space="xs" className="items-center mb-6">
               <Text
                 fontSize={28}
-                textColor={Colors.DARK_GREEN}
+                textColor={Colors.DARK_PURPLE}
                 fontWeight={600}
               >
                 {role === userRoles.USER_HOPPY
@@ -211,7 +211,7 @@ export default function SignUp() {
               <Text
                 fontSize={14}
                 fontWeight={400}
-                textColor={Colors.DARK_GREEN}
+                textColor={Colors.DARK_PURPLE}
               >
                 {role === userRoles.USER_HOPPY
                   ? t("signup.subtitle")

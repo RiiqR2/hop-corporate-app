@@ -19,7 +19,7 @@ interface GradientButtonProps {
 export const Button: React.FC<GradientButtonProps> = ({
   children,
   onPress,
-  colors = ['#07A999', '#134641'],
+  colors = ['#3d07a9', '#1c1346'],
   style = {},
   textClassName = {},
   type,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   text_ghost: {
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
     fontSize: 16,
     fontWeight: 600,
     textAlign: 'center',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   outlinedText: {
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
     fontSize: 16,
   },
 });

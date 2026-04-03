@@ -49,7 +49,7 @@ export default function RecoveryPassword() {
       <KeyboardContainer>
         <View style={styles.container}>
           <VStack space="lg" className="items-center mb-9">
-            <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_GREEN}>
+            <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_PURPLE}>
               {t("forgot_password.title")}
             </Text>
             <Text fontSize={14} fontWeight={400} textAlign="center">

@@ -103,7 +103,7 @@ export const BookingsHopper = () => {
             mutate();
           }}
         >
-          <Text fontSize={16} fontWeight={selectedTab === 'bookings' ? 700 : 400} textColor={selectedTab === 'bookings' ? Colors.DARK_GREEN : Colors.GRAY}>
+          <Text fontSize={16} fontWeight={selectedTab === 'bookings' ? 700 : 400} textColor={selectedTab === 'bookings' ? Colors.DARK_PURPLE : Colors.GRAY}>
             {t('home.hopper.bookings.title', { ns: 'home' })}
           </Text>
         </Pressable>
@@ -114,7 +114,7 @@ export const BookingsHopper = () => {
             mutate();
           }}
         >
-          <Text fontSize={16} fontWeight={selectedTab === 'requests' ? 700 : 400} textColor={selectedTab === 'requests' ? Colors.DARK_GREEN : Colors.GRAY}>
+          <Text fontSize={16} fontWeight={selectedTab === 'requests' ? 700 : 400} textColor={selectedTab === 'requests' ? Colors.DARK_PURPLE : Colors.GRAY}>
             {t('home.hopper.bookings_request.title', { ns: 'home' })}
           </Text>
         </Pressable>
@@ -156,7 +156,7 @@ export const BookingsHopper = () => {
                   <VStack className="mt-2 gap-2">
                     <Box className="gap-2 flex-row items-center">
                       <Booking />
-                      <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                      <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                         {translatedStatus[item.type as travelTypeValues]}
                       </Text>
                     </Box>

@@ -142,14 +142,14 @@ export default function Booking() {
         <>
           <Box className="flex-row gap-2">
             <Badge className="gap-2 rounded-full items-center justify-center px-2" style={styles.badge}>
-              <Calendar width={16} height={16} color={Colors.DARK_GREEN} />
-              <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_GREEN}>
+              <Calendar width={16} height={16} color={Colors.DARK_PURPLE} />
+              <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                 {date}
               </Text>
             </Badge>
             <Badge className="gap-2 rounded-full items-center justify-center px-2" style={styles.badge}>
-              <Clock width={16} height={16} color={Colors.DARK_GREEN} />
-              <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_GREEN}>
+              <Clock width={16} height={16} color={Colors.DARK_PURPLE} />
+              <Text fontSize={14} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                 {time}
               </Text>
             </Badge>
@@ -222,7 +222,7 @@ export default function Booking() {
               </VStack>
               {user.role === userRoles.USER_HOPPER && travel?.reducedMobility && (
                 <HStack space="md">
-                  <View className="rounded-full bg-[#2EC4B6] w-6 h-6 items-center justify-center">
+                  <View className="rounded-full bg-[#7a5ce7] w-6 h-6 items-center justify-center">
                     <WarningHexa />
                   </View>
 
@@ -251,7 +251,7 @@ export default function Booking() {
                     >
                       <Box className="flex-row gap-2 items-center w-[80%]">
                         <View style={styles.link_icon}>{IconItem && <IconItem width={16} height={16} color={Colors.SECONDARY} />}</View>
-                        <Text textColor={Colors.DARK_GREEN} fontWeight={400} fontSize={16}>
+                        <Text textColor={Colors.DARK_PURPLE} fontWeight={400} fontSize={16}>
                           {name}
                         </Text>
                       </Box>
@@ -345,7 +345,7 @@ export default function Booking() {
                 </Text>
                 <Badge className="rounded-full bg-[#9FE4DD] gap-1">
                   <DolarCircle />
-                  <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                  <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                     {formatCLP(Number(travel?.hoppyCommission ?? 0))}
                   </Text>
                 </Badge>

@@ -205,7 +205,7 @@ export default function History() {
                 <Card variant="outline" style={styles.card}>
                   <HStack className="gap-1 items-center justify-between">
                     <Box>
-                      <Text className="items-center gap-2" textColor={Colors.DARK_GREEN} fontWeight={600} fontSize={20}>
+                      <Text className="items-center gap-2" textColor={Colors.DARK_PURPLE} fontWeight={600} fontSize={20}>
                         {translatedStatus}
                       </Text>
                       <Text fontSize={12} fontWeight={400} textColor={Colors.GRAY}>
@@ -245,7 +245,7 @@ export default function History() {
 
                   <Badge style={styles.badge}>
                     <DolarCircle />
-                    <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                    <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                       {formatCLP(Number(commission ?? 0))}
                     </Text>
                   </Badge>

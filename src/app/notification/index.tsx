@@ -224,7 +224,7 @@ export default function Notifications() {
                   </View>
                   <Box className="flex-1 gap-1">
                     <Text
-                      textColor={Colors.DARK_GREEN}
+                      textColor={Colors.DARK_PURPLE}
                       fontWeight={400}
                       fontSize={14}
                     >

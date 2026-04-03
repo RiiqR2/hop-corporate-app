@@ -26,10 +26,10 @@ export default function OnlineBadge({
   size = 12,
 }: Props) {
   // Colores de marca con fallback
-  const brand = (Colors as any)?.PRIMARY ?? '#2EC4B6';
+  const brand = (Colors as any)?.PRIMARY ?? '#7a5ce7';
   const danger = (Colors as any)?.DANGER ?? '#E11D48';   // rojo elegante
   const fg = active ? brand : danger;
-  const bg = active ? 'rgba(46,196,182,0.12)' : 'rgba(225,29,72,0.12)';
+  const bg = active ? 'rgba(122,92,231,0.12)' : 'rgba(225,29,72,0.12)';
 
   if (variant === 'dot') {
     const radius = size / 2;

@@ -149,7 +149,7 @@ export default function PersonalData() {
             <Text
               fontSize={12}
               fontWeight={300}
-              textColor={Colors.DARK_GREEN}
+              textColor={Colors.DARK_PURPLE}
               className="mt-4"
             >
               {t("profile.personal_data.picture", { ns: "profile" })}
@@ -307,10 +307,10 @@ export default function PersonalData() {
                   {isEditable && (
                     <Pressable onPress={() => requestLocationPermission()}>
                       <HStack space="xs">
-                        <Location color={Colors.DARK_GREEN} width={14} />
+                        <Location color={Colors.DARK_PURPLE} width={14} />
                         <Text
                           className="text-xs font-medium"
-                          textColor={Colors.DARK_GREEN}
+                          textColor={Colors.DARK_PURPLE}
                         >
                           {t("signup.step_1.mark_map", { ns: "auth" })}
                         </Text>

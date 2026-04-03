@@ -34,7 +34,7 @@ export const Loading = () => {
   return (
     <View style={styles.centerContainer}>
       <View style={styles.middleElement}>
-        <Hop color={Colors.DARK_GREEN} width={90} />
+        <Hop color={Colors.DARK_PURPLE} width={90} />
       </View>
 
       <Animated.View style={[animatedStyle]}>

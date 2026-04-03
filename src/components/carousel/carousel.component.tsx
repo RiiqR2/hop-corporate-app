@@ -65,7 +65,7 @@ const FirstItemCarousel = () => {
       <Box className="flex-1 items-center pt-6">
         <Hop color={Colors.SECONDARY} />
         <VStack space="lg" className="items-center mt-[32px] mb-[48px]">
-          <Text textColor={Colors.DARK_GREEN} fontSize={28} fontWeight={600}>
+          <Text textColor={Colors.DARK_PURPLE} fontSize={28} fontWeight={600}>
             {t('onboarding.first_item_carousel.welcome_title')}
           </Text>
           <Text fontSize={16} fontWeight={400} textAlign="center">
@@ -94,7 +94,7 @@ const SecondItemCarousel = () => {
       <Box className="flex-1 items-center pt-6">
         <Hop color={Colors.SECONDARY} />
         <VStack space="lg" className="items-center mt-[32px] mb-[48px]">
-          <Text textColor={Colors.DARK_GREEN} fontSize={28} fontWeight={600}>
+          <Text textColor={Colors.DARK_PURPLE} fontSize={28} fontWeight={600}>
             {t('onboarding.second_item_carousel.welcome_title')}
           </Text>
           <Text fontSize={16} fontWeight={400} textAlign="center">
@@ -123,7 +123,7 @@ const ThirdItemCarousel = () => {
       <Box className="flex-1 items-center pt-[24px]">
         <Hop color={Colors.SECONDARY} />
         <VStack space="lg" className="items-center mt-[32px] mb-[48px]">
-          <Text textColor={Colors.DARK_GREEN} fontSize={28} fontWeight={600} textAlign="center">
+          <Text textColor={Colors.DARK_PURPLE} fontSize={28} fontWeight={600} textAlign="center">
             {t('onboarding.third_item_carousel.welcome_title')}
           </Text>
           <Text fontSize={16} fontWeight={400} textAlign="center">

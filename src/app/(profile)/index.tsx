@@ -102,7 +102,7 @@ export default function Profile() {
         ) : (
           <Avatar width={185} height={185} />
         )}
-        <Text fontSize={24} fontWeight={400} textColor={Colors.DARK_GREEN} className="mt-2">
+        <Text fontSize={24} fontWeight={400} textColor={Colors.DARK_PURPLE} className="mt-2">
           {capitalizeWords(user?.userInfo.firstName || '')} {capitalizeWords(user?.userInfo.lastName || '')}
         </Text>
         {user?.userInfo?.user_code && user.userInfo.user_code !== "" && user.role === userRoles.USER_HOPPY
@@ -134,11 +134,11 @@ export default function Profile() {
                     <View style={styles.link_icon}>
                       <IconItem width={16} height={16} color={Colors.SECONDARY} />
                     </View>
-                    <Text textColor={Colors.DARK_GREEN} fontWeight={400} fontSize={16}>
+                    <Text textColor={Colors.DARK_PURPLE} fontWeight={400} fontSize={16}>
                       {name}
                     </Text>
                   </Box>
-                  <Icon as={ChevronRightIcon} color={Colors.DARK_GREEN} width={12} height={12} />
+                  <Icon as={ChevronRightIcon} color={Colors.DARK_PURPLE} width={12} height={12} />
                 </HStack>
               </Pressable>
               {i !== 4 && <Divider style={styles.divider} />}

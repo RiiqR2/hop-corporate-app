@@ -184,8 +184,8 @@ export default function PersonalData() {
                 {isEditable && (
                   <Pressable onPress={() => requestLocationPermission()}>
                     <HStack space="xs">
-                      <Location color={Colors.DARK_GREEN} width={14} />
-                      <Text fontWeight={400} fontSize={12} textColor={Colors.DARK_GREEN}>
+                      <Location color={Colors.DARK_PURPLE} width={14} />
+                      <Text fontWeight={400} fontSize={12} textColor={Colors.DARK_PURPLE}>
                         {t('signup.step_1.mark_map', { ns: 'auth' })}
                       </Text>
                     </HStack>
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   mark_map: {
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
   },
   content: {
     flex: 1,

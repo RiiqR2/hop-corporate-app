@@ -79,7 +79,7 @@ export const Booking = () => {
 
   return (
     <View style={styles.bookings}>
-      <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_GREEN}>
+      <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_PURPLE}>
         {t('home.booking.title', { ns: 'home' })}
       </Text>
       <FlatList
@@ -127,7 +127,7 @@ export const Booking = () => {
                 <HStack style={styles.card_description}>
                   <BookingSVG />
                   <Box className="gap-1 ">
-                    <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_GREEN}>
+                    <Text fontSize={20} fontWeight={600} textColor={Colors.DARK_PURPLE}>
                       {translatedStatusTravel[item.type as travelTypeValues]}
                     </Text>
                     <Box className="flex-row gap-2 shrink-1 max-w-[250] pr-2">

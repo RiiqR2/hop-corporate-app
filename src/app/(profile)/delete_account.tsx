@@ -51,7 +51,7 @@ export default function DeleteAccount() {
   return (
     <Container>
       <Box className="mt-8 gap-8">
-        <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_GREEN}>
+        <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
           {t('profile.delete_account.message', { ns: 'profile' })}
         </Text>
         <Button onPress={handleDeleteAccount} stretch disabled={loading}>

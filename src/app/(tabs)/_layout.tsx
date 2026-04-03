@@ -60,7 +60,7 @@ export default function TabLayout() {
     }
   }, [isDrawerOpen]);
 
-  const socket = useSocket('https://apihop.hopmobilityapp.com/');
+  const socket = useSocket('http://192.168.1.4:3000/');
 
   useEffect(() => {
     if (!socket || !user?.id) return;

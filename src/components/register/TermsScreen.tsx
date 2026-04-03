@@ -99,7 +99,7 @@ export default TermsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F6F7FB',
+    backgroundColor: '#f6f6fb',
     padding: 16,
   },
   card: {

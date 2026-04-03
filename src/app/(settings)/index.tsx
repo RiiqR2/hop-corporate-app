@@ -175,7 +175,7 @@ export default function Settings() {
       <Box style={styles.box} className="items-start justify-center gap-4 mt-8">
         {/* ===== Notificaciones (igual que antes) ===== */}
         <HStack className="justify-between w-full">
-          <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_GREEN}>
+          <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('settings.activate_notification', { ns: 'utils' })}
           </Text>
           <Switch onToggleSwitch={handleNotificationSwitch} isOn={notifEnabled} />
@@ -188,7 +188,7 @@ export default function Settings() {
         {isHopper && (
           <>
             <HStack className="justify-between w-full">
-              <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_GREEN}>
+              <Text fontSize={20} fontWeight={400} textColor={Colors.DARK_PURPLE}>
                 {t('settings.on_line', { ns: 'utils' }) /* "Activo" */}
               </Text>
               <Switch onToggleSwitch={handleLocationSwitch} isOn={isOnline} />

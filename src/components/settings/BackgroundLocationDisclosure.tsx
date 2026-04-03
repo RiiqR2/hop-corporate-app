@@ -51,7 +51,7 @@ export default function BackgroundLocationDisclosure({
 
             <Pressable
               onPress={onContinue}
-              style={{ backgroundColor:'#2EC4B6', padding:12, borderRadius:8 }}
+              style={{ backgroundColor:'#7a5ce7', padding:12, borderRadius:8 }}
             >
               <Text style={{ color:'#fff', fontWeight:'700' }}>Continuar</Text>
             </Pressable>

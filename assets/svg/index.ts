@@ -77,9 +77,6 @@ import Warning from "@/assets/svg/warning.svg";
 import Suv from "@/assets/svg/suv.svg";
 import NotificationActive from "@/assets/svg/notification_active.svg";
 import Room from '@/assets/svg/room.svg';
-import Snow from "@/assets/svg/snow.svg";
-import Season from "@/assets/svg/season.svg";
-import Vineyard from "@/assets/svg/vineyard.svg";
 
 export {
     AirplaneArrival,
@@ -107,9 +104,6 @@ export {
     DocumentUpload,
     DolarCircle,
     DropOff,
-    Snow,
-    Season,
-    Vineyard,
     Edit,
     ElectricCar,
     Error,

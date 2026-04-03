@@ -48,11 +48,11 @@ const selectIconStyle = tva({
 });
 
 const selectStyle = tva({
-  base: "text-[#2EC4B6]",
+  base: "text-[#7a5ce7]",
 });
 
 const selectTriggerStyle = tva({
-  base: "text-[#2EC4B6] border border-[#2EC4B6]  rounded flex-row items-center overflow-hidden data-[hover=true]:border-[#10524B] data-[focus=true]:border-[#2EC4B6] data-[focus=true]:hover:border-[#2EC4B6]  data-[disabled=true]:hover:border-[#10524B]",
+  base: "text-[#7a5ce7] border border-[#7a5ce7]  rounded flex-row items-center overflow-hidden data-[hover=true]:border-[#141052ff] data-[focus=true]:border-[#7a5ce7] data-[focus=true]:hover:border-[#7a5ce7]  data-[disabled=true]:hover:border-[#141052ff]",
   variants: {
     size: {
       xl: "h-12",
@@ -72,7 +72,7 @@ const selectTriggerStyle = tva({
 });
 
 const selectInputStyle = tva({
-  base: "py-auto px-3 placeholder:text-[#2EC4B6] web:w-full h-full text-typography-900 pointer-events-none web:outline-none ios:leading-[0px]",
+  base: "py-auto px-3 placeholder:text-[#7a5ce7] web:w-full h-full text-typography-900 pointer-events-none web:outline-none ios:leading-[0px]",
   parentVariants: {
     size: {
       xl: "text-xl",

@@ -32,7 +32,7 @@ export const Step4Booking = (props: {
 
   const travelId = data.id;
 
-  const socket = useSocket('https://apihop.hopmobilityapp.com/');
+  const socket = useSocket('http://192.168.1.4:3000/');
 
   useEffect(() => {
     if (!socket || !travelId) return;
@@ -110,7 +110,7 @@ export const Step4Booking = (props: {
         </Button>
           <Box className="items-center mt-2">
             <View style={styles.middleElement}>
-              <Text fontSize={32} textColor={Colors.DARK_GREEN} fontWeight={600}>
+              <Text fontSize={32} textColor={Colors.DARK_PURPLE} fontWeight={600}>
                 $ {formatCLP(Number(data?.price ?? 0))}
               </Text>
             </View>
@@ -156,6 +156,6 @@ const styles = StyleSheet.create({
   middleText: {
     fontSize: 32,
     fontWeight: 600,
-    color: Colors.DARK_GREEN,
+    color: Colors.DARK_PURPLE,
   },
 });
