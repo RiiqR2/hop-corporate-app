@@ -249,7 +249,7 @@ useEffect(() => {
       };
     });
 
-    setStepper(2);
+    setStepper(3);
   };
 
   const setCurrentLocation = () => {

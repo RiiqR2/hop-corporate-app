@@ -97,7 +97,7 @@ export default function SignIn() {
             <Text
               fontSize={28}
               fontWeight={600}
-              textColor={Colors.DARK_PURPLE}
+              textColor={Colors.DARK_GREEN}
               className="mt-12"
             >
               {t("signin.welcome", { ns: "auth" })}
@@ -148,7 +148,7 @@ export default function SignIn() {
                       isRequired
                     />
                     <Text
-                      textColor={Colors.DARK_PURPLE}
+                      textColor={Colors.DARK_GREEN}
                       underline
                       fontSize={14}
                       onPress={() =>
@@ -167,9 +167,12 @@ export default function SignIn() {
                     {t("signin.no_account", { ns: "auth" })}{" "}
                     <Text
                       fontWeight={600}
-                      onPress={() => {
-                        router.navigate(AuthRoutesLink.ONBOARDING);
-                      }}
+                      onPress={() =>
+                        router.push({
+                          pathname: AuthRoutesLink.SIGN_UP,
+                          params: { user_type: 'hoppy' },
+                        })
+                      }
                     >
                       {t("signin.create_account", { ns: "auth" })}
                     </Text>

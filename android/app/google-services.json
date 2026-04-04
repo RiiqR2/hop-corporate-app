@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "339133494374",
-    "project_id": "hop-mobility",
-    "storage_bucket": "hop-mobility.firebasestorage.app"
+    "project_number": "464721955881",
+    "project_id": "hop-business",
+    "storage_bucket": "hop-business.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:339133494374:android:576964032e07fdc1e029a7",
+        "mobilesdk_app_id": "1:464721955881:android:bed089af05b2321d682038",
         "android_client_info": {
-          "package_name": "com.hopmobilityapp.hop"
+          "package_name": "com.hopmobilityapp.hopbusiness"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBN1nQ6T6Kt6pXXW3TdpSNLKnBSoNr6ahA"
+          "current_key": "AIzaSyDzact9H1dlIaIPWzpOyodgiTNriuAKEYQ"
         }
       ],
       "services": {

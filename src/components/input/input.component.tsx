@@ -93,7 +93,7 @@ export const Input = (props: CustomInputProps & TextInputProps & IInputFieldProp
     <FormControl isInvalid={!!error && touched} className={stretch ? 'flex-1' : ''}>
       {label && (
         <FormControlLabel>
-          <FormControlLabelText className={`font-semibold text-lg text-[#10524B] ${error && 'text-[#9A0000]'}`}>{label}</FormControlLabelText>
+          <FormControlLabelText className={`font-semibold text-lg text-[#141052ff] ${error && 'text-[#9A0000]'}`}>{label}</FormControlLabelText>
         </FormControlLabel>
       )}
       {pressable ? <Pressable onPress={props.onPress}>{InputContent}</Pressable> : InputContent}

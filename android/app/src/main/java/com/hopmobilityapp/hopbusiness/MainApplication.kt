@@ -1,4 +1,4 @@
-package com.hopmobilityapp.hop
+package com.hopmobilityapp.hopbusiness
 
 import android.app.Application
 import android.content.res.Configuration

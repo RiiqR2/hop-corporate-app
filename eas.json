@@ -7,17 +7,17 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "env": { 
+      "env": {
         "EAS_SKIP_INSTALL_DEPS": "1",
         "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
       }
     },
     "internal-android-apk": {
       "distribution": "internal",
-      "android": { 
-        "buildType": "apk" 
+      "android": {
+        "buildType": "apk"
       },
-      "env": { 
+      "env": {
         "EAS_SKIP_INSTALL_DEPS": "1",
         "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
       }

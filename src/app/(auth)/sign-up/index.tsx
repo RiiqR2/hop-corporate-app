@@ -208,15 +208,6 @@ export default function SignUp() {
                   ? t("signup.title", { ns: "auth" })
                   : t("signup.title_hopper", { ns: "auth" })}
               </Text>
-              <Text
-                fontSize={14}
-                fontWeight={400}
-                textColor={Colors.DARK_PURPLE}
-              >
-                {role === userRoles.USER_HOPPY
-                  ? t("signup.subtitle")
-                  : t("signup.subtitle_hopper")}
-              </Text>
             </VStack>
             <Text fontSize={14} fontWeight={400} textAlign="center">
               {message}

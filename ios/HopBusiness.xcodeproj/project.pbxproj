@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01FA167953A838A0298556B3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5351B0B2F2E3805C95C6EEF1 /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		1DBE5B5E8879F4DE17021EA5 /* libPods-hop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B45E88554EB9752B7F86EC /* libPods-hop.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		5BBD8C73F466D3D48321E060 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB86963D6027DA1C0467A1F /* ExpoModulesProvider.swift */; };
-		A2F58FEA199547408535E6AA /* notification.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3E3D7C2F839437593DEBC7E /* notification.wav */; };
+		4FDD5FCAF7338BDA6448BAD6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1F76CB0E3EB43B826FC0E7BB /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		C9C4444BE5C26721A88956B3 /* libPods-HopBusiness.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F1271EC6255CDC4F320870 /* libPods-HopBusiness.a */; };
+		DA06E6C403AD48CF9FFF0EB7 /* notification.wav in Resources */ = {isa = PBXBuildFile; fileRef = 23A63DE4A60D428487F4CDCF /* notification.wav */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		FA34B2E0303040759267DE84 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238DA578BE1B68CECA3C13B0 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13B07F961A680F5B00A75B9A /* hop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hop.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = hop/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = hop/Info.plist; sourceTree = "<group>"; };
-		44B45E88554EB9752B7F86EC /* libPods-hop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52DE53D9479FDE0DD33AB170 /* Pods-hop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hop.release.xcconfig"; path = "Target Support Files/Pods-hop/Pods-hop.release.xcconfig"; sourceTree = "<group>"; };
-		5351B0B2F2E3805C95C6EEF1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = hop/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		5BB86963D6027DA1C0467A1F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-hop/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		79E8F51B7DC02F9F9EAC347E /* Pods-hop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hop.debug.xcconfig"; path = "Target Support Files/Pods-hop/Pods-hop.debug.xcconfig"; sourceTree = "<group>"; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = hop/SplashScreen.storyboard; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* HopBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HopBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HopBusiness/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HopBusiness/Info.plist; sourceTree = "<group>"; };
+		1F76CB0E3EB43B826FC0E7BB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = HopBusiness/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		238DA578BE1B68CECA3C13B0 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-HopBusiness/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		23A63DE4A60D428487F4CDCF /* notification.wav */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = notification.wav; path = HopBusiness/notification.wav; sourceTree = "<group>"; };
+		A4F1271EC6255CDC4F320870 /* libPods-HopBusiness.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HopBusiness.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = HopBusiness/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		D3E3D7C2F839437593DEBC7E /* notification.wav */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = notification.wav; path = hop/notification.wav; sourceTree = "<group>"; };
+		C9B2D09121695A4270407C6D /* Pods-HopBusiness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopBusiness.release.xcconfig"; path = "Target Support Files/Pods-HopBusiness/Pods-HopBusiness.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = hop/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* hop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "hop-Bridging-Header.h"; path = "hop/hop-Bridging-Header.h"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HopBusiness/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* HopBusiness-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HopBusiness-Bridging-Header.h"; path = "HopBusiness/HopBusiness-Bridging-Header.h"; sourceTree = "<group>"; };
+		F4E2D36167221B3CE1CC2EC5 /* Pods-HopBusiness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopBusiness.debug.xcconfig"; path = "Target Support Files/Pods-HopBusiness/Pods-HopBusiness.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,43 +39,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DBE5B5E8879F4DE17021EA5 /* libPods-hop.a in Frameworks */,
+				C9C4444BE5C26721A88956B3 /* libPods-HopBusiness.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* hop */ = {
+		00F20C091B0B5260EEADB2D9 /* HopBusiness */ = {
+			isa = PBXGroup;
+			children = (
+				238DA578BE1B68CECA3C13B0 /* ExpoModulesProvider.swift */,
+			);
+			name = HopBusiness;
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* HopBusiness */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
-				F11748442D0722820044C1D9 /* hop-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* HopBusiness-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				D3E3D7C2F839437593DEBC7E /* notification.wav */,
-				5351B0B2F2E3805C95C6EEF1 /* PrivacyInfo.xcprivacy */,
+				23A63DE4A60D428487F4CDCF /* notification.wav */,
+				1F76CB0E3EB43B826FC0E7BB /* PrivacyInfo.xcprivacy */,
 			);
-			name = hop;
+			name = HopBusiness;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				44B45E88554EB9752B7F86EC /* libPods-hop.a */,
+				A4F1271EC6255CDC4F320870 /* libPods-HopBusiness.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4653D952A65B603F1C64A5AE /* hop */ = {
-			isa = PBXGroup;
-			children = (
-				5BB86963D6027DA1C0467A1F /* ExpoModulesProvider.swift */,
-			);
-			name = hop;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -88,12 +88,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* hop */,
+				13B07FAE1A68108700A75B9A /* HopBusiness */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				B95028C9BA62F059CC555CF7 /* Pods */,
-				CED48EACEA54D566D10F6BD4 /* ExpoModulesProviders */,
+				E6DDF2B6669F0A6FE640FE8B /* Pods */,
+				C253AA92750CF068D01DC8AF /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -103,19 +103,9 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* hop.app */,
+				13B07F961A680F5B00A75B9A /* HopBusiness.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B95028C9BA62F059CC555CF7 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				79E8F51B7DC02F9F9EAC347E /* Pods-hop.debug.xcconfig */,
-				52DE53D9479FDE0DD33AB170 /* Pods-hop.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -124,40 +114,50 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = hop/Supporting;
+			path = HopBusiness/Supporting;
 			sourceTree = "<group>";
 		};
-		CED48EACEA54D566D10F6BD4 /* ExpoModulesProviders */ = {
+		C253AA92750CF068D01DC8AF /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				4653D952A65B603F1C64A5AE /* hop */,
+				00F20C091B0B5260EEADB2D9 /* HopBusiness */,
 			);
 			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		E6DDF2B6669F0A6FE640FE8B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4E2D36167221B3CE1CC2EC5 /* Pods-HopBusiness.debug.xcconfig */,
+				C9B2D09121695A4270407C6D /* Pods-HopBusiness.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* hop */ = {
+		13B07F861A680F5B00A75B9A /* HopBusiness */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "hop" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HopBusiness" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				C4D660995F8796FE61C9175F /* [Expo] Configure project */,
+				77C87ED2BACE43FB10ED2B33 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				1A1F0672FD927A5CDFFB68A8 /* [CP] Embed Pods Frameworks */,
+				073FC8B24FD5B952E9B62151 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = hop;
-			productName = hop;
-			productReference = 13B07F961A680F5B00A75B9A /* hop.app */;
+			name = HopBusiness;
+			productName = HopBusiness;
+			productReference = 13B07F961A680F5B00A75B9A /* HopBusiness.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -173,7 +173,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "hop" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HopBusiness" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -186,7 +186,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* hop */,
+				13B07F861A680F5B00A75B9A /* HopBusiness */,
 			);
 		};
 /* End PBXProject section */
@@ -199,8 +199,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				A2F58FEA199547408535E6AA /* notification.wav in Resources */,
-				01FA167953A838A0298556B3 /* PrivacyInfo.xcprivacy in Resources */,
+				DA06E6C403AD48CF9FFF0EB7 /* notification.wav in Resources */,
+				4FDD5FCAF7338BDA6448BAD6 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +222,28 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios absolute | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n# Source .xcode.env.updates if it exists to allow\n# SKIP_BUNDLING to be unset if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.updates\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.updates\"\nfi\n# Source local changes to allow overrides\n# if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
 		};
+		073FC8B24FD5B952E9B62151 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HopBusiness/Pods-HopBusiness-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MetaMapSDK/MetaMapSDK.framework/MetaMapSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MetaMapSDK/IncdOnboarding.framework/IncdOnboarding",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MetaMapSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IncdOnboarding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HopBusiness/Pods-HopBusiness-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,34 +259,31 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-hop-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HopBusiness-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1A1F0672FD927A5CDFFB68A8 /* [CP] Embed Pods Frameworks */ = {
+		77C87ED2BACE43FB10ED2B33 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-hop/Pods-hop-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MetaMapSDK/MetaMapSDK.framework/MetaMapSDK",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MetaMapSDK/IncdOnboarding.framework/IncdOnboarding",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MetaMapSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IncdOnboarding.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hop/Pods-hop-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-HopBusiness/expo-configure-project.sh\"\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -272,7 +291,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-hop/Pods-hop-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HopBusiness/Pods-HopBusiness-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
@@ -323,27 +342,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hop/Pods-hop-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HopBusiness/Pods-HopBusiness-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		C4D660995F8796FE61C9175F /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-hop/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -353,7 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				5BBD8C73F466D3D48321E060 /* ExpoModulesProvider.swift in Sources */,
+				FA34B2E0303040759267DE84 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,18 +362,18 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79E8F51B7DC02F9F9EAC347E /* Pods-hop.debug.xcconfig */;
+			baseConfigurationReference = F4E2D36167221B3CE1CC2EC5 /* Pods-HopBusiness.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = hop/hop.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HopBusiness/HopBusiness.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = hop/Info.plist;
+				INFOPLIST_FILE = HopBusiness/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -386,9 +386,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hopmobilityapp.hop;
-				PRODUCT_NAME = hop;
-				SWIFT_OBJC_BRIDGING_HEADER = "hop/hop-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hopmobilityapp.hopbusiness;
+				PRODUCT_NAME = HopBusiness;
+				SWIFT_OBJC_BRIDGING_HEADER = "HopBusiness/HopBusiness-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -398,13 +398,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52DE53D9479FDE0DD33AB170 /* Pods-hop.release.xcconfig */;
+			baseConfigurationReference = C9B2D09121695A4270407C6D /* Pods-HopBusiness.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = hop/hop.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HopBusiness/HopBusiness.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = hop/Info.plist;
+				INFOPLIST_FILE = HopBusiness/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -417,9 +417,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hopmobilityapp.hop;
-				PRODUCT_NAME = hop;
-				SWIFT_OBJC_BRIDGING_HEADER = "hop/hop-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hopmobilityapp.hopbusiness;
+				PRODUCT_NAME = HopBusiness;
+				SWIFT_OBJC_BRIDGING_HEADER = "HopBusiness/HopBusiness-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -553,7 +553,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "hop" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HopBusiness" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -562,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "hop" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HopBusiness" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

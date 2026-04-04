@@ -1,57 +1,61 @@
-//import withMetaMapAllowBackupFix from './allow-backup';
-
 export default {
   expo: {
-    name: 'hop',
-    slug: 'hop',
-    version: '1.0.8',
+    name: 'Hop Business',
+    slug: 'hop-business',
+    owner: 'joseoquendo',
+    version: '1.0.0',
+    scheme: 'hopbusiness',
     orientation: 'portrait',
-    scheme: 'hop',
     userInterfaceStyle: 'automatic',
     newArchEnabled: false,
+
     icon: './assets/images/icon.png',
+
     splash: {
       image: './assets/images/logo.png',
       resizeMode: 'contain',
       backgroundColor: '#7a5ce7',
     },
+
     ios: {
-      bundleIdentifier: 'com.hopmobilityapp.hop',
+      bundleIdentifier: 'com.hopmobilityapp.hopbusiness',
       supportsTablet: true,
-      //googleServicesFile: './GoogleService-Info.plist', //COMENTADO PORQUE IOS USA EXPO
-      runtimeVersion: '1.0.2',
+      runtimeVersion: '1.0.0',
       config: {
         googleMaps: {
-          googleMapsApiKey: 'AIzaSyArUM8hy9HqzHStf1JXjiNUho1pD_o69Fk',
+          googleMapsApiKey: 'TU_GOOGLE_MAPS_API_KEY',
         },
       },
       infoPlist: {
-        NSCameraUsageDescription: "Hop necesita acceder a la cámara para permitirte tomar fotos de tu vehículo",
-        NSMicrophoneUsageDescription: "Hop necesita acceder al micrófono para grabar el video de confirmación de identidad con Metamap",
-        NSLocationWhenInUseUsageDescription: "Hop necesita acceder a la ubicación para detectar viajes y vehículos ceranos",
-        NSLocationAlwaysAndWhenInUseUsageDescription: "Hop necesita acceder a la ubicación para detectar viajes y vehículos ceranos",
-        NSLocationAlwaysUsageDescription: "Hop necesita acceder a la ubicación para detectar viajes y vehículos ceranos",
+        NSCameraUsageDescription:
+          'Hop Business necesita acceder a la cámara para permitirte tomar fotos de tu vehículo',
+        NSMicrophoneUsageDescription:
+          'Hop Business necesita acceder al micrófono para grabar el video de confirmación de identidad con Metamap',
+        NSLocationWhenInUseUsageDescription:
+          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
+        NSLocationAlwaysAndWhenInUseUsageDescription:
+          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
+        NSLocationAlwaysUsageDescription:
+          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
         NSAppTransportSecurity: {
           NSAllowsArbitraryLoads: true,
         },
-        UIBackgroundModes: [
-          'fetch', 
-          'remote-notification',
-          'location'
-        ],
+        UIBackgroundModes: ['fetch', 'remote-notification', 'location'],
         expoPushNotifications: true,
       },
+      // googleServicesFile: './GoogleService-Info.plist',
     },
+
     android: {
-      package: 'com.hopmobilityapp.hop',
+      package: 'com.hopmobilityapp.hopbusiness',
       allowBackup: false,
       googleServicesFile: './google-services.json',
-      runtimeVersion: '1.0.2',
+      runtimeVersion: '1.0.0',
       compileSdkVersion: 36,
       targetSdkVersion: 36,
       config: {
         googleMaps: {
-          apiKey: 'AIzaSyArUM8hy9HqzHStf1JXjiNUho1pD_o69Fk',
+          apiKey: 'TU_GOOGLE_MAPS_API_KEY',
         },
       },
       adaptiveIcon: {
@@ -83,6 +87,7 @@ export default {
         'com.google.android.c2dm.permission.RECEIVE',
       ],
     },
+
     plugins: [
       'expo-router',
       'expo-localization',
@@ -98,25 +103,26 @@ export default {
           sounds: ['./assets/sounds/notification.wav'],
         },
       ],
-      //withMetaMapAllowBackupFix,
     ],
+
     extra: {
       router: {
         origin: false,
       },
       eas: {
-        projectId: '08b0a891-431e-4f40-9b5f-dc956334ab1a',
+        projectId: '0b6b3950-601a-43aa-a548-3cc298d97ec4',
       },
-      EXPO_METAMAP_API_KEY: '686346b0716d906abf919d53',
-      EXPO_METAMAP_FLOW_ID: '686346b0716d90b218919d52',
+      APP_VARIANT: 'BUSINESS',
+      EXPO_METAMAP_API_KEY: 'TU_METAMAP_API_KEY',
+      EXPO_METAMAP_FLOW_ID: 'TU_METAMAP_FLOW_ID',
       EXPO_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL_MAP: '',
-      sentryDns: 'https://6f5ac5a95d9be4178572453ed05e38ee@o4509590339584000.ingest.us.sentry.io/4509590415671296',
+      sentryDns: 'TU_SENTRY_DSN',
     },
-    owner: 'joseoquendo',
+
     updates: {
-      url: 'https://u.expo.dev/08b0a891-431e-4f40-9b5f-dc956334ab1a',
+      url: 'https://u.expo.dev/0b6b3950-601a-43aa-a548-3cc298d97ec4',
     },
   },
 };

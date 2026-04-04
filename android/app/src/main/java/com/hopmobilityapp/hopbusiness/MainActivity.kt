@@ -1,4 +1,4 @@
-package com.hopmobilityapp.hop
+package com.hopmobilityapp.hopbusiness
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

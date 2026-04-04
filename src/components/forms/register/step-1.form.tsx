@@ -275,8 +275,8 @@ export default function Step1(props: formProps) {
 
                   <Pressable onPress={() => requestLocationPermission()}>
                     <HStack space="xs">
-                      <Location color={Colors.DARK_PURPLE} width={14} />
-                      <Text fontSize={14} fontWeight={500} textColor={Colors.DARK_PURPLE}>
+                      <Location color={Colors.DARK_GREEN} width={14} />
+                      <Text fontSize={14} fontWeight={500} textColor={Colors.DARK_GREEN}>
                         {t('signup.step_1.mark_map', { ns: 'auth' })}
                       </Text>
                     </HStack>
