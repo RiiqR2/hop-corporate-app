@@ -2,7 +2,6 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { cleanRut } from 'rutlib';
 //import * as Sentry from 'sentry-expo';
 import { Location } from '@/assets/svg';
 import Input from '@/src/components/input/input.component';
@@ -58,7 +57,7 @@ export default function Step3(props: formProps) {
   const schema = validationSchemaS3(t);
   const { requestLocationPermission } = useRequestLocationPermission({
     url: AuthRoutesLink.MAP,
-    step: 3,
+    step: 2,
   });
 
   const handleSearch = (searchText: string) => {
@@ -91,11 +90,6 @@ export default function Step3(props: formProps) {
           },
           phone: payloadValues.phone,
           countryCode: payloadValues.countryCode,
-          bank_account_holder: payloadValues.userInfo.bank_account_holder,
-          bank_account_rut: cleanRut(payloadValues.userInfo.bank_account_rut),
-          bank_account_type: payloadValues.userInfo.bank_account_type,
-          bank_account: payloadValues.userInfo.bank_account,
-          bank_name: payloadValues.userInfo.bank_name,
           reference_code: values.reference_code,
           hotel_name: values.hotel_name,
           hotel_location: {
@@ -115,7 +109,7 @@ export default function Step3(props: formProps) {
       clearPayload({});
       clearLocation();
       setStep(4);
-    } catch (error) {
+    } catch {
       // Sentry.Native.captureException(error, {
       //   tags: {
       //     step: 'register',
