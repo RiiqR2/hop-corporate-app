@@ -117,7 +117,7 @@ export default {
       EXPO_METAMAP_FLOW_ID: 'TU_METAMAP_FLOW_ID',
       EXPO_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL: 'https://apihop.hopmobilityapp.com/api',
-      EXPO_PUBLIC_API_URL_MAP: '',
+      EXPO_PUBLIC_API_URL_MAP: process.env.EXPO_PUBLIC_API_URL_MAP,
       sentryDns: 'TU_SENTRY_DSN',
     },
 

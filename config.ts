@@ -4,7 +4,7 @@ export const METAMAP_FLOW_ID = "686346b0716d90b218919d52";
 export const API_URL = "http://192.168.1.4:3000/api";
 export const PUBLIC_MAPBOX_API_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places";
 export const PUBLIC_MAPBOX_DIRECTIONS_API_URL = "https://api.mapbox.com/directions/v5/mapbox/driving";
-export const MAPBOX_ACCESS_TOKEN = "";
+export const MAPBOX_ACCESS_TOKEN = process.env.EXPO_PUBLIC_API_URL_MAP;
 export const EXPO_PUBLIC_COUNTRY_API = "https://restcountries.com/v3.1/all";
 export const EXPO_PUBLIC_SUMUP_KEY = "sup_pk_5C229Wvj4xgmshkhtLwxZEdllq9H31g1C";
 export const EXPO_GOOGLE_MAPS = "https://www.google.com/maps/dir/?api=1";
