@@ -57,7 +57,7 @@ export default function Step3(props: formProps) {
   const schema = validationSchemaS3(t);
   const { requestLocationPermission } = useRequestLocationPermission({
     url: AuthRoutesLink.MAP,
-    step: 2,
+    step: 3,
   });
 
   const handleSearch = (searchText: string) => {
