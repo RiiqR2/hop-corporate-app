@@ -161,7 +161,6 @@ export default function Step3(props: formProps) {
             hotel_name: persistedHotelName,
             home_address: persistedHotelAddress,
           }}
-          enableReinitialize
           validationSchema={schema}
           onSubmit={(values) => {
             handleRegisterStep3({
