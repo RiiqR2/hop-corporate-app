@@ -1,4 +1,5 @@
 import { Linking, StyleSheet, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Formik } from 'formik';
 import React, { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
@@ -34,8 +35,8 @@ export default function Step4(props: Step4Props) {
   const [loading, setLoading] = useState(false);
 
   const storeTokens = async (token: string, refreshToken: string) => {
-    const tokenData = JSON.stringify({ token, refreshToken });
-    setToken(tokenData);
+    setToken(token);
+    await AsyncStorage.setItem('auth_token', JSON.stringify({ token, refreshToken }));
   };
 
   const handleTermsAndConditions = async () => {
