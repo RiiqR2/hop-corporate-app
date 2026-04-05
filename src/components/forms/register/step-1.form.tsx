@@ -128,7 +128,6 @@ export default function Step1(props: formProps) {
           contact: props.payloadValues.phone || '',
           countryCode: props.payloadValues.countryCode || '+56',
         }}
-        enableReinitialize
         validationSchema={schema}
         onSubmit={(values) => {
           if (!Boolean(rutError.length > 0)) {
