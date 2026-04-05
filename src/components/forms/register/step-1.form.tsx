@@ -119,15 +119,16 @@ export default function Step1(props: formProps) {
       <Formik
         innerRef={formikRef}
         initialValues={{
-          firstName: '',
-          lastName: '',
-          rut: '',
-          email: '',
-          password: '',
-          address: state.user_info.address,
-          contact: '',
-          countryCode: '+56',
+          firstName: props.payloadValues.userInfo?.firstName || '',
+          lastName: props.payloadValues.userInfo?.lastName || '',
+          rut: props.payloadValues.userInfo?.rut || '',
+          email: props.payloadValues.email || '',
+          password: props.payloadValues.password || '',
+          address: props.payloadValues.userInfo?.user_address?.address || state.user_info.address,
+          contact: props.payloadValues.phone || '',
+          countryCode: props.payloadValues.countryCode || '+56',
         }}
+        enableReinitialize
         validationSchema={schema}
         onSubmit={(values) => {
           if (!Boolean(rutError.length > 0)) {
