@@ -1,18 +1,11 @@
-import { Linking, NativeEventEmitter, NativeModules, Pressable, ScrollView, StyleSheet, View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Linking, StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { MetaMapRNSdk } from 'react-native-expo-metamap-sdk';
 import { router } from 'expo-router';
-import { CircleArrowRight } from '@/assets/svg';
-import { METAMAP_API_KEY, METAMAP_FLOW_ID } from '@/config';
 import { Button } from '@/src/components/button/button.component';
 import { VStack } from '@/src/components/ui/vstack';
-import { checkAndRequestPermissions } from '@/src/helpers/check-permissions';
-import { useMe } from '@/src/hooks';
 import { getTermsAndConditions } from '@/src/services/user.service';
-import { sendWebhookData } from '@/src/services/validation.service';
 import { Colors } from '@/src/utils/constants/Colors';
 import { AuthRoutesLink } from '@/src/utils/enum/auth.routes';
 import { userRoles } from '@/src/utils/enum/role.enum';
@@ -21,144 +14,113 @@ import { Checkbox, CheckboxIcon, CheckboxIndicator } from '../../ui/checkbox';
 import { HStack } from '../../ui/hstack';
 import { CheckIcon } from '../../ui/icon';
 import TermsScreen from '../../register/TermsScreen';
-import { updateUserOne } from '@/src/services/auth.service';
-import { User } from '@/src/utils/interfaces/auth.interface';
-interface VerificationResult {
-  identityId?: string;
-  verificationId?: string;
-  status: 'success' | 'failed' | 'pending' | 'canceled';
-}
+import { createUser, login } from '@/src/services/auth.service';
+import { useAuth } from '@/src/context/auth.context';
+import { RegisterType } from '@/src/utils/types/register.type';
+import { useToast } from '@/src/hooks';
 
-export default function Step4() {
-  const [isVerifying, setIsVerifying] = useState(false);
-  const [isDone, setIsDone] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const [verificationError, setVerificationError] = useState<string | null>(null);
-  const [verificationResult, setVerificationResult] = useState<VerificationResult>({
-    status: 'pending',
-  });
+type Step4Props = {
+  payloadValues: RegisterType;
+  clearPayload: React.Dispatch<React.SetStateAction<{} | null>>;
+};
 
+export default function Step4(props: Step4Props) {
+  const { payloadValues, clearPayload } = props;
   const { t } = useTranslation();
-  const { user } = useMe();
+  const { setToken, clearLocation } = useAuth();
+  const { showToast } = useToast();
 
-  useEffect(() => {
-    const MetaMapVerifyResult = new NativeEventEmitter(NativeModules.MetaMapRNSdk);
+  const [checked, setChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-    const successListener = MetaMapVerifyResult.addListener('verificationSuccess', (data) => {
-      handleVerificationSuccess(data);
-    });
-
-    const cancelListener = MetaMapVerifyResult.addListener('verificationCanceled', (data) => {
-      handleVerificationCanceled(data);
-    });
-
-    return () => {
-      successListener.remove();
-      cancelListener.remove();
-    };
-  }, []);
-
-  const handleVerificationSuccess = async (data: any) => {
-    try {
-      const result: VerificationResult = {
-        identityId: data.identityId || '',
-        verificationId: data.verificationId || Date.now().toString(),
-        status: 'success',
-      };
-
-      await AsyncStorage.setItem('metamap_verification', JSON.stringify(result));
-      setVerificationResult(result);
-      setIsDone(true);
-      setIsVerifying(false);
-
-      if (user?.id) {
-        await sendWebhookData({
-          event: 'verification.completed',
-          verification: {
-            id: result.verificationId || '',
-            status: 'completed',
-            result: {
-              details: data.details || {},
-              decision: 'approved',
-            },
-            verificationType: 'identity',
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-          },
-          user: {
-            id: user.id,
-          },
-        });
-      }
-    } catch {
-      setVerificationError('Error al guardar los datos de verificación');
-    }
-  };
-
-  const handleVerificationCanceled = async (data: any) => {
-    try {
-      const result: VerificationResult = {
-        status: 'canceled',
-      };
-
-      await AsyncStorage.setItem('metamap_verification', JSON.stringify(result));
-      setVerificationResult(result);
-      setIsVerifying(false);
-      setVerificationError('La verificación fue cancelada');
-
-      if (user?.id) {
-        await sendWebhookData({
-          event: 'verification.canceled',
-          verification: {
-            id: data.verificationId || Date.now().toString(),
-            status: 'canceled',
-            result: {
-              details: {},
-              decision: 'canceled',
-            },
-            verificationType: 'identity',
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-          },
-          user: {
-            id: user.id,
-          },
-        });
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error al procesar verificación cancelada:', error);
-    }
-  };
-
-  const startVerification = () => {
-    try {
-      setIsVerifying(true);
-      setVerificationError(null);
-      checkAndRequestPermissions();
-
-      const metadata = { userId: user?.id };
-
-      MetaMapRNSdk.showFlow(METAMAP_API_KEY, METAMAP_FLOW_ID, metadata);
-    } catch {
-      setVerificationError('No se pudo iniciar la verificación');
-      setIsVerifying(false);
-    }
+  const storeTokens = async (token: string, refreshToken: string) => {
+    const tokenData = JSON.stringify({ token, refreshToken });
+    setToken(tokenData);
   };
 
   const handleTermsAndConditions = async () => {
-    const resp = await getTermsAndConditions();
+    try {
+      const resp = await getTermsAndConditions();
 
-    if (user?.role === userRoles.USER_HOPPER) {
-      Linking.openURL(resp.hopperTermsConditions);
-    } else {
-      Linking.openURL(resp.hoppyTermsConditions);
+      if (payloadValues?.role === userRoles.USER_HOPPER) {
+        Linking.openURL(resp.hopperTermsConditions);
+      } else {
+        Linking.openURL(resp.hoppyTermsConditions);
+      }
+    } catch (error) {
+      console.error('Error al abrir términos y condiciones:', error);
+      showToast({
+        message: t('server_error', { ns: 'utils' }),
+        action: 'error',
+        duration: 3000,
+        placement: 'bottom',
+      });
+    }
+  };
+
+  const handleFinishRegister = async () => {
+    if (!checked || loading) return;
+
+    setLoading(true);
+
+    try {
+      await createUser({
+        email: payloadValues.email,
+        password: payloadValues.password,
+        role: payloadValues.role,
+        userInfo: {
+          rut: payloadValues.userInfo?.rut || '',
+          firstName: payloadValues.userInfo?.firstName || '',
+          lastName: payloadValues.userInfo?.lastName || '',
+          home_address: {
+            address: payloadValues.userInfo?.user_address?.address || '',
+            lat: payloadValues.userInfo?.user_address?.latitude || 0,
+            lng: payloadValues.userInfo?.user_address?.longitude || 0,
+          },
+          phone: payloadValues.phone || '',
+          countryCode: payloadValues.countryCode || '',
+          reference_code:
+            payloadValues.reference_code ||
+            payloadValues.userInfo?.reference_code ||
+            '',
+          hotel_name: payloadValues.userInfo?.hotel_address?.name || '',
+          hotel_location: {
+            address: payloadValues.userInfo?.hotel_address?.address || '',
+            lat: payloadValues.userInfo?.hotel_address?.latitude || 0,
+            lng: payloadValues.userInfo?.hotel_address?.longitude || 0,
+          },
+        },
+      });
+
+      const response = await login({
+        email: payloadValues.email,
+        password: payloadValues.password,
+      });
+
+      await storeTokens(response.access_token, response.refresh_token);
+
+      clearPayload(null);
+      clearLocation();
+
+      router.replace(AuthRoutesLink.FINISH_ONBOARDING);
+    } catch (error) {
+      console.error('Error al registrar usuario:', error);
+
+      showToast({
+        message: t('server_error', { ns: 'utils' }),
+        action: 'error',
+        duration: 3000,
+        placement: 'bottom',
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <View style={styles.formulary} className="pb-4">
       <Text className="text-lg mb-4">{t('signup.step_4.title')}</Text>
+
       <Formik initialValues={{}} onSubmit={() => {}}>
         {() => (
           <VStack
@@ -169,28 +131,18 @@ export default function Step4() {
               height: 400,
             }}
           >
-
-          <View
-            style={{
-              borderWidth: 1,
-              borderColor: Colors.DARK_PURPLE,
-              borderRadius: 10,
-              padding: 12,
-              maxHeight: 250, // puedes aumentar si quieres mostrar más texto visible
-              backgroundColor: '#F9F9F9',
-            }}
-          >
-          <TermsScreen/>
-          </View>
+            <View style={styles.termsContainer}>
+              <TermsScreen />
+            </View>
 
             <HStack className="w-full mb-6">
               <Checkbox
                 value="true"
                 size="md"
                 isChecked={checked}
-                onChange={setChecked}
+                onChange={(value) => setChecked(Boolean(value))}
                 isInvalid={false}
-                isDisabled={false}
+                isDisabled={loading}
                 className="items-center justify-center"
               >
                 <CheckboxIndicator
@@ -201,30 +153,29 @@ export default function Step4() {
                 >
                   <CheckboxIcon as={CheckIcon} />
                 </CheckboxIndicator>
+
                 <Text>
                   <Trans
                     i18nKey="signup.terms"
-                    components={{ custom: <Text onPress={handleTermsAndConditions} textColor={Colors.BLACK} fontWeight={600} />, text: <Text /> }}
+                    components={{
+                      custom: (
+                        <Text
+                          onPress={handleTermsAndConditions}
+                          textColor={Colors.BLACK}
+                          fontWeight={600}
+                        />
+                      ),
+                      text: <Text />,
+                    }}
                   />
                 </Text>
               </Checkbox>
             </HStack>
-            <Button
-              onPress={async () => {
-                try {
-                  if (user?.id) {
-                    user.isVerified = true
-                    await updateUserOne(user?.id, user);
-                  }
 
-                  // Luego continuamos con lo que hacía el botón antes
-                  router.replace(AuthRoutesLink.FINISH_ONBOARDING);
-                } catch (error) {
-                  console.error('Error al registrar usuario:', error);
-                  setVerificationError('Ocurrió un error al registrar la información.');
-                }
-              }}
-              disabled={!Boolean(checked)}
+            <Button
+              onPress={handleFinishRegister}
+              disabled={!checked || loading}
+              loading={loading}
             >
               {t('signup.step_4.register')}
             </Button>
@@ -239,5 +190,13 @@ const styles = StyleSheet.create({
   formulary: {
     gap: 16,
     flex: 1,
+  },
+  termsContainer: {
+    borderWidth: 1,
+    borderColor: Colors.DARK_PURPLE,
+    borderRadius: 10,
+    padding: 12,
+    maxHeight: 250,
+    backgroundColor: '#F9F9F9',
   },
 });

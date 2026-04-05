@@ -2,7 +2,6 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-//import * as Sentry from 'sentry-expo';
 import { Location } from '@/assets/svg';
 import Input from '@/src/components/input/input.component';
 import { StepControl } from '@/src/components/step-controls/step-control.component';
@@ -21,7 +20,6 @@ import { SearchIcon } from '@/src/components/ui/icon';
 import { VStack } from '@/src/components/ui/vstack';
 import { useAuth } from '@/src/context/auth.context';
 import { useGetCoordinatesFromAddress, useRequestLocationPermission, useToast } from '@/src/hooks';
-import { createUser, login } from '@/src/services/auth.service';
 import { Colors } from '@/src/utils/constants/Colors';
 import { AuthRoutesLink } from '@/src/utils/enum/auth.routes';
 import { UserInfo } from '@/src/utils/interfaces/auth.interface';
@@ -39,7 +37,7 @@ type formProps = {
 export default function Step3(props: formProps) {
   const { setStep, payloadValues, payload } = props;
   const { t } = useTranslation();
-  const { state, setToken, updatePayload } = useAuth();
+  const { state, updatePayload } = useAuth();
   const [loading, setLoading] = useState(false);
   const { showToast } = useToast();
   const [showActionsheet, setShowActionsheet] = useState(false);
@@ -55,13 +53,8 @@ export default function Step3(props: formProps) {
   const persistedHotelAddress =
     payloadValues.userInfo?.hotel_address?.address || state.hotel_info.address;
 
-  const storeTokens = async (token: string, refreshToken: string) => {
-    const tokenData = JSON.stringify({ token, refreshToken });
-
-    setToken(tokenData);
-  };
-
   const schema = validationSchemaS3(t);
+
   const { requestLocationPermission } = useRequestLocationPermission({
     url: AuthRoutesLink.MAP,
     step: 3,
@@ -78,6 +71,7 @@ export default function Step3(props: formProps) {
 
     setSearchTimeout(timeout);
   };
+
   const handleRegisterStep3 = async (values: Partial<UserInfo>) => {
     setLoading(true);
 
@@ -94,50 +88,8 @@ export default function Step3(props: formProps) {
         },
       });
 
-      await createUser({
-        email: payloadValues.email,
-        password: payloadValues.password,
-        role: payloadValues.role,
-        userInfo: {
-          rut: payloadValues.userInfo.rut,
-          firstName: payloadValues.userInfo.firstName,
-          lastName: payloadValues.userInfo.lastName,
-          home_address: {
-            address: state.user_info.address,
-            lat: state.user_info.latitude,
-            lng: state.user_info.longitude,
-          },
-          phone: payloadValues.phone,
-          countryCode: payloadValues.countryCode,
-          reference_code: values.reference_code,
-          hotel_name: values.hotel_name,
-          hotel_location: {
-            address: state.hotel_info.address,
-            lat: state.hotel_info.latitude,
-            lng: state.hotel_info.longitude,
-          },
-        },
-      });
-
-      const response = await login({
-        email: payloadValues.email,
-        password: payloadValues.password,
-      });
-
-      await storeTokens(response.access_token, response.refresh_token);
       setStep(3);
     } catch {
-      // Sentry.Native.captureException(error, {
-      //   tags: {
-      //     step: 'register',
-      //     type: 'step_4',
-      //     role: payloadValues.role,
-      //     message: JSON.stringify(error),
-      //   },
-      //   extra: {
-      //     payload: JSON.stringify(payloadValues),
-      //   },
-      // });
       showToast({
         message: t('server_error', { ns: 'utils' }),
         action: 'error',
@@ -150,172 +102,171 @@ export default function Step3(props: formProps) {
   };
 
   return (
-    <>
-      <View style={styles.formulary} className="pb-4">
-        <Text fontSize={16} fontWeight={400}>
-          {t('signup.step_3.title')}
-        </Text>
-        <Formik
-          initialValues={{
-            reference_code: persistedReferenceCode,
-            hotel_name: persistedHotelName,
-            home_address: persistedHotelAddress,
-          }}
-          validationSchema={schema}
-          onSubmit={(values) => {
-            handleRegisterStep3({
-              reference_code: values.reference_code,
-              hotel_name: values.hotel_name,
-              hotel_location: {
-                address: state.hotel_info.address,
-                lat: state.hotel_info.latitude,
-                lng: state.hotel_info.longitude,
-              },
-            });
-          }}
-        >
-          {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => {
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            useEffect(() => {
-              if (state.hotel_info.address) {
-                setFieldValue('home_address', state.hotel_info.address);
-              }
-            }, [state.hotel_info.address]);
+    <View style={styles.formulary} className="pb-4">
+      <Text fontSize={16} fontWeight={400}>
+        {t('signup.step_3.title')}
+      </Text>
 
-            return (
-              <>
-                <VStack space="lg" className="justify-between flex-1 mt-[32px]">
-                  <Box className="gap-4 mb-12">
-                    <Input
-                      label={t('signup.step_3.reference_code')}
-                      onBlur={handleBlur('reference_code')}
-                      onChangeText={handleChange('reference_code')}
-                      placeholder="EF6746AA63"
-                      value={values.reference_code}
-                      error={touched.reference_code && errors.reference_code}
-                      touched={touched.reference_code}
-                    />
-                    <Input
-                      label={t('signup.step_3.hotel_name.label')}
-                      onBlur={handleBlur('hotel_name')}
-                      onChangeText={handleChange('hotel_name')}
-                      placeholder=""
-                      value={values.hotel_name}
-                      error={touched.hotel_name && errors.hotel_name}
-                      touched={touched.hotel_name}
-                    />
-                    <Input
-                      label={t('signup.step_3.address.label', { ns: 'auth' })}
-                      onBlur={handleBlur('home_address')}
-                      onChangeText={(val: string) => {
-                        setFieldValue('home_address', val);
+      <Formik
+        initialValues={{
+          reference_code: persistedReferenceCode,
+          hotel_name: persistedHotelName,
+          home_address: persistedHotelAddress,
+        }}
+        validationSchema={schema}
+        onSubmit={(values) => {
+          handleRegisterStep3({
+            reference_code: values.reference_code,
+            hotel_name: values.hotel_name,
+            hotel_location: {
+              address: state.hotel_info.address,
+              lat: state.hotel_info.latitude,
+              lng: state.hotel_info.longitude,
+            },
+          });
+        }}
+      >
+        {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => {
+          useEffect(() => {
+            if (state.hotel_info.address) {
+              setFieldValue('home_address', state.hotel_info.address);
+            }
+          }, [state.hotel_info.address, setFieldValue]);
 
-                        if (val.trim() === '') {
+          return (
+            <>
+              <VStack space="lg" className="justify-between flex-1 mt-[32px]">
+                <Box className="gap-4 mb-12">
+                  <Input
+                    label={t('signup.step_3.reference_code')}
+                    onBlur={handleBlur('reference_code')}
+                    onChangeText={handleChange('reference_code')}
+                    placeholder="EF6746AA63"
+                    value={values.reference_code}
+                    error={touched.reference_code && errors.reference_code}
+                    touched={touched.reference_code}
+                  />
+
+                  <Input
+                    label={t('signup.step_3.hotel_name.label')}
+                    onBlur={handleBlur('hotel_name')}
+                    onChangeText={handleChange('hotel_name')}
+                    placeholder=""
+                    value={values.hotel_name}
+                    error={touched.hotel_name && errors.hotel_name}
+                    touched={touched.hotel_name}
+                  />
+
+                  <Input
+                    label={t('signup.step_3.address.label', { ns: 'auth' })}
+                    onBlur={handleBlur('home_address')}
+                    onChangeText={(val: string) => {
+                      setFieldValue('home_address', val);
+
+                      if (val.trim() === '') {
+                        updatePayload({
+                          hotel_info: {
+                            ...state.hotel_info,
+                            home_address: '',
+                            latitude: '',
+                            longitude: '',
+                          },
+                        });
+                      }
+                    }}
+                    placeholder=""
+                    value={values.home_address ? values.home_address : String(state.hotel_info.address)}
+                    error={touched?.home_address && errors?.home_address}
+                    touched={touched.home_address}
+                    stretch
+                    onPress={() => setShowActionsheet(true)}
+                    editable={false}
+                    pressable={true}
+                    multiline={state.hotel_info.address.trim().length > 35}
+                  />
+
+                  <Pressable onPress={() => requestLocationPermission()}>
+                    <HStack space="xs">
+                      <Location color={Colors.PRIMARY} width={14} />
+                      <Text className="text-xs font-medium" style={styles.mark_map}>
+                        {t('signup.step_1.mark_map', { ns: 'auth' })}
+                      </Text>
+                    </HStack>
+                  </Pressable>
+                </Box>
+
+                <StepControl
+                  handleBack={() => null}
+                  handleNext={handleSubmit}
+                  loading={loading}
+                  textBack={t('')}
+                  textNext={t('signup.step_2.buttons.next', { ns: 'auth' })}
+                  color={Colors.GRAY}
+                  vertical
+                />
+              </VStack>
+
+              <Actionsheet isOpen={showActionsheet} onClose={() => setShowActionsheet(false)} snapPoints={[70]}>
+                <ActionsheetBackdrop />
+                <ActionsheetContent className="pb-10">
+                  <ActionsheetDragIndicatorWrapper>
+                    <ActionsheetDragIndicator />
+                  </ActionsheetDragIndicatorWrapper>
+
+                  <View style={styles.search_bar_container}>
+                    <Input
+                      placeholder={t('map_sheet', { ns: 'utils' })}
+                      label=""
+                      onBlur={() => {}}
+                      onChangeText={handleSearch}
+                      className=""
+                      icon={SearchIcon}
+                      rightIcon
+                      size="sm"
+                    />
+                  </View>
+
+                  <ActionsheetFlatList
+                    data={locations}
+                    renderItem={({ item }: any) => (
+                      <Pressable
+                        onPress={() => {
+                          setSelectedLocation(item);
+                          setFieldValue('home_address', `${item.name}.`);
                           updatePayload({
                             hotel_info: {
-                              ...state.hotel_info,
-                              home_address: '',
-                              latitude: '',
-                              longitude: '',
+                              latitude: item.latitude,
+                              longitude: item.longitude,
+                              address: `${item.name}.`,
                             },
                           });
-                        }
-                      }}
-                      placeholder=""
-                      value={values.home_address ? values.home_address : String(state.hotel_info.address)}
-                      error={touched?.home_address && errors?.home_address}
-                      touched={touched.home_address}
-                      stretch
-                      onPress={() => setShowActionsheet(true)}
-                      editable={false}
-                      pressable={true}
-                      multiline={state.hotel_info.address.trim().length > 35 ? true : false}
-                    />
-                    <Pressable onPress={() => requestLocationPermission()}>
-                      <HStack space="xs">
-                        <Location color={Colors.PRIMARY} width={14} />
-                        <Text className="text-xs font-medium" style={styles.mark_map}>
-                          {t('signup.step_1.mark_map', {
-                            ns: 'auth',
-                          })}
-                        </Text>
-                      </HStack>
-                    </Pressable>
-                  </Box>
-                  <StepControl
-                    handleBack={() => null}
-                    handleNext={handleSubmit}
-                    loading={loading}
-                    textBack={t('')}
-                    textNext={t('signup.step_2.buttons.next', {
-                      ns: 'auth',
-                    })}
-                    color={Colors.GRAY}
-                    vertical
-                  />
-                </VStack>
-                <Actionsheet isOpen={showActionsheet} onClose={() => setShowActionsheet(false)} snapPoints={[70]}>
-                  <ActionsheetBackdrop />
-                  <ActionsheetContent className="pb-10">
-                    <ActionsheetDragIndicatorWrapper>
-                      <ActionsheetDragIndicator />
-                    </ActionsheetDragIndicatorWrapper>
-                    <View style={styles.search_bar_container}>
-                      <Input
-                        placeholder={t('map_sheet', { ns: 'utils' })}
-                        label=""
-                        onBlur={() => {}}
-                        onChangeText={handleSearch}
-                        className=""
-                        icon={SearchIcon}
-                        rightIcon
-                        size="sm"
-                      />
-                    </View>
-                    <ActionsheetFlatList
-                      data={locations}
-                      renderItem={({ item }: any) => (
-                        <>
-                          <Pressable
-                            onPress={() => {
-                              setSelectedLocation(item);
-                              setFieldValue('home_address', `${item.name}.`);
-                              updatePayload({
-                                hotel_info: {
-                                  latitude: item.latitude,
-                                  longitude: item.longitude,
-                                  address: `${item.name}.`,
-                                },
-                              });
-                              setShowActionsheet(false);
+                          setShowActionsheet(false);
+                        }}
+                        className="py-2.5 px-4 border-b border-[#9FE4DD] bg-white rounded-lg mb-2.5"
+                      >
+                        <Box className="gap-4">
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              fontWeight: '500',
+                              color: '#333',
                             }}
-                            className="py-2.5 px-4 border-b border-[#9FE4DD] bg-white rounded-lg mb-2.5"
                           >
-                            <Box className="gap-4">
-                              <Text
-                                style={{
-                                  fontSize: 16,
-                                  fontWeight: '500',
-                                  color: '#333',
-                                }}
-                              >
-                                {item.name}
-                              </Text>
-                            </Box>
-                          </Pressable>
-                        </>
-                      )}
-                      contentContainerClassName="gap-4"
-                      keyExtractor={(item: any) => item.id.toString()}
-                    />
-                  </ActionsheetContent>
-                </Actionsheet>
-              </>
-            );
-          }}
-        </Formik>
-      </View>
-    </>
+                            {item.name}
+                          </Text>
+                        </Box>
+                      </Pressable>
+                    )}
+                    contentContainerClassName="gap-4"
+                    keyExtractor={(item: any) => item.id.toString()}
+                  />
+                </ActionsheetContent>
+              </Actionsheet>
+            </>
+          );
+        }}
+      </Formik>
+    </View>
   );
 }
 
