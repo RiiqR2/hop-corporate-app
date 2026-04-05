@@ -32,8 +32,17 @@ export default function Entry() {
         </VStack>
         <VStack space="lg" className="mt-auto mb-20 items-center">
           <Button onPress={() => router.push(AuthRoutesLink.SIGN_IN)}>{t('entry.signInButton', { ns: 'auth' })}</Button>
-          <Button type="ghost" onPress={() => router.replace(AuthRoutesLink.ONBOARDING)}>
-            {t('entry.signUpButton', { ns: 'auth' })}
+          <Button 
+            type="ghost" 
+            onPress={() =>
+              router.push({
+                pathname: AuthRoutesLink.SIGN_UP,
+                params: { user_type: 'hoppy' },
+              })
+            }
+            >
+              {t('entry.signUpButton', { ns: 'auth' })
+            }
           </Button>
         </VStack>
       </LinearGradient>

@@ -108,7 +108,7 @@ export default function Step3(props: formProps) {
       await storeTokens(response.access_token, response.refresh_token);
       clearPayload({});
       clearLocation();
-      setStep(4);
+      setStep(3);
     } catch {
       // Sentry.Native.captureException(error, {
       //   tags: {

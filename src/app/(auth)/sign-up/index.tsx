@@ -86,7 +86,8 @@ export default function SignUp() {
   ];
 
   const renderStep = () => {
-    const StepComponent = steps[step - 1] || Step1;
+    const safeStep = Math.min(Math.max(step, 1), steps.length);
+    const StepComponent = steps[safeStep - 1];
     const payloadCompleted = {
       email: payload?.email || '',
       password: payload?.password || '',
