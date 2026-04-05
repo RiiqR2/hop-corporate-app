@@ -21,8 +21,6 @@ import { Checkbox, CheckboxIcon, CheckboxIndicator } from '../../ui/checkbox';
 import { HStack } from '../../ui/hstack';
 import { CheckIcon } from '../../ui/icon';
 import TermsScreen from '../../register/TermsScreen';
-import { updateUserOne } from '@/src/services/auth.service';
-import { User } from '@/src/utils/interfaces/auth.interface';
 interface VerificationResult {
   identityId?: string;
   verificationId?: string;
@@ -212,13 +210,7 @@ export default function Step4() {
             <Button
               onPress={async () => {
                 try {
-                  if (user?.id) {
-                    user.isVerified = true
-                    await updateUserOne(user?.id, user);
-                  }
-
-                  // Luego continuamos con lo que hacía el botón antes
-                  router.replace(AuthRoutesLink.FINISH_ONBOARDING);
+                  router.replace(AuthRoutesLink.WAITING_VALIDATION);
                 } catch (error) {
                   console.error('Error al registrar usuario:', error);
                   setVerificationError('Ocurrió un error al registrar la información.');
