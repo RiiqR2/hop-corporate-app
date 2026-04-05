@@ -128,7 +128,7 @@
   },
   "finishOnboarding": {
     "header": "Thank you for signing up!",
-    "description": "We're reviewing your information. This may take a few days. You'll be able to log in once your account has been validated by our team.",
+    "description": "We're reviewing your information. This may take a little while. You'll be able to log in once your account has been validated by our team.",
     "button": "Go to the beginning"
   },
   "terms": "Accept HOP's <custom>Terms and Conditions</custom>"
