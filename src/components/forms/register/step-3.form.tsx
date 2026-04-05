@@ -32,21 +32,28 @@ type formProps = {
   payloadValues: RegisterType;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   payload: React.Dispatch<React.SetStateAction<{}>>;
-  clearPayload: React.Dispatch<React.SetStateAction<{}>>;
   extraData: string;
   role: string;
 };
 
 export default function Step3(props: formProps) {
-  const { setStep, payloadValues, clearPayload } = props;
+  const { setStep, payloadValues, payload } = props;
   const { t } = useTranslation();
-  const { state, setToken, updatePayload, clearLocation } = useAuth();
+  const { state, setToken, updatePayload } = useAuth();
   const [loading, setLoading] = useState(false);
   const { showToast } = useToast();
   const [showActionsheet, setShowActionsheet] = useState(false);
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const { locations, setSelectedLocation, geocodeAddress } = useGetCoordinatesFromAddress();
+
+  const persistedReferenceCode = (payloadValues as any)?.reference_code || '';
+  const persistedHotelName =
+    (payloadValues as any)?.hotel_address?.hotel_name ||
+    payloadValues.userInfo?.hotel_address?.name ||
+    '';
+  const persistedHotelAddress =
+    payloadValues.userInfo?.hotel_address?.address || state.hotel_info.address;
 
   const storeTokens = async (token: string, refreshToken: string) => {
     const tokenData = JSON.stringify({ token, refreshToken });
@@ -75,6 +82,18 @@ export default function Step3(props: formProps) {
     setLoading(true);
 
     try {
+      payload({
+        ...payloadValues,
+        reference_code: values.reference_code || '',
+        hotel_address: {
+          ...(payloadValues as any)?.hotel_address,
+          hotel_name: values.hotel_name || '',
+          address: state.hotel_info.address,
+          latitude: state.hotel_info.latitude,
+          longitude: state.hotel_info.longitude,
+        },
+      });
+
       await createUser({
         email: payloadValues.email,
         password: payloadValues.password,
@@ -106,8 +125,6 @@ export default function Step3(props: formProps) {
       });
 
       await storeTokens(response.access_token, response.refresh_token);
-      clearPayload({});
-      clearLocation();
       setStep(3);
     } catch {
       // Sentry.Native.captureException(error, {
@@ -140,9 +157,9 @@ export default function Step3(props: formProps) {
         </Text>
         <Formik
           initialValues={{
-            reference_code: '',
-            hotel_name: '',
-            home_address: state.hotel_info.address,
+            reference_code: persistedReferenceCode,
+            hotel_name: persistedHotelName,
+            home_address: persistedHotelAddress,
           }}
           validationSchema={schema}
           onSubmit={(values) => {
