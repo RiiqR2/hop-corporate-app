@@ -14,9 +14,9 @@ export default function Advice() {
   const { user } = useMe();
 
   return (
-    <View className="w-full rounded-[20px] mt-6 p-[20px] justify-center border-[#2EC4B5] border-[1px]">
+    <View className="w-full rounded-[20px] mt-6 p-[20px] justify-center border-[#ABA5FA] border-[1px]">
       <HStack className="gap-3 items-center rounded-full">
-        <View>{user?.role === userRoles.USER_HOPPER ? <AvatarHopper width={92} height={92} /> : <Avatar width={92} height={92} />}</View>
+        <View>{user?.role === userRoles.USER_HOPPER ? <AvatarHopper width={92} height={92} /> : <AvatarHopper width={92} height={92} />}</View>
         <Box className="flex-1 gap-2">
           <Text textColor={Colors.SECONDARY} fontSize={18} fontWeight={600}>
             {user?.role === userRoles.USER_HOPPER ? t('home.hopper.advice.title', { ns: 'home' }) : t('home.hoppy.title', { ns: 'home' })}

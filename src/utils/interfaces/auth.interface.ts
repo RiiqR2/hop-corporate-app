@@ -128,7 +128,7 @@ export interface VehicleUser {
 export interface OnboardingPayload {
   email: string;
   password: string;
-  role: "USER_HOPPER" | "ANOTHER_ROLE";
+  role: "USER_HOPPER" | "USER_HOPPY" | "ANOTHER_ROLE";
   firstName: string;
   lastName: string;
   rut: string;

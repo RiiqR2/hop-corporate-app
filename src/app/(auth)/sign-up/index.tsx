@@ -5,14 +5,11 @@ import { useTranslation } from "react-i18next";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ArrowLeftRounded } from "@/assets/svg";
 import { KeyboardContainer, Text, LinearGradient } from "@/src/components";
-import { Step1, Step2, Step3, Step4 } from "@/src/components/forms/register";
-import Step3Hopper from "@/src/components/forms/register/step-3.hopper.form";
-import Step4Hopper from "@/src/components/forms/register/step-4.hopper.form";
+import { Step1, Step3, Step4 } from "@/src/components/forms/register";
 import { Fab, FabIcon } from "@/src/components/ui/fab";
 import { VStack } from "@/src/components/ui/vstack";
 import { useAuth } from "@/src/context/auth.context";
 import { Colors } from "@/src/utils/constants/Colors";
-import { userRoles } from "@/src/utils/enum/role.enum";
 import { OnboardingPayload } from "@/src/utils/interfaces/auth.interface";
 import { i18NextType } from "@/src/utils/types/i18n.type";
 
@@ -30,7 +27,7 @@ export default function SignUp() {
   const [payload, setPayload] = useState<OnboardingPayload | null>({
     email: "",
     password: "",
-    role: "USER_HOPPER",
+    role: "USER_HOPPY",
     firstName: "",
     lastName: "",
     rut: "",
@@ -80,16 +77,11 @@ export default function SignUp() {
     });
   };
 
-  const role =
-    queryParams.user_type === "hoppy" || queryParams.user_type === userRoles.USER_HOPPY
-      ? userRoles.USER_HOPPY
-      : userRoles.USER_HOPPER;
+  const role = "USER_HOPPY";
 
   const steps = [
     Step1,
-    Step2,
-    role === userRoles.USER_HOPPER ? Step3Hopper : Step3,
-    role === userRoles.USER_HOPPER ? Step4Hopper : Step4,
+    Step3,
     Step4,
   ];
 
@@ -154,30 +146,17 @@ export default function SignUp() {
     );
   };
 
-  const getStepMessage = (
-    step: number,
-    role: string,
-    userRoles: any,
-    t: i18NextType
-  ) => {
-    if (step === 4 && role === userRoles.USER_HOPPY) {
-      return t("signup.step_message_final");
-    }
-
-    if (role === userRoles.USER_HOPPER && step === 3) {
-      return t("signup.step_message_hopper");
-    }
-
-    if ((step === 4 && role === userRoles.USER_HOPPY) || step === 5) {
+  const getStepMessage = (step: number, t: i18NextType) => {
+    if (step === 3) {
       return t("signup.step_message_final");
     }
 
     return t("signup.step_message");
   };
 
-  const message = getStepMessage(step, role, userRoles, t);
+  const message = getStepMessage(step, t);
 
-  const totalSteps = role === userRoles.USER_HOPPER ? 5 : 4;
+  const totalSteps = 3;
 
   return (
     <LinearGradient locations={[0, 0.3]}>
@@ -204,9 +183,7 @@ export default function SignUp() {
                 textColor={Colors.DARK_PURPLE}
                 fontWeight={600}
               >
-                {role === userRoles.USER_HOPPY
-                  ? t("signup.title", { ns: "auth" })
-                  : t("signup.title_hopper", { ns: "auth" })}
+                {t("signup.title", { ns: "auth" })}
               </Text>
             </VStack>
             <Text fontSize={14} fontWeight={400} textAlign="center">
