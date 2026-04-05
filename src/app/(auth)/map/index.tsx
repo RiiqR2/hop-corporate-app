@@ -2,7 +2,7 @@ import { View, StyleSheet, TouchableWithoutFeedback, Keyboard, Image, ActivityIn
 import { useRoute } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import { StatusBar } from 'expo-status-bar';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import MapView, { Marker, Region } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -33,6 +33,7 @@ export default function MapSheet() {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [region, setRegion] = useState<Region>(DEFAULT_REGION);
+  const hasInitializedRef = useRef(false);
 
   const initialCoordinates = useMemo(() => {
     const source = step === '3' ? state.hotel_info : state.user_info;
@@ -81,6 +82,9 @@ export default function MapSheet() {
   };
 
   useEffect(() => {
+    if (hasInitializedRef.current) return;
+
+    hasInitializedRef.current = true;
     let isMounted = true;
 
     const loadMap = async () => {
