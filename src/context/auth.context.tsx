@@ -169,9 +169,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     })();
   }, [token, userRole]);
 
-  // Watcher en foreground (HOPPY y HOPPER)
+  // Watcher en foreground solo para HOPPER activo
   useEffect(() => {
-    if (userRole !== userRoles.USER_HOPPER && userRole !== userRoles.USER_HOPPY) return;
+    if (userRole !== userRoles.USER_HOPPER || !token || !isOnline) return;
 
     let subscription: Location.LocationSubscription | null = null;
 
@@ -220,7 +220,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return () => {
       subscription?.remove();
     };
-  }, [userRole, token]);
+  }, [isOnline, userRole, token]);
 
   // Apagar si el permiso BG se revoca (al volver a la app)
   useEffect(() => {

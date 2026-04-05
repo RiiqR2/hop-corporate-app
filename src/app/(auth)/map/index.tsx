@@ -1,9 +1,10 @@
 import { View, StyleSheet, TouchableWithoutFeedback, Keyboard, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import * as Location from 'expo-location';
 import { StatusBar } from 'expo-status-bar';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Region } from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { AssetsImages } from '@/assets/images';
@@ -16,24 +17,40 @@ import { useAuth } from '@/src/context/auth.context';
 import { useGetAddressFromCoordinates } from '@/src/hooks';
 import { Colors } from '@/src/utils/constants/Colors';
 
+const DEFAULT_REGION: Region = {
+  latitude: -33.4489,
+  longitude: -70.6693,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+
 export default function MapSheet() {
   const { address, getAddress, selectedLocation } = useGetAddressFromCoordinates();
-  const { location } = useAuth();
+  const { state, updatePayload } = useAuth();
   const { step } = useRoute().params as unknown as { step: string };
-  const { updatePayload } = useAuth();
-  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const { t } = useTranslation();
 
-  const mapRegion = useCallback(() => {
-    if (!location) return undefined;
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [region, setRegion] = useState<Region>(DEFAULT_REGION);
+
+  const initialCoordinates = useMemo(() => {
+    const source = step === '3' ? state.hotel_info : state.user_info;
+    const hasCoordinates =
+      Number.isFinite(source.latitude) &&
+      Number.isFinite(source.longitude) &&
+      source.latitude !== 0 &&
+      source.longitude !== 0;
+
+    if (!hasCoordinates) {
+      return null;
+    }
+
     return {
-      latitude: location.latitude,
-      longitude: location.longitude,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
+      latitude: Number(source.latitude),
+      longitude: Number(source.longitude),
     };
-  }, [location]);
+  }, [state.hotel_info, state.user_info, step]);
 
   const onPressMap = (e: any) => {
     const { latitude, longitude } = e.nativeEvent.coordinate;
@@ -41,10 +58,13 @@ export default function MapSheet() {
   };
 
   const onConfirmData = () => {
+    const latitude = selectedLocation?.latitude ?? region.latitude;
+    const longitude = selectedLocation?.longitude ?? region.longitude;
+
     const newPayload = {
       address: address || '',
-      latitude: selectedLocation?.latitude,
-      longitude: selectedLocation?.longitude,
+      latitude,
+      longitude,
     };
 
     updatePayload(
@@ -61,10 +81,54 @@ export default function MapSheet() {
   };
 
   useEffect(() => {
-    if (mapRegion()) {
-      setIsLoaded(true);
-    }
-  }, [mapRegion]);
+    let isMounted = true;
+
+    const loadMap = async () => {
+      try {
+        if (initialCoordinates) {
+          const newRegion = {
+            ...DEFAULT_REGION,
+            ...initialCoordinates,
+          };
+
+          if (isMounted) {
+            setRegion(newRegion);
+            setIsLoaded(true);
+          }
+
+          await getAddress(initialCoordinates.latitude, initialCoordinates.longitude);
+          return;
+        }
+
+        const fgPermission = await Location.getForegroundPermissionsAsync();
+        const permission =
+          fgPermission.status === 'granted' ? fgPermission : await Location.requestForegroundPermissionsAsync();
+
+        if (permission.status === 'granted') {
+          const currentPosition = await Location.getCurrentPositionAsync({});
+          if (isMounted) {
+            const newRegion = {
+              ...DEFAULT_REGION,
+              latitude: currentPosition.coords.latitude,
+              longitude: currentPosition.coords.longitude,
+            };
+            setRegion(newRegion);
+          }
+          await getAddress(currentPosition.coords.latitude, currentPosition.coords.longitude);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoaded(true);
+        }
+      }
+    };
+
+    loadMap();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [getAddress, initialCoordinates]);
 
   return (
     <View className="flex-1">
@@ -75,12 +139,7 @@ export default function MapSheet() {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View className="flex-1">
           {isLoaded ? (
-            <MapView
-              style={styles.map}
-              showsUserLocation={true}
-              initialRegion={mapRegion()}
-              onPress={onPressMap}
-            >
+            <MapView style={styles.map} showsUserLocation={true} initialRegion={region} onPress={onPressMap}>
               {selectedLocation && (
                 <Marker
                   coordinate={{
