@@ -151,16 +151,14 @@ export default function RootLayout() {
       if (user) {
         if (!hasRedirected) {
           setHasRedirected(true);
-          if (user.isVerified && user.status != "ACTIVE") {
+          if (user.isVerified && user.status === "ACTIVE") {
             router.replace('/(tabs)/');
-          }
-          else if (!user.isVerified && user.status != "ACTIVE") {
+          } else if (!user.isVerified && user.status != "ACTIVE") {
             router.replace({
               pathname: AuthRoutesLink.SIGN_UP,
               params: { step: onboardingStep, user_type: user.role },
             });
-            
-          } else if (user.isVerified && user.status != "ACTIVE") {
+          } else if (user.status != "ACTIVE") {
             router.replace(AuthRoutesLink.WAITING_VALIDATION);
           }
         }
