@@ -42,8 +42,13 @@ const LOCATION_TASK = 'HOP_LOCATION_TASK';
 function LocationGate({ isAuthenticated }: { isAuthenticated: boolean }) {
   const [permsGranted, setPermsGranted] = useState<boolean>(false);
 
-  // Pide/valida permisos una vez
+  // Pide/valida permisos sólo con sesión iniciada
   useEffect(() => {
+    if (!isAuthenticated) {
+      setPermsGranted(false);
+      return;
+    }
+
     let cancelled = false;
     (async () => {
       // foreground
@@ -68,7 +73,7 @@ function LocationGate({ isAuthenticated }: { isAuthenticated: boolean }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [isAuthenticated]);
 
   // Start/stop del servicio según sesión + permisos
   useEffect(() => {
@@ -127,7 +132,7 @@ export default function RootLayout() {
   const router = useRouter();
 
   const onboardingStep = user?.role === userRoles.USER_HOPPER ? 5 : 4;
-  const publicRoutes = ['/', '/sign-up', '/sign-in', '/recovery-password', '/new-password'];
+  const publicRoutes = ['/', '/sign-up', '/sign-in', '/recovery-password', '/new-password', '/map', '/onboarding', '/finish-onboarding', '/validation', '/finish-recover-password'];
 
   // === Auth gate + Splash ===
   useEffect(() => {

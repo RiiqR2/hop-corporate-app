@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as Location from "expo-location";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { EXPO_GOOGLE_MAPS_API_KEY, MAPBOX_ACCESS_TOKEN, PUBLIC_MAPBOX_API_URL } from '@/config';
 import { DirectionsResponse, GooglePlaceAutocompleteResponse, GooglePlaceDetailsResponse } from '@/src/utils/interfaces/geocode.address.interface';
 
@@ -9,7 +9,7 @@ export const useGetAddressFromCoordinates = () => {
   const [address, setAddress] = useState<string | null>(null);
   const [loadingAddress, setLoadingAddress] = useState(false);
 
-  const getAddress = async (latitude: number, longitude: number) => {
+  const getAddress = useCallback(async (latitude: number, longitude: number) => {
     setSelectedLocation({ latitude, longitude });
     setLoadingAddress(true);
     try {
@@ -26,7 +26,7 @@ export const useGetAddressFromCoordinates = () => {
     } finally {
       setLoadingAddress(false);
     }
-  };
+  }, []);
 
   return {
     selectedLocation,
