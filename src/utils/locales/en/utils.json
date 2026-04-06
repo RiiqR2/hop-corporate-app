@@ -75,7 +75,7 @@
   "notifications_text": {
     "DEPOSIT_RECEIVED": "Good news! <custom>${{price}}</custom> has been credited to your bank account.",
     "HOPPER_CANCELLED": "The driver <custom>{{name}}</custom> has cancelled the trip.",
-    "HOPPY_CANCELLED": "The coordinator <custom>{{name}}</custom> has cancelled the trip.",
+    "PASSENGER_CANCELLED": "The coordinator <custom>{{name}}</custom> has cancelled the trip.",
     "USER_COMPLETE_TRAVEL": "The user has marked the trip as completed.",
     "HOPPER_ACCEPT_TRAVEL": "The driver <custom>{{name}}</custom> has accepted the trip. Thank you for your commitment!",
     "COMMISSIONS": "You have received a new commission.",

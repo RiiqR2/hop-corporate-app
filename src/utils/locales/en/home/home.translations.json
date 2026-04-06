@@ -137,7 +137,7 @@
     }
   },
   "hoppy": {
-    "title": "Tips for Booking a Trip",
+    "title": "Tips for a coordinator",
     "description": "Consider booking your trip in advance to avoid wait times."
   },
     "fixed_travel": {
@@ -145,7 +145,7 @@
   },
   "waiting_validation": {
     "account_review": "Your account is under review",
-    "review_info": "We are reviewing your information. This process may take a few days. You will be able to log in once your account has been validated by our team.",
+    "review_info": "We are reviewing your information. This may take a little while. You will be able to log in once your account has been validated by our team.",
     "accept": "Accept"
   },
   "modal_hoppy": {

@@ -39,9 +39,9 @@ export const HopperNotificationMessages = (): Record<notificationTypeValues, (da
       values={{ name: data?.name }}
     />
   ),
-  [notificationTypeValues.HOPPY_CANCELLED]: (data) => (
+  [notificationTypeValues.PASSENGER_CANCELLED]: (data) => (
     <Trans
-      i18nKey="notifications_text.HOPPY_CANCELLED"
+      i18nKey="notifications_text.PASSENGER_CANCELLED"
       ns="utils"
       components={{ custom: <Text fontWeight={600} /> }}
       values={{ name: data?.name }}

@@ -63,12 +63,7 @@ export default function Profile() {
       icon: ClockActive,
       name: t('profile.home.shortcuts.history', { ns: 'profile' }),
       to: TabsRoutesLink.HISTORY,
-    },
-    {
-      icon: !isHotelDataMissing && emptyFields.length > 0 ? Danger : WalletActive,
-      name: t('profile.home.shortcuts.bank_account', { ns: 'profile' }),
-      to: ProfileRoutesLink.BANK_ACCOUNT,
-    },
+    }
   ];
 
   const handleHover = (id: number, isHovered: boolean) => {
@@ -79,7 +74,7 @@ export default function Profile() {
     if (user?.role === userRoles.USER_HOPPER && item.icon === CourtHouse) {
       return false;
     }
-    if (user?.role === userRoles.USER_HOPPY && item.icon === Car) {
+    if (user?.role === userRoles.USER_PASSENGER && item.icon === Car) {
       return false;
     }
     return true;
@@ -105,7 +100,7 @@ export default function Profile() {
         <Text fontSize={24} fontWeight={400} textColor={Colors.DARK_PURPLE} className="mt-2">
           {capitalizeWords(user?.userInfo.firstName || '')} {capitalizeWords(user?.userInfo.lastName || '')}
         </Text>
-        {user?.userInfo?.user_code && user.userInfo.user_code !== "" && user.role === userRoles.USER_HOPPY
+        {user?.userInfo?.user_code && user.userInfo.user_code !== "" && user.role === userRoles.USER_PASSENGER
           ? (
             <Text textColor={Colors.SECONDARY} fontWeight={600} fontSize={20}>
               {user.userInfo.user_code}

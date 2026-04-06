@@ -18,20 +18,7 @@ export const Services = () => {
         {t('home.services.title', { ns: 'home' })}
       </Text>
       <HStack className="w-full">
-        <Pressable
-          onPress={() =>
-            router.push({
-              pathname: HomeRoutesLink.MAP_HOME,
-              params: { type: travelTypeValues.PICKUP },
-            })
-          }
-          className="flex-1 items-center"
-        >
-          <DropOff width={width} />
-          <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
-            {t('home.services.shortcuts.pickup', { ns: 'home' })}
-          </Text>
-        </Pressable>
+
         <Pressable
           onPress={() =>
             router.push({
@@ -44,6 +31,20 @@ export const Services = () => {
           <PickUp width={width} />
           <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
             {t('home.services.shortcuts.dropoff', { ns: 'home' })}
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() =>
+            router.push({
+              pathname: HomeRoutesLink.MAP_HOME,
+              params: { type: travelTypeValues.PICKUP },
+            })
+          }
+          className="flex-1 items-center"
+        >
+          <DropOff width={width} />
+          <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
+            {t('home.services.shortcuts.pickup', { ns: 'home' })}
           </Text>
         </Pressable>
       </HStack>

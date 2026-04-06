@@ -27,7 +27,7 @@ export default function SignUp() {
   const [payload, setPayload] = useState<OnboardingPayload | null>({
     email: "",
     password: "",
-    role: "USER_HOPPY",
+    role: "USER_PASSENGER",
     firstName: "",
     lastName: "",
     rut: "",
@@ -77,7 +77,7 @@ export default function SignUp() {
     });
   };
 
-  const role = "USER_HOPPY";
+  const role = "USER_PASSENGER";
 
   const steps = [
     Step1,
