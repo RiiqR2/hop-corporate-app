@@ -18,6 +18,7 @@ import {
 } from '@/src/components/ui/actionsheet';
 import { SearchIcon } from '@/src/components/ui/icon';
 import { useGetCoordinatesFromAddress, useMe, useToast } from '@/src/hooks';
+import { useAuth } from '@/src/context/auth.context';
 import { getFrecuentAddress } from '@/src/services/book.service';
 import { getFixedDestinations, FixedDestination } from '@/src/services/fixed-destination.service';
 import { Colors } from '@/src/utils/constants/Colors';
@@ -49,6 +50,7 @@ export const Step1Booking = (props: Step1BookingProps) => {
   };
 
   const { showToast } = useToast();
+  const { location } = useAuth();
 
   const { t } = useTranslation();
 
@@ -313,6 +315,7 @@ useEffect(() => {
   const handleSelectDestination = (value: string) => {
     const destination = fixedTravelOptions.find((dest) => dest.id === value);
     if (destination) {
+      const isCustomDestinationOption = destination.address === t('home.map_home.first_sheet.fields.destination', { ns: 'home' });
       setSelectedFixedDestination(destination);
       setDestinityAddress(destination.address || "");
       setDestinityLocation({
@@ -322,6 +325,13 @@ useEffect(() => {
       updateBookingData((prev: BookingData) => ({
         ...prev,
         fixedDestinationId: destination.id,
+        currentLocation: isCustomDestinationOption
+          ? {
+            latitude: location?.latitude ?? prev.currentLocation.latitude,
+            longitude: location?.longitude ?? prev.currentLocation.longitude,
+            address: prev.currentLocation.address,
+          }
+          : prev.currentLocation,
         destination: {
           latitude: destination.latitude,
           longitude: destination.longitude,
