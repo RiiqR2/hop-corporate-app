@@ -28,19 +28,12 @@ export default {
       },
       infoPlist: {
         NSCameraUsageDescription:
-          'Hop Business necesita acceder a la cámara para permitirte tomar fotos de tu vehículo',
-        NSMicrophoneUsageDescription:
-          'Hop Business necesita acceder al micrófono para grabar el video de confirmación de identidad con Metamap',
+          'Hop Business necesita acceder a la cámara para que puedas tomar una foto de perfil, si así lo deseas.',
         NSLocationWhenInUseUsageDescription:
-          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
-        NSLocationAlwaysAndWhenInUseUsageDescription:
-          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
-        NSLocationAlwaysUsageDescription:
-          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
+          'Hop Business necesita acceder a tu ubicación mientras usas la app para ayudarte a seleccionar tu posición actual y gestionar tus traslados.',
         NSAppTransportSecurity: {
           NSAllowsArbitraryLoads: true,
         },
-        UIBackgroundModes: ['fetch', 'remote-notification', 'location'],
         expoPushNotifications: true,
       },
       // googleServicesFile: './GoogleService-Info.plist',
@@ -68,23 +61,19 @@ export default {
         backgroundColor: '#7a5ce7',
       },
       blockedPermissions: [
-        'android.permission.READ_MEDIA_IMAGES',
+        'android.permission.RECORD_AUDIO',
         'android.permission.READ_MEDIA_VIDEO',
         'android.permission.READ_MEDIA_AUDIO',
-        'android.permission.READ_EXTERNAL_STORAGE',
-        'android.permission.WRITE_EXTERNAL_STORAGE',
+        'android.permission.ACCESS_BACKGROUND_LOCATION',
+        'android.permission.FOREGROUND_SERVICE',
+        'android.permission.FOREGROUND_SERVICE_LOCATION',
       ],
       permissions: [
         'ACCESS_NETWORK_STATE',
         'android.permission.CAMERA',
-        'android.permission.RECORD_AUDIO',
         'android.permission.ACCESS_FINE_LOCATION',
         'android.permission.ACCESS_COARSE_LOCATION',
-        'android.permission.ACCESS_BACKGROUND_LOCATION',
-        'android.permission.FOREGROUND_SERVICE',
-        'android.permission.FOREGROUND_SERVICE_LOCATION',
         'android.permission.POST_NOTIFICATIONS',
-        'com.google.android.c2dm.permission.RECEIVE',
       ],
     },
 
@@ -93,7 +82,6 @@ export default {
       'expo-localization',
       'expo-font',
       'expo-document-picker',
-      'react-native-expo-metamap-sdk',
       'sentry-expo',
       [
         'expo-notifications',
@@ -113,8 +101,6 @@ export default {
         projectId: '0b6b3950-601a-43aa-a548-3cc298d97ec4',
       },
       APP_VARIANT: 'BUSINESS',
-      EXPO_METAMAP_API_KEY: 'TU_METAMAP_API_KEY',
-      EXPO_METAMAP_FLOW_ID: 'TU_METAMAP_FLOW_ID',
       EXPO_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL_MAP: process.env.EXPO_PUBLIC_API_URL_MAP,

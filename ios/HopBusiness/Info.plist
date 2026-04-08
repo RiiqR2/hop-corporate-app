@@ -50,15 +50,15 @@
       <true/>
     </dict>
     <key>NSCameraUsageDescription</key>
-    <string>Hop Business necesita acceder a la cámara para permitirte tomar fotos de tu vehículo</string>
+    <string>Hop Business necesita acceder a la cámara para que puedas tomar una foto de perfil, si así lo deseas.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos</string>
+    <string>Allow $(PRODUCT_NAME) to access your location</string>
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos</string>
+    <string>Allow $(PRODUCT_NAME) to access your location</string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos</string>
+    <string>Hop Business necesita acceder a tu ubicación mientras usas la app para ayudarte a seleccionar tu posición actual y gestionar tus traslados.</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>Hop Business necesita acceder al micrófono para grabar el video de confirmación de identidad con Metamap</string>
+    <string>Allow $(PRODUCT_NAME) to access your microphone</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to save photos</string>
     <key>NSPhotoLibraryUsageDescription</key>
@@ -70,8 +70,6 @@
     <key>UIBackgroundModes</key>
     <array>
       <string>fetch</string>
-      <string>remote-notification</string>
-      <string>location</string>
     </array>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>

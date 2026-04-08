@@ -3,6 +3,7 @@ import { useRoute } from '@react-navigation/native';
 //import * as Sentry from 'sentry-expo';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import * as Location from 'expo-location';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
@@ -17,6 +18,7 @@ import {
   ActionsheetFlatList,
 } from '@/src/components/ui/actionsheet';
 import { SearchIcon } from '@/src/components/ui/icon';
+import { useAuth } from '@/src/context/auth.context';
 import { useGetCoordinatesFromAddress, useMe, useToast } from '@/src/hooks';
 import { getFrecuentAddress } from '@/src/services/book.service';
 import { getFixedDestinations, FixedDestination } from '@/src/services/fixed-destination.service';
@@ -49,6 +51,7 @@ export const Step1Booking = (props: Step1BookingProps) => {
   };
 
   const { showToast } = useToast();
+  const { location } = useAuth();
 
   const { t } = useTranslation();
 
@@ -310,9 +313,38 @@ useEffect(() => {
     }));
   }, [destinityLocation, destinityAddress]);
 
-  const handleSelectDestination = (value: string) => {
+  const getFormattedCurrentAddress = async (latitude: number, longitude: number) => {
+    try {
+      const geocode = await Location.reverseGeocodeAsync({ latitude, longitude });
+      const firstResult = geocode[0];
+      if (!firstResult) return '';
+
+      return [
+        firstResult.name,
+        firstResult.street,
+        firstResult.district,
+        firstResult.city,
+      ]
+        .filter(Boolean)
+        .join(', ');
+    } catch {
+      return '';
+    }
+  };
+
+  const handleSelectDestination = async (value: string) => {
     const destination = fixedTravelOptions.find((dest) => dest.id === value);
     if (destination) {
+      const isCustomDestinationOption = destination.address === t('home.map_home.first_sheet.fields.destination', { ns: 'home' });
+      let currentAddress = '';
+      if (isCustomDestinationOption && location) {
+        currentAddress = await getFormattedCurrentAddress(location.latitude, location.longitude);
+        setAddressName(currentAddress || t('home.map_home.first_sheet.fields.starting_point', { ns: 'home' }));
+        setAddressLocation({
+          latitude: String(location.latitude),
+          longitude: String(location.longitude),
+        });
+      }
       setSelectedFixedDestination(destination);
       setDestinityAddress(destination.address || "");
       setDestinityLocation({
@@ -322,6 +354,13 @@ useEffect(() => {
       updateBookingData((prev: BookingData) => ({
         ...prev,
         fixedDestinationId: destination.id,
+        currentLocation: isCustomDestinationOption
+          ? {
+            latitude: location?.latitude ?? prev.currentLocation.latitude,
+            longitude: location?.longitude ?? prev.currentLocation.longitude,
+            address: currentAddress || prev.currentLocation.address,
+          }
+          : prev.currentLocation,
         destination: {
           latitude: destination.latitude,
           longitude: destination.longitude,
