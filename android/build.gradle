@@ -36,5 +36,3 @@ allprojects {
 
 apply plugin: "expo-root-project"
 apply plugin: "com.facebook.react.rootproject"
-
-allprojects { repositories { maven { url "$rootDir/../node_modules/react-native-expo-metamap-sdk/android/maven" } } }
