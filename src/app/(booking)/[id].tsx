@@ -62,7 +62,7 @@ export default function Booking() {
           title={travelTranslated[travel?.type as travelTypeValues]}
           arrow
           onPressArrow={() => router.back()}
-          edit={user?.role === userRoles.USER_HOPPY && !isEditable && travel?.type !== travelTypeValues.PROGRAMED && travel?.type !== travelTypeValues.INSTANT}
+          edit={user?.role === userRoles.USER_PASSENGER && !isEditable && travel?.type !== travelTypeValues.PROGRAMED && travel?.type !== travelTypeValues.INSTANT}
           onPressEdit={() => setIsEditable(true)}
         />
       ),

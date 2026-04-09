@@ -88,7 +88,7 @@ export default function HomeScreen() {
 
     socket.on(eventName, (message: TravelNotification) => {
       if (message.type.includes('CANCELLED') || message.type.includes("PAYMENT")) return;
-      if (message.type === notificationTypeValues.HOPPER_ACCEPT_TRAVEL && user.role === userRoles.USER_HOPPY) {
+      if (message.type === notificationTypeValues.HOPPER_ACCEPT_TRAVEL && user.role === userRoles.USER_PASSENGER) {
         setShowHoppyModal(true);
         setTravelData(message);
         return;
@@ -102,8 +102,10 @@ export default function HomeScreen() {
     };
   }, [socket, user?.id]);
 
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ", user?.role)
+
   const renderContent =
-    user?.role === userRoles.USER_HOPPY ? (
+    user?.role === userRoles.USER_PASSENGER ? (
       <Container extraHeight={true} style={{ borderBottomStartRadius: 20 }}>
         <Balance id={user?.id} />
         <TakeABooking />
@@ -178,7 +180,7 @@ export default function HomeScreen() {
         </MapView>
       )}
       {isModalOpen && user!.role === userRoles.USER_HOPPER && <ModalBooking isOpen={isModalOpen} handleClose={handleClose} travel={travelData!} user={user} />}
-      {showHoppyModal && user?.role! === userRoles.USER_HOPPY && (
+      {showHoppyModal && user?.role! === userRoles.USER_PASSENGER && (
         <ModalBook isOpen={showHoppyModal} handleClose={() => setShowHoppyModal(false)} travel={travelData!} user={user} />
       )}
     </View>

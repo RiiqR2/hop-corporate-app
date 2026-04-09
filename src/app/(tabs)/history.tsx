@@ -200,7 +200,7 @@ export default function History() {
                     },
                   })
                 }
-                disabled={user?.role === userRoles.USER_HOPPY}
+                disabled={user?.role === userRoles.USER_PASSENGER}
               >
                 <Card variant="outline" style={styles.card}>
                   <HStack className="gap-1 items-center justify-between">

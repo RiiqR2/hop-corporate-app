@@ -177,7 +177,7 @@ export default function Confirmation() {
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <VStack space="lg" className="items-center mb-9 mx-[16px]">
           <Text fontSize={28} fontWeight={600} textColor={Colors.DARK_PURPLE} textAlign="center">
-            {params.role === userRoles.USER_HOPPY ? t('home.confirmation.title', { ns: 'home' }) : message}
+            {params.role === userRoles.USER_PASSENGER ? t('home.confirmation.title', { ns: 'home' }) : message}
           </Text>
         </VStack>
 
