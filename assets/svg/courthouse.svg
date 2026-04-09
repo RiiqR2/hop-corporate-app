@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.66675 18.3335H18.3334" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 1.6665C11.3333 2.19984 12.8333 2.19984 14.1667 1.6665V4.1665C12.8333 4.69984 11.3333 4.69984 10 4.1665V1.6665Z" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 4.1665V6.6665" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14.1666 6.6665H5.83325C4.16659 6.6665 3.33325 7.49984 3.33325 9.1665V18.3332H16.6666V9.1665C16.6666 7.49984 15.8333 6.6665 14.1666 6.6665Z" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.81665 10H16.1833" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.65845 10V18.3333" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
-<path d="M9.9917 10V18.3333" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
-<path d="M13.325 10V18.3333" stroke="#2EC4B6" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <g>
+    <path d="M0 0L16.6667 0" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.667 18.334)" />
+    <path d="M0 0C1.3333 0.53334 2.8333 0.53334 4.1667 0C4.1667 0 4.1667 2.5 4.1667 2.5C2.8333 3.03334 1.3333 3.03334 0 2.5C0 2.5 0 0 0 0Z" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(10 1.667)" />
+    <path d="M0 0L0 2.5" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(10 4.167)" />
+    <path d="M2.5 0C0.83334 0 0 0.83334 0 2.5C0 2.5 0 11.6667 0 11.6667L13.3333 11.6667C13.3333 11.6667 13.3333 2.5 13.3333 2.5C13.3333 0.83334 12.5 0 10.8334 0C10.8334 0 2.5 0 2.5 0Z" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(3.333 6.667)" />
+    <path d="M0 0L12.3666 0" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(3.817 10)" />
+    <path d="M0 0L0 8.3333" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linejoin="round" transform="translate(6.658 10)" />
+    <path d="M0 0L0 8.3333" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linejoin="round" transform="translate(9.992 10)" />
+    <path d="M0 0L0 8.3333" fill="none" stroke-width="1.5" stroke="#ABA5FA" stroke-linejoin="round" transform="translate(13.325 10)" />
+  </g>
 </svg>
