@@ -14,7 +14,8 @@ export const Services = () => {
   const width = Dimensions.get('window').width / 2 - 25;
   return (
     <View style={styles.services}>
-      <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_PURPLE}>
+      <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_PURPLE} style={{ marginBottom: 18 }}>
+
         {t('home.services.title', { ns: 'home' })}
       </Text>
       <HStack className="w-full">
@@ -22,28 +23,28 @@ export const Services = () => {
           onPress={() =>
             router.push({
               pathname: HomeRoutesLink.MAP_HOME,
-              params: { type: travelTypeValues.PICKUP },
-            })
-          }
-          className="flex-1 items-center"
-        >
-          <DropOff width={width} />
-          <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
-            {t('home.services.shortcuts.pickup', { ns: 'home' })}
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() =>
-            router.push({
-              pathname: HomeRoutesLink.MAP_HOME,
-              params: { type: travelTypeValues.DROPOFF },
+              params: { type: travelTypeValues.PROGRAMED },
             })
           }
           className="flex-1 items-center"
         >
           <PickUp width={width} />
           <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
-            {t('home.services.shortcuts.dropoff', { ns: 'home' })}
+            {t('home.services.shortcuts.from_office', { ns: 'home' })}
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() =>
+            router.push({
+              pathname: HomeRoutesLink.MAP_HOME,
+              params: { type: travelTypeValues.PROGRAMED },
+            })
+          }
+          className="flex-1 items-center"
+        >
+          <DropOff width={width} />
+          <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
+            {t('home.services.shortcuts.to_office', { ns: 'home' })}
           </Text>
         </Pressable>
       </HStack>

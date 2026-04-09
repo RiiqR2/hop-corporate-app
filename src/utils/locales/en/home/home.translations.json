@@ -10,7 +10,9 @@
     "title": "Services",
     "shortcuts": {
       "pickup": "Pick Up",
-      "dropoff": "Drop Off"
+      "dropoff": "Drop Off",
+      "to_office": "To Office",
+      "from_office": "From Office"
     }
   },
   "map_home": {
