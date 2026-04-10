@@ -193,7 +193,7 @@ export default function Booking() {
           )}
           {user?.role === userRoles.USER_HOPPER && (
             <View className="gap-5">
-              <VStack className="mt-6 gap-3 border border-[#E1F5F3] p-2 rounded-[20px]">
+              <VStack className="mt-6 gap-3 border border-[#E3E1F5] p-2 rounded-[20px]">
                 <Box>
                   <Text fontSize={12} fontWeight={300} textColor={Colors.GRAY}>
                     {t('booking.modal_hopper.departurePoint', { ns: 'booking' })}
@@ -337,28 +337,15 @@ export default function Booking() {
             </>
           ) : (
             <>
-              <HStack className="mt-8 justify-around items-center">
-                <Text fontSize={18} fontWeight={400} style={{ width: '50%' }}>
-                  {t('booking.card.commission', {
-                    ns: 'booking',
-                  })}{' '}
-                </Text>
-                <Badge className="rounded-full bg-[#9FE4DD] gap-1">
-                  <DolarCircle />
-                  <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
-                    {formatCLP(Number(travel?.hoppyCommission ?? 0))}
-                  </Text>
-                </Badge>
-              </HStack>
+
               <VStack className="mt-8 gap-4">
                 <Button
                   onPress={() => {
-                    const url = `https://wa.me/${travel?.passengerContactCountryCode + travel?.passengerContact}?text=${encodeURIComponent(message)}`;
-                    Linking.openURL(url);
+                    router.replace('/');
                   }}
                   stretch
                 >
-                  {t('booking.card.button', {
+                  {t('booking.card.go_home', {
                     ns: 'booking',
                   })}
                 </Button>

@@ -165,7 +165,7 @@ export default function SignUp() {
         <Fab
           placement="top left"
           onPress={() => setStep(step === 1 ? step : step - 1)}
-          className="bg-[#E1F5F3] w-[24px] h-[24px]"
+          className="bg-[#E3E1F5] w-[24px] h-[24px]"
           style={{
             marginTop: insets.top,
           }}

@@ -6,6 +6,7 @@
     "luggage": "Maleta",
     "luggages": "Maletas",
     "button": "Contactar al pasajero",
+    "go_home": "Ir al inicio",
     "cancel": "Cancelar viaje",
     "commission": "Comisión correspondiente",
     "room": "Habitación {{room}}"

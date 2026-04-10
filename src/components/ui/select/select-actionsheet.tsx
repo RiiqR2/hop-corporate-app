@@ -92,7 +92,7 @@ const actionsheetContentStyle = tva({
 });
 
 const actionsheetItemStyle = tva({
-  base: "w-full flex-row items-center p-3 rounded-md data-[disabled=true]:opacity-40 data-[disabled=true]:web:pointer-events-auto data-[disabled=true]:web:cursor-not-allowed hover:bg-background-50 active:bg-background-100 data-[focus=true]:bg-background-100 web:data-[focus-visible=true]:bg-background-100 data-[checked=true]:bg-[#E1F5F3]",
+  base: "w-full flex-row items-center p-3 rounded-md data-[disabled=true]:opacity-40 data-[disabled=true]:web:pointer-events-auto data-[disabled=true]:web:cursor-not-allowed hover:bg-background-50 active:bg-background-100 data-[focus=true]:bg-background-100 web:data-[focus-visible=true]:bg-background-100 data-[checked=true]:bg-[#C6C2FA]",
 });
 
 const actionsheetItemTextStyle = tva({

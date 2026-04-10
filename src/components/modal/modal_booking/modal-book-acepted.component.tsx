@@ -36,7 +36,7 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
     <Center className="h-auto w-[100%] bg-slate-800">
       <Modal isOpen={true} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
         <ModalBackdrop />
-        <ModalContent className="rounded-[20px] bg-[#E1F5F3] w-[100%]">
+        <ModalContent className="rounded-[20px] bg-[#E3E1F5] w-[100%]">
           <ModalHeader className="justify-end">
             <ModalCloseButton onPress={() => handleClose()} className="items-end">
               <Icon as={CloseCircleIcon} size="md" color={Colors.GRAY} />
@@ -155,19 +155,11 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
               <Button
                 onPress={() => {
                   handleClose();
-                  router.replace({
-                    pathname: HomeRoutesLink.CONFIRMATION,
-                    params: {
-                      commission: travel?.metadata?.travel?.hoppyCommission,
-                      type: paymentStatus.FINISHED,
-                      role: user?.role,
-                      travelId: travel?.metadata?.travel?.id
-                    },
-                  });
+                  router.replace('/');
                 }}
                 stretch
               >
-                {t('home.modal_hoppy.see_commission', { ns: 'home' })}
+                {t('home.confirmation.go_home', { ns: 'home' })}
               </Button>
               <Button
                 onPress={() => {

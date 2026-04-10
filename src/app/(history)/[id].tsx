@@ -73,7 +73,7 @@ export default function History() {
         <Text textColor={Colors.DARK_PURPLE} fontSize={18} fontWeight={400}>
           {t('service_detail', { ns: 'history' })}
         </Text>
-        <Badge className="bg-[#E1F5F3] rounded-md justify-between">
+        <Badge className="bg-[#E3E1F5] rounded-md justify-between">
           <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('trip_value', { ns: 'history' })}
           </Text>
@@ -81,7 +81,7 @@ export default function History() {
             $ {formatCLP(Number(data?.price ?? 0))}
           </Text>
         </Badge>
-        <Badge className="bg-[#E1F5F3] rounded-md justify-between">
+        <Badge className="bg-[#E3E1F5] rounded-md justify-between">
           <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('service_fees', { ns: 'history' })}
           </Text>
@@ -89,7 +89,7 @@ export default function History() {
             -{((data?.appCommission || 0) + (data?.hoppyCommission || 0)).toFixed(2)}
           </Text>
         </Badge>
-        <Badge className="bg-[#E1F5F3] rounded-md justify-between">
+        <Badge className="bg-[#E3E1F5] rounded-md justify-between">
           <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
             {t('tolls', { ns: 'history' })}
           </Text>

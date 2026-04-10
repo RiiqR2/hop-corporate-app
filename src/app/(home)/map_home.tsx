@@ -210,7 +210,7 @@ export default function MapHome() {
     <View className="flex-1">
       <StatusBar hidden />
       {!(stepper > 3) && (
-        <Fab placement="top left" onPress={() => handlePressBack()} style={styles.fab} className="bg-[#E1F5F3] w-[50px] h-[50px]">
+        <Fab placement="top left" onPress={() => handlePressBack()} style={styles.fab} className="bg-[#E3E1F5] w-[50px] h-[50px]">
           <FabIcon as={ArrowLeftRounded} width={30} />
         </Fab>
       )}

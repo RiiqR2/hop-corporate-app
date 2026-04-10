@@ -64,11 +64,6 @@ export default function Profile() {
       name: t('profile.home.shortcuts.history', { ns: 'profile' }),
       to: TabsRoutesLink.HISTORY,
     },
-    {
-      icon: !isHotelDataMissing && emptyFields.length > 0 ? Danger : WalletActive,
-      name: t('profile.home.shortcuts.bank_account', { ns: 'profile' }),
-      to: ProfileRoutesLink.BANK_ACCOUNT,
-    },
   ];
 
   const handleHover = (id: number, isHovered: boolean) => {
@@ -112,9 +107,6 @@ export default function Profile() {
             </Text>
           )
           : null}
-        <Text textColor={Colors.SECONDARY} fontWeight={600} fontSize={20}>
-          {user?.role === userRoles.USER_HOPPER ? 'Conductor' : 'Coordinador'}
-        </Text>
       </Box>
       <View style={styles.panel}>
         {filteredShortcuts.map(({ name, icon: IconItem, to }: { name: string; icon: any; to?: any }, i) => {
@@ -141,7 +133,7 @@ export default function Profile() {
                   <Icon as={ChevronRightIcon} color={Colors.DARK_PURPLE} width={12} height={12} />
                 </HStack>
               </Pressable>
-              {i !== 4 && <Divider style={styles.divider} />}
+              {i !== 3 && <Divider style={styles.divider} />}
             </React.Fragment>
           );
         })}

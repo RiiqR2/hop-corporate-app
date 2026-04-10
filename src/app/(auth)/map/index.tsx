@@ -137,7 +137,7 @@ export default function MapSheet() {
   return (
     <View className="flex-1">
       <StatusBar hidden />
-      <Fab placement="top left" onPress={() => router.back()} className="bg-[#E1F5F3] w-[50px] h-[50px]">
+      <Fab placement="top left" onPress={() => router.back()} className="bg-[#E3E1F5] w-[50px] h-[50px]">
         <FabIcon as={ArrowLeftRounded} width={30} />
       </Fab>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

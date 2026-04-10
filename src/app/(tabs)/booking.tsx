@@ -115,6 +115,7 @@ export default function Booking() {
       fromAddress: item?.from?.address,
       toAddress: item.to.address,
     });
+    console.log(">>>>>>>>>>>>>>>>>>>>> ", item)
 
     return (
       <View className="relative py-4">
@@ -182,14 +183,15 @@ export default function Booking() {
           <HStack className="mt-4 justify-between">
             <Button
               onPress={() => {
-                const url = `https://wa.me/${item.passengerContactCountryCode + item.passengerContact}?text=${encodeURIComponent(message)}`;
+                const url = `https://wa.me/${item.hopper?.countryCode}${item.hopper?.phone}?text=${encodeURIComponent(message)}`;
                 Linking.openURL(url);
               }}
             >
               {t('booking.card.button', { ns: 'booking' })}
             </Button>
             <Pressable
-              className="w-[40px] h-[40px] bg-[#9FE4DD] rounded-xl items-center justify-center"
+                className="w-[40px] h-[40px] rounded-xl items-center justify-center"
+                style={{ backgroundColor: Colors.PRIMARY }}
               onPress={() =>
                 router.push({
                   pathname: '/(booking)/[id]',

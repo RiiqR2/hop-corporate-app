@@ -120,7 +120,7 @@ export default function PersonalData() {
   return (
     <Container>
       {emptyFields.length > 0 ? (
-        <Badge className="rounded-full p-2 gap-2 bg-[#E1F5F3] items-center justify-center">
+        <Badge className="rounded-full p-2 gap-2 bg-[#E3E1F5] items-center justify-center">
           <Danger />
           <Text fontSize={14} fontWeight={600}>
             {t('profile.account.empty', { ns: 'profile' })}
@@ -233,7 +233,7 @@ export default function PersonalData() {
                             });
                             setShowActionsheet(false);
                           }}
-                          className="py-2.5 px-4 border-b border-[#9FE4DD] bg-white rounded-lg mb-2.5"
+                          className="py-2.5 px-4 border-b border-[#C6C2FA] bg-white rounded-lg mb-2.5"
                         >
                           <Box className="gap-4">
                             <Text

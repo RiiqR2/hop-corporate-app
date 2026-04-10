@@ -31,7 +31,7 @@ export const ModalBooking = ({ isOpen, handleClose, travel, user }: { isOpen: bo
     <Center className="h-auto w-[100%] bg-slate-800">
       <Modal isOpen={isOpen} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
         <ModalBackdrop />
-        <ModalContent className="rounded-[20px] bg-[#E1F5F3] w-[100%]">
+        <ModalContent className="rounded-[20px] bg-[#E3E1F5] w-[100%]">
           <ModalHeader>
             <Text fontSize={18} fontWeight={400} textColor={Colors.GRAY}>
               {t('booking.modal_hopper.modalTitle', { ns: 'booking' })}

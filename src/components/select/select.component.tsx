@@ -77,7 +77,7 @@ export const Select = (props: CustomFormControlProps) => {
   return (
     <FormControl className={customClassNames.formControl}>
       <FormControlLabel className={`${customClassNames.formControlLabel} gap-1`}>
-        <FormControlLabelText className={`font-semibold text-lg ${error ? 'text-[#9A0000]' : 'text-[#10524B]'} ${customClassNames.labelText}`}>
+        <FormControlLabelText className={`font-semibold text-lg ${error ? 'text-[#9A0000]' : 'text-[#130F52]'} ${customClassNames.labelText}`}>
           {label}
         </FormControlLabelText>
         {info?.length > 1 && (

@@ -598,7 +598,7 @@ export const Step1Booking = (props: Step1BookingProps) => {
 
                     setShowAddressActionsheet(false);
                   }}
-                  className="py-2.5 px-4 border-b border-[#9FE4DD] bg-white rounded-lg mb-2.5"
+                  className="py-2.5 px-4 border-b border-[#C6C2FA] bg-white rounded-lg mb-2.5"
                 >
                   <Box className="gap-4">
                     <Text

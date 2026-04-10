@@ -215,7 +215,7 @@ export default function Notifications() {
             return (
               <>
                 <HStack className="items-start space-x-4 gap-3">
-                  <View className="rounded-full bg-[#E1F5F3]">
+                  <View className="rounded-full bg-[#E3E1F5]">
                     <AvatarHopper
                       width={38}
                       height={38}

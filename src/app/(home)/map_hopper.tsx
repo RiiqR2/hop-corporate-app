@@ -180,7 +180,7 @@ export default function MapHopper() {
         </MapView>
       </>
       {!confirmed && (
-        <Fab placement="top left" onPress={() => router.back()} className="bg-[#E1F5F3] w-[50px] h-[50px]" style={{ marginTop: insets.top }}>
+        <Fab placement="top left" onPress={() => router.back()} className="bg-[#E3E1F5] w-[50px] h-[50px]" style={{ marginTop: insets.top }}>
           <FabIcon as={ArrowLeftRounded} width={30} />
         </Fab>
       )}
@@ -191,7 +191,7 @@ export default function MapHopper() {
         onClose={() => setIsInfoOpen(false)}
         style={{ paddingHorizontal: 16, position: 'absolute', top: -100 }}
       >
-        <ModalContent className="rounded-[20px] bg-[#E1F5F3] w-[100%]">
+        <ModalContent className="rounded-[20px] bg-[#E3E1F5] w-[100%]">
           <ModalHeader className="flex-col">
             <Box className="flex-row items-center gap-2 justify-center w-full">
               <Booking width={28} height={28} />
@@ -340,7 +340,7 @@ export default function MapHopper() {
                 <Button
                   variant="ghost"
                   onPress={() => setIsPaymentPickerOpen(true)}
-                  className="rounded-full px-3 h-[44px] bg-[#E1F5F3] border"
+                  className="rounded-full px-3 h-[44px] bg-[#E3E1F5] border"
                   style={{ borderColor: '#dfd9f7' }}
                 >
                   <HStack className="items-center gap-1">
