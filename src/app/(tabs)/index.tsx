@@ -133,6 +133,22 @@ export default function HomeScreen() {
     setIsModalOpen(false);
   };
 
+  const handleHoppyModalMoreInfo = (travelId?: string) => {
+    if (!travelId) return;
+
+    setShowHoppyModal(false);
+
+    setTimeout(() => {
+      router.navigate({
+        pathname: '/(booking)/[id]',
+        params: {
+          id: travelId,
+          fromBook: 'true',
+        },
+      });
+    }, 150);
+  };
+
   useEffect(() => {
     if (user && user.status != "ACTIVE") {
       router.replace(AuthRoutesLink.WAITING_VALIDATION);
@@ -179,7 +195,13 @@ export default function HomeScreen() {
       )}
       {isModalOpen && user!.role === userRoles.USER_HOPPER && <ModalBooking isOpen={isModalOpen} handleClose={handleClose} travel={travelData!} user={user} />}
       {showHoppyModal && user?.role! === userRoles.USER_PASSENGER && (
-        <ModalBook isOpen={showHoppyModal} handleClose={() => setShowHoppyModal(false)} travel={travelData!} user={user} />
+        <ModalBook
+          isOpen={showHoppyModal}
+          handleClose={() => setShowHoppyModal(false)}
+          onMoreInfo={handleHoppyModalMoreInfo}
+          travel={travelData!}
+          user={user}
+        />
       )}
     </View>
   );
