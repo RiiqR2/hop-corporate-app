@@ -24,11 +24,11 @@ import { formatCLP } from '@/src/utils/formatters/currency';
 export const ModalBook = (props: {
   isOpen: boolean;
   handleClose: VoidFunction;
-  onMoreInfo: (travelId: string) => void;
+  onMoreInfo: (travelId?: string) => void;
   travel: TravelNotification;
   user: User;
 }) => {
-  const { handleClose, onMoreInfo, travel, user } = props;
+  const { isOpen, handleClose, onMoreInfo, travel, user } = props;
   const { t } = useTranslation();
   const { data: userHopper } = useSWR('user/one', () => getUserById(travel?.metadata?.hopper.id));
 
@@ -38,7 +38,7 @@ export const ModalBook = (props: {
 
   return (
     <Center className="h-auto w-[100%] bg-slate-800">
-      <Modal isOpen={true} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
+      <Modal isOpen={isOpen} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
         <ModalBackdrop />
         <ModalContent className="rounded-[20px] bg-[#E3E1F5] w-[100%]">
           <ModalHeader className="justify-end">
