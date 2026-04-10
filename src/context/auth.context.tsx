@@ -7,19 +7,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { AppState, AppStateStatus, Alert } from 'react-native';
 import axiosInstance from '@/src/axios/axios.config';
-import { userRoles } from '@/src/utils/enum/role.enum';
 
-import useBackgroundLocation from '@/src/location/useBackgroundLocation';
-import {
-  setAuthToken,
-  flushPendingBatches,
-  sendLocationBatch,
-} from '@/src/services/location.api';
-import { getMyPresence, setMyPresence } from '@/src/services/presence.api';
-
-// === Tipos ===
 type Address = {
   address: string;
   latitude: number;
@@ -39,9 +28,6 @@ interface AuthContextType {
   updatePayload: (newData: Partial<PayloadState>) => void;
   clearLocation: () => void;
   location: { latitude: number; longitude: number } | null;
-  isOnline: boolean;
-  setIsOnline: React.Dispatch<React.SetStateAction<boolean>>; // legacy
-  setOnline: (next: boolean) => Promise<void>;                // usar en UI
   userRole: string | null;
 }
 
@@ -60,11 +46,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     hotel_info: { address: '', latitude: 0, longitude: 0 },
   });
 
-  const [isOnline, setIsOnline] = useState(false);
-
-  // BG solo si es HOPPER y Online
-  useBackgroundLocation(isOnline && userRole === userRoles.USER_HOPPER);
-
   const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
 
   const clearLocation = () => {
@@ -72,6 +53,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       user_info: { address: '', latitude: 0, longitude: 0 },
       hotel_info: { address: '', latitude: 0, longitude: 0 },
     });
+    setLocation(null);
   };
 
   const updatePayload = (newData: Partial<PayloadState>) => {
@@ -85,20 +67,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       await AsyncStorage.removeItem('auth_token');
       setToken(null);
-      setAuthToken(null);
       setUserRole(null);
-      setIsOnline(false);
+      setLocation(null);
       setState({
         user_info: { address: '', latitude: 0, longitude: 0 },
         hotel_info: { address: '', latitude: 0, longitude: 0 },
       });
-      // no llamamos presence aquí; sesión inválida
     } catch (error) {
       console.error('Error al limpiar datos:', error);
     }
   };
 
-  // Carga inicial del token y rol
   useEffect(() => {
     (async () => {
       try {
@@ -112,12 +91,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } catch {
           bearer = saved;
         }
+
         if (!bearer) {
           await handleClearToken();
           return;
         }
-
-        setAuthToken(bearer);
 
         try {
           const me = await axiosInstance.get('/user/logged').then((r) => r.data);
@@ -132,20 +110,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     })();
   }, []);
 
-  // Mantener el token en el cliente de ubicaciones
-  useEffect(() => {
-    setAuthToken(token ?? null);
-  }, [token]);
-
-  // Intentar vaciar cola de ubicaciones pendientes al iniciar
-  useEffect(() => {
-    flushPendingBatches().catch(() => {});
-  }, []);
-
   const handleSetToken = async (newToken: string) => {
     await AsyncStorage.setItem('auth_token', JSON.stringify({ token: newToken }));
     setToken(newToken);
-    setAuthToken(newToken);
 
     try {
       const me = await axiosInstance.get('/user/logged').then((r) => r.data);
@@ -155,104 +122,37 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  // Estado inicial de online: SIEMPRE false tras login, y sincroniza backend
   useEffect(() => {
-    (async () => {
-      if (!token || !userRole) return;
-      // Solo HOPPER maneja online
-      if (userRole !== userRoles.USER_HOPPER) {
-        setIsOnline(false);
-        return;
-      }
-      const presence = await getMyPresence();
-      setIsOnline(presence?.online?? false);
-    })();
-  }, [token, userRole]);
+    if (!token) return;
 
-  // Watcher en foreground solo para HOPPER activo
-  useEffect(() => {
-    if (userRole !== userRoles.USER_HOPPER || !token || !isOnline) return;
-
-    let subscription: Location.LocationSubscription | null = null;
+    let isMounted = true;
 
     (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
 
-      if (status === 'granted') {
+        if (status !== 'granted') {
+          if (isMounted) setLocation(null);
+          return;
+        }
+
         const loc = await Location.getCurrentPositionAsync({});
-        const { latitude, longitude } = loc.coords;
-        setLocation({ latitude, longitude });
-
-        subscription = await Location.watchPositionAsync(
-          {
-            accuracy: Location.Accuracy.High,
-            timeInterval: 10000,
-            distanceInterval: 10,
-          },
-          async (loc) => {
-            try {
-              await sendLocationBatch(
-                [
-                  {
-                    lat: loc.coords.latitude,
-                    lon: loc.coords.longitude,
-                    accuracy_m: loc.coords.accuracy ?? undefined,
-                    speed_mps: loc.coords.speed ?? undefined,
-                    heading_deg: loc.coords.heading ?? undefined,
-                    ts_device: new Date(loc.timestamp).toISOString(),
-                    source: 'fg',
-                  },
-                ],
-                token ?? undefined
-              );
-            } catch {
-              // silencio
-            }
-          }
-        );
-      } else {
-        console.warn('Permiso de ubicación denegado');
-        setLocation(null);
-        clearLocation();
+        if (isMounted) {
+          setLocation({
+            latitude: loc.coords.latitude,
+            longitude: loc.coords.longitude,
+          });
+        }
+      } catch (error) {
+        console.error('Error obteniendo ubicación actual:', error);
+        if (isMounted) setLocation(null);
       }
     })();
 
     return () => {
-      subscription?.remove();
+      isMounted = false;
     };
-  }, [isOnline, userRole, token]);
-
-  // Apagar si el permiso BG se revoca (al volver a la app)
-  useEffect(() => {
-    const sub = AppState.addEventListener('change', async (s: AppStateStatus) => {
-      if (s !== 'active') return;
-      if (!isOnline || userRole !== userRoles.USER_HOPPER) return;
-      const bg = await Location.getBackgroundPermissionsAsync();
-      if (bg.status !== 'granted') {
-        setIsOnline(false);
-        try { await setMyPresence(false); } catch {}
-        Alert.alert('Ubicación en 2º plano desactivada', 'Se apagó tu estado Activo.');
-      }
-    });
-    return () => sub.remove();
-  }, [isOnline, userRole]);
-
-  // API para la UI: encender/apagar y persistir
-  const setOnline = async (next: boolean) => {
-    if (userRole !== userRoles.USER_HOPPER) {
-      setIsOnline(false);
-      return;
-    }
-    const prev = isOnline;
-    setIsOnline(next); // optimista
-    try {
-      await setMyPresence(next);
-    } catch (error) {
-      console.log(error)
-      setIsOnline(prev);
-      Alert.alert('No se pudo actualizar tu estado', 'Intenta nuevamente.');
-    }
-  };
+  }, [token]);
 
   return (
     <AuthContext.Provider
@@ -264,9 +164,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         updatePayload,
         location,
         clearLocation,
-        isOnline,
-        setIsOnline, // legacy
-        setOnline,   // usar en la UI
         userRole,
       }}
     >

@@ -75,7 +75,7 @@ export default function HomeScreen() {
     }).start();
   };
 
-  const socket = useSocket('http://192.168.1.4:3000/');
+  const socket = useSocket('http://192.168.1.10:3000/');
 
   useEffect(() => {
     if (!socket || !user?.id) return;

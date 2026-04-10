@@ -11,6 +11,7 @@ import { validationSchema } from '@/src/utils/schemas/booking.schema';
 import { Button } from '../button/button.component';
 import Input from '../input/input.component';
 import { PhoneNumber } from '../phone-number/phone-number.component';
+import { useMe } from '@/src/hooks';
 import { Select } from '../select/select.component';
 import { Text } from '../text/text.component';
 import { VStack } from '../ui/vstack';
@@ -18,7 +19,7 @@ import { VStack } from '../ui/vstack';
 export const Step2Booking = (props: { setStepper: React.Dispatch<React.SetStateAction<number>>; updateBookingData: any; data: BookingData }) => {
   const { setStepper, updateBookingData, data } = props;
   const { t } = useTranslation();
-
+  const { user } = useMe();
   const schema = validationSchema(t);
 
   return (
@@ -35,9 +36,8 @@ export const Step2Booking = (props: { setStepper: React.Dispatch<React.SetStateA
 
       <Formik
         initialValues={{
-          fullName: data?.fullName || '',
-          contact: data?.contact || '',
-          roomNumber: data?.roomNumber || '',
+          fullName: `${user?.userInfo?.firstName} ${user?.userInfo?.lastName}`,
+          contact: user?.userInfo?.phone,
           numberOfPassengers: data?.numberOfPassengers || 1,
           numberOfLuggages: data?.numberOfLuggages || 0,
           countryCode: data.countryCode || '+56',
@@ -63,6 +63,7 @@ export const Step2Booking = (props: { setStepper: React.Dispatch<React.SetStateA
                   onChangeText={handleChange('fullName')}
                   value={values.fullName}
                   placeholder=""
+                  editable={false}
                   error={touched.fullName && errors.fullName}
                   touched={touched.fullName}
                 />
@@ -82,17 +83,6 @@ export const Step2Booking = (props: { setStepper: React.Dispatch<React.SetStateA
                   keyboardType="number-pad"
                   handleChangeCode={handleChange('countryCode')}
                   phoneNumber={`${values.countryCode}`}
-                />
-                <Input
-                  label={t('home.map_home.second_sheet.fields.room.label', {
-                    ns: 'home',
-                  })}
-                  onBlur={handleBlur('roomNumber')}
-                  onChangeText={handleChange('roomNumber')}
-                  value={values.roomNumber}
-                  placeholder=""
-                  error={touched.roomNumber && errors.roomNumber}
-                  touched={touched.roomNumber}
                 />
                 <Select
                   label={t('home.map_home.second_sheet.fields.passengers.label', {

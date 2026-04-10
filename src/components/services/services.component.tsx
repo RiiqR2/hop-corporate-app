@@ -23,7 +23,7 @@ export const Services = () => {
           onPress={() =>
             router.push({
               pathname: HomeRoutesLink.MAP_HOME,
-              params: { type: travelTypeValues.PROGRAMED },
+              params: { type: travelTypeValues.FROM_OFFICE },
             })
           }
           className="flex-1 items-center"
@@ -37,7 +37,7 @@ export const Services = () => {
           onPress={() =>
             router.push({
               pathname: HomeRoutesLink.MAP_HOME,
-              params: { type: travelTypeValues.PROGRAMED },
+              params: { type: travelTypeValues.TO_OFFICE },
             })
           }
           className="flex-1 items-center"

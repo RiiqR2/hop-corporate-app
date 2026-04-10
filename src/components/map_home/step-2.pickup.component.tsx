@@ -17,14 +17,14 @@ import { PhoneNumber } from '../phone-number/phone-number.component';
 import { Select } from '../select/select.component';
 import { Text } from '../text/text.component';
 import { VStack } from '../ui/vstack';
+import { useMe } from '@/src/hooks';
 
 export const Step2BookingPickup = (props: { setStepper: React.Dispatch<React.SetStateAction<number>>; updateBookingData: any; data: BookingData }) => {
   const params = useRoute().params as { type: string };
   const { setStepper, updateBookingData, data } = props;
   const { t } = useTranslation();
-
+  const { user } = useMe();
   const schema = params.type === travelTypeValues.PICKUP ? validationSchemaPickup(t) : validationSchema(t);
-
   return (
     <Pressable
       style={{
@@ -39,10 +39,8 @@ export const Step2BookingPickup = (props: { setStepper: React.Dispatch<React.Set
 
       <Formik
         initialValues={{
-          fullName: data?.fullName || '',
-          contact: data?.contact || '',
-          airline: data?.airline || '',
-          flightNumber: data?.flightNumber || '',
+          fullName: `${user?.userInfo?.firstName} ${user?.userInfo?.lastName}`,
+          contact: user?.userInfo?.phone,
           numberOfPassengers: data?.numberOfPassengers || 1,
           numberOfLuggages: data?.numberOfLuggages || 0,
           countryCode: '+56',
@@ -88,19 +86,6 @@ export const Step2BookingPickup = (props: { setStepper: React.Dispatch<React.Set
                     keyboardType="number-pad"
                     handleChangeCode={handleChange('countryCode')}
                     phoneNumber={values.countryCode}
-                  />
-                  <Input
-                    label={t('home.map_home.second_sheet.fields.flightNumber.label', {
-                      ns: 'home',
-                    })}
-                    onBlur={handleBlur('flightNumber')}
-                    onChangeText={(text: string) => {
-                      handleChange('flightNumber')(text);
-                    }}
-                    value={values.flightNumber}
-                    placeholder=""
-                    error={touched.flightNumber && errors.flightNumber}
-                    touched={touched.flightNumber}
                   />
                   <Select
                     label={t('home.map_home.second_sheet.fields.passengers.label', {

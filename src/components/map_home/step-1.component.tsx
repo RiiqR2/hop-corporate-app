@@ -63,7 +63,13 @@ export const Step1Booking = (props: Step1BookingProps) => {
   const [time, setTime] = useState<Date | null>(null);
   const [type, setType] = useState<'date' | 'time'>('date');
   const [showCalendar, setShowCalendar] = useState(false);
-  const fixedTypes = ["PICKUP", "DROPOFF"];
+
+
+  const isFromOffice = params.type === 'FROM_OFFICE';
+  const isToOffice = params.type === 'TO_OFFICE';
+  const isProgrammed = params.type === 'PROGRAMED';
+  const isInstant = params.type === 'INSTANT';
+  const fixedTypes = ['FROM_OFFICE', 'TO_OFFICE'];
 
   const [fixedTravelOptions, setFixedTravelOptions] = useState<FixedDestination[]>([]);
   const [selectedFixedDestination, setSelectedFixedDestination] = useState<FixedDestination | null>(null);
@@ -98,15 +104,7 @@ export const Step1Booking = (props: Step1BookingProps) => {
   }
 }, [fixedTravelOptions, dataFormulary?.destination?.address]);
 
-useEffect(() => {
-  if (
-    params.type === "DROPOFF" &&
-    selectOptions.length > 0 &&
-    !selectedFixedDestination // para evitar que se dispare si ya hay uno seleccionado
-  ) {
-    handleSelectDestination(selectOptions[0].value!);
-  }
-}, [selectOptions, params.type]);
+
 
   useEffect(() => {
     if (!fixedTypes.includes(params.type)) return;
@@ -234,33 +232,47 @@ useEffect(() => {
     updateBookingData((prev: BookingData) => {
       const current = prev.currentLocation ?? {};
       const destination = prev.destination ?? {};
+      let nextCurrentLocation = current;
 
-      destination.latitude = destinityAddress.length > 1 ? destinityLocation.latitude : (destination.latitude ?? Number(dataFormulary?.destination.latitude));
-      destination.longitude = destinityAddress.length > 1 ? destinityLocation.longitude : (destination.longitude ?? Number(dataFormulary?.destination.longitude));
-      destination.address = destinityAddress.length > 1 ? destinityAddress : (destination.address ?? dataFormulary?.destination.address);
+      if (isFromOffice) {
+        nextCurrentLocation = {
+          latitude: current.latitude ?? Number(user?.company?.companyLocation?.lat ?? user?.userInfo.hotel_location?.lat ?? 0),
+          longitude: current.longitude ?? Number(user?.company?.companyLocation?.lng ?? user?.userInfo.hotel_location?.lng ?? 0),
+          address: current.address ?? user?.company?.name ?? user?.userInfo.hotel_name ?? '',
+        };
+      } else {
+        nextCurrentLocation = {
+          latitude: addressName? Number(addressLocation.latitude): (current.latitude ?? null),
+          longitude: addressName? Number(addressLocation.longitude): (current.longitude ?? null),
+          address: addressName? addressName: (current.address ?? ''),
+        };
+      }
       return {
         ...prev,
-        currentLocation: {
-          latitude: addressName ? Number(addressLocation.latitude) : (current.latitude ?? Number(user?.userInfo.hotel_location?.lat)),
-          longitude: addressName ? Number(addressLocation.longitude) : (current.longitude ?? Number(user?.userInfo.hotel_location?.lng)),
-          address: addressName ? addressName : (current.address ?? user?.userInfo.hotel_name),
-        },
-          destination,
+        currentLocation: nextCurrentLocation,
+        destination,
       };
     });
 
-    setStepper(3);
+    setStepper(2);
   };
 
   const setCurrentLocation = () => {
     updateBookingData((prev: BookingData) => {
       const current = prev.currentLocation ?? {};
+
       return {
         ...prev,
         currentLocation: {
-          latitude: addressName ? Number(addressLocation.latitude) : (current.latitude ?? Number(user?.userInfo.hotel_location?.lat)),
-          longitude: addressName ? Number(addressLocation.longitude) : (current.longitude ?? Number(user?.userInfo.hotel_location?.lng)),
-          address: addressName ? addressName : (current.address ?? user?.userInfo.hotel_name),
+          latitude: addressName
+            ? Number(addressLocation.latitude)
+            : (current.latitude ?? null),
+          longitude: addressName
+            ? Number(addressLocation.longitude)
+            : (current.longitude ?? null),
+          address: addressName
+            ? addressName
+            : (current.address ?? ''),
         },
       };
     });
@@ -282,9 +294,8 @@ useEffect(() => {
 
   const isDestinationValid = Boolean(dataFormulary.destination?.address?.length || destinityAddress.length > 1);
 
-  const dates = Boolean(date || (formattedDate && params.type !== 'PICKUP' && params.type !== 'DROPOFF'));
-
-  const times = Boolean(time || (formattedTime && params.type !== 'PICKUP' && params.type !== 'DROPOFF'));
+  const dates = Boolean(date || formattedDate);
+  const times = Boolean(time || formattedTime);
 
   useEffect(() => {
     if (!addressLocation || !addressName) return;
@@ -402,42 +413,50 @@ useEffect(() => {
             })}
             leftIcon
             icon={Send}
-            value={addressName ? addressName : dataFormulary.currentLocation.address}
+            value={addressName || dataFormulary.currentLocation.address || ''}
             editable={false}
-            pressable={true}
+            pressable={!isFromOffice}
             onPress={() => {
+              if (isFromOffice) return;
               setShowAddressActionsheet(true);
               setTypeOfAddress('current');
             }}
-            multiline={addressName.trim().length > 25 ? true : false}
+            multiline={Boolean((addressName || dataFormulary.currentLocation.address || '').trim().length > 25)}
           />
 
-          { params.type != "PICKUP" && params.type != "DROPOFF" && fixedTypes.includes(params.type) ? (
-            <Select
-              label=''
-              placeholder={t('home.booking.destinity_placeholder', { ns: 'home' })}
-              options={selectOptions}
-              onSelect={(val) => handleSelectDestination(val)}
-              value={selectedFixedDestination?.name ?? ''}
-            />
-          ) : (
+          {isToOffice ? (
             <Input
               label=""
-              onBlur={() => { }}
-              onChangeText={() => { }}
+              onBlur={() => {}}
+              onChangeText={() => {}}
               placeholder={t('home.map_home.first_sheet.fields.destination', {
                 ns: 'home',
               })}
               leftIcon
               icon={LocationFilled}
-              value={destinityAddress ? destinityAddress : dataFormulary?.destination.address}
+              value={dataFormulary?.destination.address || ''}
+              editable={false}
+              pressable={false}
+              multiline={Boolean((dataFormulary?.destination.address || '').trim().length > 25)}
+            />
+          ) : (
+            <Input
+              label=""
+              onBlur={() => {}}
+              onChangeText={() => {}}
+              placeholder={t('home.map_home.first_sheet.fields.destination', {
+                ns: 'home',
+              })}
+              leftIcon
+              icon={LocationFilled}
+              value={destinityAddress || dataFormulary?.destination.address || ''}
               editable={false}
               pressable={true}
               onPress={() => {
                 setShowAddressActionsheet(true);
                 setTypeOfAddress('destinity');
               }}
-              multiline={destinityAddress.trim().length > 25 ? true : false}
+              multiline={Boolean((destinityAddress || dataFormulary?.destination.address || '').trim().length > 25)}
             />
           )}
 
@@ -543,14 +562,38 @@ useEffect(() => {
                 <Pressable
                   onPress={() => {
                     setSelectedLocation(item);
+
                     if (typeOfAddress === 'current') {
+                      const formattedAddress = `${item.name.split(',')[0]},${item.name.split(',')[1]}.`;
+
                       setAddressLocation(item);
-                      setCurrentLocation();
-                      setAddressName(`${item.name.split(',')[0]},${item.name.split(',')[1]}.`);
+                      setAddressName(formattedAddress);
+
+                      updateBookingData((prev: BookingData) => ({
+                        ...prev,
+                        currentLocation: {
+                          latitude: Number(item.latitude),
+                          longitude: Number(item.longitude),
+                          address: formattedAddress,
+                        },
+                      }));
                     } else {
-                      setDestinityLocation(item);
-                      setDestinationLocation();
-                      setDestinityAddress(`${item.name.split(',')[0]},${item.name.split(',')[1]}.`);
+                      const formattedAddress = `${item.name.split(',')[0]},${item.name.split(',')[1]}.`;
+
+                      setDestinityLocation({
+                        latitude: Number(item.latitude),
+                        longitude: Number(item.longitude),
+                      });
+                      setDestinityAddress(formattedAddress);
+
+                      updateBookingData((prev: BookingData) => ({
+                        ...prev,
+                        destination: {
+                          latitude: Number(item.latitude),
+                          longitude: Number(item.longitude),
+                          address: formattedAddress,
+                        },
+                      }));
                     }
 
                     setShowAddressActionsheet(false);

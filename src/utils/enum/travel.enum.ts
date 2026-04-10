@@ -8,7 +8,7 @@ export enum travelStatus {
 
 export enum travelTypeValues {
   PROGRAMED = 'PROGRAMED',
-  PICKUP = 'PICKUP',
-  DROPOFF = 'DROPOFF',
   INSTANT = 'INSTANT',
+  FROM_OFFICE = 'FROM_OFFICE',
+  TO_OFFICE = 'TO_OFFICE',
 }

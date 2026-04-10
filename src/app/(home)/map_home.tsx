@@ -26,10 +26,10 @@ export default function MapHome() {
   const params = useRoute().params as { type: string };
   const route = useRoute().params as { time: string; date: string };
   const { address, getAddress, selectedLocation } = useGetAddressFromCoordinates();
+  const { address: currentLocationAddress, getAddress: getCurrentLocationAddress } = useGetAddressFromCoordinates();
   const { location } = useAuth();
   const { t } = useTranslation();
   const { user } = useMe();
-
   const [stepper, setStepper] = useState(1);
   const [openBottomSheet, setOpenBottomSheet] = useState(false);
 
@@ -59,7 +59,7 @@ export default function MapHome() {
     currentLocation: {
       latitude: location?.latitude || null,
       longitude: location?.longitude || null,
-      address: user?.userInfo.hotel_name,
+      address: '',
     },
     fullName: '',
     contact: '',
@@ -82,56 +82,57 @@ export default function MapHome() {
   });
 
   useEffect(() => {
+    if (!location?.latitude || !location?.longitude) return;
+
+    getCurrentLocationAddress(location.latitude, location.longitude);
+  }, [location]);
+
+  useEffect(() => {
     if (selectedLocation?.latitude && selectedLocation?.longitude) return;
 
-    if (type === travelTypeValues.PICKUP) {
+    if (type === travelTypeValues.FROM_OFFICE) {
       setBookingData((prevData) => ({
         ...prevData,
         currentLocation: {
-          latitude: AIRPORT_CHILE.latitude,
-          longitude: AIRPORT_CHILE.longitude,
-          address: AIRPORT_CHILE.name,
-        },
-        destination: {
-          latitude: user?.userInfo.hotel_location?.lat || null,
-          longitude: user?.userInfo.hotel_location?.lng || null,
-          address: user?.userInfo.hotel_name || '',
+          latitude: user?.company?.companyLocation?.lat || user?.userInfo.hotel_location?.lat || null,
+          longitude: user?.company?.companyLocation?.lng || user?.userInfo.hotel_location?.lng || null,
+          address: user?.company?.name || user?.userInfo.hotel_name || '',
         },
       }));
-    } else if (type === travelTypeValues.DROPOFF) {
+    } else if (type === travelTypeValues.TO_OFFICE) {
       setBookingData((prevData) => ({
         ...prevData,
         currentLocation: {
-          latitude: user?.userInfo.hotel_location?.lat || null,
-          longitude: user?.userInfo.hotel_location?.lng || null,
-          address: user?.userInfo.hotel_name,
+          latitude: location?.latitude || null,
+          longitude: location?.longitude || null,
+          address: currentLocationAddress || 'Ubicación actual',
         },
         destination: {
-          latitude: AIRPORT_CHILE.latitude,
-          longitude: AIRPORT_CHILE.longitude,
-          address: AIRPORT_CHILE.name,
+          latitude: user?.company?.companyLocation?.lat || user?.userInfo.hotel_location?.lat || null,
+          longitude: user?.company?.companyLocation?.lng || user?.userInfo.hotel_location?.lng || null,
+          address: user?.company?.name || user?.userInfo.hotel_name || '',
         },
       }));
     } else if (type === travelTypeValues.PROGRAMED) {
       setBookingData((prevData) => ({
         ...prevData,
         currentLocation: {
-          latitude: user?.userInfo.hotel_location?.lat || null,
-          longitude: user?.userInfo.hotel_location?.lng || null,
-          address: user?.userInfo.hotel_name,
+          latitude: location?.latitude || null,
+          longitude: location?.longitude || null,
+          address: currentLocationAddress || 'Ubicación actual',
         },
       }));
     } else if (type === travelTypeValues.INSTANT) {
       setBookingData((prevData) => ({
         ...prevData,
         currentLocation: {
-          latitude: user?.userInfo.hotel_location?.lat || null,
-          longitude: user?.userInfo.hotel_location?.lng || null,
-          address: user?.userInfo.hotel_name,
+          latitude: location?.latitude || null,
+          longitude: location?.longitude || null,
+          address: currentLocationAddress || 'Ubicación actual',
         },
       }));
     }
-  }, []);
+  }, [type, location, currentLocationAddress, user, selectedLocation]);
 
   useEffect(() => {
     if (!selectedLocation) return;

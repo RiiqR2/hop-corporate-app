@@ -1,7 +1,7 @@
 export const METAMAP_API_URL = "https://signup.metamap.com/";
 export const METAMAP_API_KEY = "686346b0716d906abf919d53";
 export const METAMAP_FLOW_ID = "686346b0716d90b218919d52";
-export const API_URL = "http://192.168.1.4:3000/api";
+export const API_URL = "http://192.168.1.10:3000/api";
 export const PUBLIC_MAPBOX_API_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places";
 export const PUBLIC_MAPBOX_DIRECTIONS_API_URL = "https://api.mapbox.com/directions/v5/mapbox/driving";
 export const MAPBOX_ACCESS_TOKEN = process.env.EXPO_PUBLIC_API_URL_MAP;
