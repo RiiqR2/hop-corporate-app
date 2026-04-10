@@ -35,6 +35,7 @@ export default function HomeScreen() {
   const { user } = useMe();
 
   const [showHoppyModal, setShowHoppyModal] = useState(false);
+  const [pendingTravelId, setPendingTravelId] = useState<string | null>(null);
   const { setIsDrawerOpen } = useDrawer();
   const { data: notifications } = useSWR('/notifications/', () => getNotifications(user?.id!), {
     revalidateOnMount: true,
@@ -136,18 +137,26 @@ export default function HomeScreen() {
   const handleHoppyModalMoreInfo = (travelId?: string) => {
     if (!travelId) return;
 
+    setPendingTravelId(travelId);
     setShowHoppyModal(false);
+  };
 
-    setTimeout(() => {
-      router.navigate({
+  useEffect(() => {
+    if (showHoppyModal || !pendingTravelId) return;
+
+    const timeout = setTimeout(() => {
+      router.push({
         pathname: '/(booking)/[id]',
         params: {
-          id: travelId,
+          id: pendingTravelId,
           fromBook: 'true',
         },
       });
-    }, 150);
-  };
+      setPendingTravelId(null);
+    }, 350);
+
+    return () => clearTimeout(timeout);
+  }, [showHoppyModal, pendingTravelId]);
 
   useEffect(() => {
     if (user && user.status != "ACTIVE") {
