@@ -212,14 +212,6 @@ export default function RootLayout() {
     setupI18n();
   }, []);
 
-  // Fallback: si en 3s no se ocultó el splash, ocúltalo igual
-  useEffect(() => {
-    const t = setTimeout(() => {
-      SplashScreen.hideAsync().catch(() => {});
-    }, 3000);
-    return () => clearTimeout(t);
-  }, []);
-
   // === autenticación “verdadera” para el LocationGate ===
   const isAuthenticated = useMemo(
     () => Boolean(token?.token),
