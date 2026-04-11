@@ -12,6 +12,7 @@ import CalendarActive from "@/assets/svg/calendar-active.svg";
 import CalendarWhite from "@/assets/svg/calendar-white.svg";
 import Calendar from "@/assets/svg/calendar.svg";
 import Car from "@/assets/svg/car.svg";
+import CarIcon from "@/assets/svg/caricon.svg";
 import CircleArrowRight from "@/assets/svg/circle-arrow-right.svg";
 import ClockActive from "@/assets/svg/clock-active.svg";
 import ClockCustom from "@/assets/svg/clock-custom.svg";
@@ -94,6 +95,7 @@ export {
     CalendarActive,
     CalendarWhite,
     Car,
+    CarIcon,
     CircleArrowRight,
     Clock,
     ClockActive,

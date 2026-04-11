@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, RefreshControl } from 'react-native-gesture-handler';
 import useSWR from 'swr';
 import { router, useNavigation } from 'expo-router';
-import { CalendarWhite, ClockCustom, DolarCircle, Routing, Ticket, UserSquare } from '@/assets/svg';
+import { CalendarWhite, ClockCustom, DolarCircle, Routing, Ticket, UserSquare, CarIcon } from '@/assets/svg';
 import { Header, NotBookings } from '@/src/components';
 import { Text } from '@/src/components/text/text.component';
 import { Badge } from '@/src/components/ui/badge';
@@ -187,8 +187,8 @@ export default function History() {
 
             const translatedStatus = travelTranslated[item.type as travelTypeValues] || item.type;
             const currentStatus = travelStatusTranslated[item.status] || item.status;
-            const commission =
-              user?.role === userRoles.USER_HOPPER ? item.hopperCommission : item.hoppyCommission;
+            const commission = user?.role === userRoles.USER_HOPPER ? item.hopperCommission : item.hoppyCommission;
+            const hopperName = item?.hopper?.userInfo?.firstName + ' ' + item?.hopper?.userInfo?.lastName;
 
             return (
               <Pressable
@@ -229,9 +229,9 @@ export default function History() {
                         </Text>
                       </Box>
                       <Box className="flex-row gap-2">
-                        <UserSquare />
+                        <CarIcon />
                         <Text fontSize={16} fontWeight={400} textColor={Colors.SECONDARY}>
-                          {item.passengerName}
+                          {hopperName}
                         </Text>
                       </Box>
                       <Box className="flex-row gap-2">
@@ -242,13 +242,6 @@ export default function History() {
                       </Box>
                     </Box>
                   </HStack>
-
-                  <Badge style={styles.badge}>
-                    <DolarCircle />
-                    <Text fontSize={18} fontWeight={600} textColor={Colors.DARK_PURPLE}>
-                      {formatCLP(Number(commission ?? 0))}
-                    </Text>
-                  </Badge>
                 </Card>
               </Pressable>
             );
