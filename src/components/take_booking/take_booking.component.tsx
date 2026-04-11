@@ -155,18 +155,19 @@ export const TakeABooking = () => {
             value={formattedTime}
           />
         </HStack>
+        <View style={styles.destinationInputContainer}>
           <Input
             label=""
             onBlur={() => {}}
             onChangeText={() => {}}
             placeholder={t('home.booking.destinity_placeholder', { ns: 'home' })}
-            stretch
             leftIcon
             icon={LocationFilled}
             editable={false}
             pressable={true}
             onPress={handlePress}
           />
+        </View>
       </View>
       {showCalendar && (
         <Calendar
@@ -195,5 +196,8 @@ const styles = StyleSheet.create({
   },
   hour: {
     marginTop: 12,
+  },
+  destinationInputContainer: {
+    width: '100%',
   },
 });
