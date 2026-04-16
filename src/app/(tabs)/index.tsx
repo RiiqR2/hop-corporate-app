@@ -105,7 +105,6 @@ export default function HomeScreen() {
   const renderContent =
     user?.role === userRoles.USER_PASSENGER ? (
       <Container extraHeight={true} style={{ borderBottomStartRadius: 20 }}>
-        <Balance id={user?.id} />
         <TakeABooking />
         <Services />
         <Booking />

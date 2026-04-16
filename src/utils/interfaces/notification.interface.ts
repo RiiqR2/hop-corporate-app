@@ -14,7 +14,7 @@ export interface TravelNotification {
   metadata: {
     payment: number;
     hopper: User;
-    hoppy: User;
+    passenger: User;
     travel: Travel;
   };
   alreadySeen: boolean;
@@ -110,7 +110,7 @@ export interface Travel {
   to: Address;
   type: string;
   vehicleType: string;
-  hoppyCommission: number;
+  passengerCommission: number;
   totalPassengers: string;
   totalSuitCases: string;
   distance: number;

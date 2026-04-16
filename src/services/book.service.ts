@@ -26,7 +26,7 @@ export const createTravel = async (
 
 export const getTravels = async (
   id?: string,
-  type?: "hoppy" | "hopper",
+  type?: "passenger",
   booking?: boolean,
   history?: boolean,
   page: number = 0,
@@ -36,8 +36,7 @@ export const getTravels = async (
 ): Promise<BookingPagination> => {
   try {
     const queryParams = new URLSearchParams({
-      ...(type === "hoppy" && { hoppy: id }),
-      ...(type === "hopper" && { hopper: id }),
+      ...(type === "passenger" && { passenger: id }),
       ...(booking && { booking: String(booking) }),
       ...(history && { history: String(history) }),
       ...(statusTravel && { status: String(statusTravel) }),
@@ -117,7 +116,7 @@ export const deleteTravel = async (id: string): Promise<any> => {
 
 export const getFrecuentAddress = async (id: string): Promise<FrecuentAddressInterface> => {
   try {
-    const response: AxiosResponse<FrecuentAddressInterface> = await axiosInstance.get(`/travels/frecuentAddress?hoppy=${id}`);
+    const response: AxiosResponse<FrecuentAddressInterface> = await axiosInstance.get(`/travels/frecuentAddress?passenger=${id}`);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -204,6 +203,18 @@ export const getPendingComission = async (id: string): Promise<{ totalcommission
 export const getComissions = async (id: string, year: number, month: number): Promise<CommissionData> => {
   try {
     const response: AxiosResponse<CommissionData> = await axiosInstance.get(`/travels/commissions/${id}?year=${year}&month=${month}`);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw error.response || error;
+    }
+    throw error;
+  }
+};
+
+export const getCosts = async (id: string, year: number, month: number): Promise<CommissionData> => {
+  try {
+    const response: AxiosResponse<CommissionData> = await axiosInstance.get(`/travels/costs/${id}?year=${year}&month=${month}`);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

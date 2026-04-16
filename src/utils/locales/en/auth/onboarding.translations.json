@@ -4,6 +4,7 @@
     "welcome_text": "You can work with us\nby registering as",
     "hopper": "Driver",
     "hoppy": "Coordinator",
+    "passenger": "Passenger",
     "hoppers_description": "Selected drivers receive notifications for reserved trips directly from corporate staff."
   },
   "second_item_carousel": {

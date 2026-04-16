@@ -16,7 +16,7 @@ export const useTravelBookings = (dataUser?: DataUser, page: number = 1) => {
       if (!dataUser) throw new Error("No user data");
       return getTravels(
         dataUser.id,
-        dataUser.role === userRoles.USER_HOPPER ? "hopper" : "hoppy",
+        'passenger',
         true,
         false,
         page

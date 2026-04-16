@@ -35,8 +35,8 @@ export default function Booking() {
   const [page, setPage] = useState(0);
   const [appendMode, setAppendMode] = useState(false);
 
-  const roleType = user?.role === userRoles.USER_HOPPER ? 'hopper' : 'hoppy';
-  const status = user?.role === userRoles.USER_HOPPER ? travelStatus.ACCEPT : undefined;
+  const roleType = 'passenger';
+  const status = undefined;
 
   const { data, isLoading } = useSWR(['/travels/booking', page], () => getTravels(user?.id, roleType, true, false, page, 10, status), {
     refreshInterval: 1000,

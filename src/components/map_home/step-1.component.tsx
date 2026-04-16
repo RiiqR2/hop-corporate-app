@@ -65,11 +65,11 @@ export const Step1Booking = (props: Step1BookingProps) => {
   const [showCalendar, setShowCalendar] = useState(false);
 
 
-  const isFromOffice = params.type === 'FROM_OFFICE';
+  const isFromOffice = ['FROM_OFFICE', 'FORM_OFFICE'].includes(params.type);
   const isToOffice = params.type === 'TO_OFFICE';
   const isProgrammed = params.type === 'PROGRAMED';
   const isInstant = params.type === 'INSTANT';
-  const fixedTypes = ['FROM_OFFICE', 'TO_OFFICE'];
+  const fixedTypes = ['FROM_OFFICE', 'FORM_OFFICE', 'TO_OFFICE'];
 
   const [fixedTravelOptions, setFixedTravelOptions] = useState<FixedDestination[]>([]);
   const [selectedFixedDestination, setSelectedFixedDestination] = useState<FixedDestination | null>(null);
@@ -462,7 +462,7 @@ export const Step1Booking = (props: Step1BookingProps) => {
 
         </VStack>
 
-        {!fixedTypes.includes(params.type) ? (
+        {!isToOffice ? (
           <><View className="mt-6">
             <Text fontSize={16} fontWeight={400} textColor={Colors.DARK_PURPLE}>
               {t('home.map_home.first_sheet.usual_destinations', {

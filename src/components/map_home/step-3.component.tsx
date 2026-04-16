@@ -88,7 +88,7 @@ export const Step3Booking = (props: { setStepper: React.Dispatch<React.SetStateA
         passengerAirline: dataPayload.airline,
         passengerFligth: dataPayload.flightNumber,
         paymentMethod: dataPayload.chargeToRoom? paymentMethod.COMPANY_CHARGE: paymentMethod.CARD,
-        hoppy: {
+        passenger: {
           id: user?.id!,
         },
         fixedDestination: {

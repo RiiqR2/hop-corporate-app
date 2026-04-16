@@ -45,7 +45,7 @@ export default function Booking() {
   const { travel, mutate: mutateTravel } = useTravelById(id);
 
   const { mutateBookings } = useTravelBookings();
-  const { user: userHoppy } = useUser(travel?.hoppy.id!);
+  const { user: userHoppy } = useUser(travel?.passenger?.id!);
 
   const travelTranslated = travelType(t);
 
@@ -354,7 +354,7 @@ export default function Booking() {
                     try {
                       await updateTravel(id, {
                         status: travelStatus.CANCELLED,
-                        hoppy: {
+                        passenger: {
                           id: user?.id,
                         },
                       });
