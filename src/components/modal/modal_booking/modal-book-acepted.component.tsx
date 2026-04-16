@@ -155,11 +155,10 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
               <Button
                 onPress={() => {
                   handleClose();
-                  router.replace('/');
                 }}
                 stretch
               >
-                {t('home.confirmation.go_home', { ns: 'home' })}
+                {t('home.confirmation.close', { ns: 'home' })}
               </Button>
               <Button
                 onPress={() => {

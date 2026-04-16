@@ -13,9 +13,9 @@ interface Travel {
   };
   hopperCommission: number;
   hopperCommissionsPaid: boolean;
-  hoppy: object;
-  hoppyCommission: number;
-  hoppyCommissionsPaid: boolean;
+  passenger: object;
+  passengerCommission: number;
+  passengerCommissionsPaid: boolean;
   id: string;
   passengerAirline: string;
   passengerContact: string;
@@ -82,6 +82,7 @@ interface Metadata {
 export enum notificationTypeValues {
   HOPPER_CANCELLED = 'HOPPER_CANCELLED',
   HOPPY_CANCELLED = 'HOPPY_CANCELLED',
+  PASSENGER_CANCELLED = 'PASSENGER_CANCELLED',
   USER_COMPLETE_TRAVEL = 'USER_COMPLETED_TRAVEL',
   HOPPER_ACCEPT_TRAVEL = 'HOPPER_ACCEPT_TRAVEL',
   COMMISSIONS = 'COMMISSIONS',

@@ -1,6 +1,7 @@
 {
   "title": "Wallet",
-  "total": "Total accumulated",
+  "total": "Total used",
   "prev_month": "Compared to the previous month",
-  "last_comissions": "Last Comissions"
+  "last_comissions": "Last Comissions",
+  "last_costs": "Last Costs"
 }

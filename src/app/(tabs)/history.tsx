@@ -35,7 +35,7 @@ export default function History() {
   const lastProcessedPageRef = useRef<number | null>(null);
 
   const roleType = useMemo(
-    () => (user?.role === userRoles.USER_HOPPER ? 'hopper' : 'hoppy'),
+    () => (user?.role === userRoles.USER_HOPPER ? 'hopper' : 'passenger'),
     [user?.role]
   );
 
@@ -187,7 +187,7 @@ export default function History() {
 
             const translatedStatus = travelTranslated[item.type as travelTypeValues] || item.type;
             const currentStatus = travelStatusTranslated[item.status] || item.status;
-            const commission = user?.role === userRoles.USER_HOPPER ? item.hopperCommission : item.hoppyCommission;
+            const commission = item.passengerCommission;
             const hopperName = item?.hopper?.userInfo?.firstName + ' ' + item?.hopper?.userInfo?.lastName;
 
             return (

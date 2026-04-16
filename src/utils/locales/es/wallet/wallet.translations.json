@@ -1,6 +1,7 @@
 {
   "title": "Billetera",
-  "total": "Total acumulado",
+  "total": "Total utilizado",
   "prev_month": "Comparado con el mes anterior",
-  "last_comissions": "Últimas comisiones"
+  "last_comissions": "Últimas comisiones",
+  "last_costs": "Últimos cargos"
 }

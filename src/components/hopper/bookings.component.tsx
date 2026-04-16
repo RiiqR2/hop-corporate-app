@@ -35,7 +35,7 @@ export const BookingsHopper = () => {
   const { user } = useMe();
 
 
-  const roleType = user?.role === userRoles.USER_HOPPER ? 'hopper' : 'hoppy';
+  const roleType = 'passenger';
   const status = selectedTab === 'requests' ? travelStatus.REQUEST : undefined;
   const type = selectedTab === 'bookings' ? roleType : undefined;
 

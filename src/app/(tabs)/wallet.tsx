@@ -17,7 +17,6 @@ import { scaleSize } from '@/src/helpers/scale-size';
 import { getComissions, getTravels } from '@/src/services/book.service';
 import { Colors } from '@/src/utils/constants/Colors';
 import { ProfileRoutesLink } from '@/src/utils/enum/profile.routes';
-import { userRoles } from '@/src/utils/enum/role.enum';
 import { travelStatus, travelTypeValues } from '@/src/utils/enum/travel.enum';
 import { BookingResponse } from '@/src/utils/interfaces/booking.interface';
 import 'dayjs/locale/en';
@@ -27,6 +26,7 @@ import localeData from 'dayjs/plugin/localeData';
 import { getLocales } from 'expo-localization';
 import { paymentStatus } from '@/src/utils/enum/payment.enum';
 import { BarChart, barDataItem } from 'react-native-gifted-charts';
+import { formatCLP } from '@/src/utils/formatters/currency';
 import { useMe } from '@/src/hooks';
 
 dayjs.extend(localeData);
@@ -48,12 +48,17 @@ export default function Wallet() {
 
   const { user } = useMe();
 
-  const { data: userComissions, mutate } = useSWR('/user/comissions', () => getComissions(user?.id!, currentYear, currentMonth + 1));
-
-  const { data, isLoading } = useSWR(['/travels/bookings/wallet', page], () =>
-    getTravels(user?.id, user?.role === userRoles.USER_HOPPER ? 'hopper' : 'hoppy', false, true, page, 10, travelStatus.END)
+  const { data: userComissions, mutate } = useSWR(
+    ['/user/comissions', user?.id, currentYear, currentMonth],
+    () => getComissions(user?.id!, currentYear, currentMonth + 1)
   );
 
+  const { data, isLoading } = useSWR(
+    ['/travels/bookings/wallet', user?.id, page],
+    () => getTravels(user?.id, 'passenger', false, true, page, 10, travelStatus.END)
+  );
+
+  console.log(userComissions)
   const handleMonthChange = async (direction: 'prev' | 'next') => {
     let newMonth = currentMonth + (direction === 'next' ? 1 : -1);
     let newYear = currentYear;
@@ -87,10 +92,13 @@ export default function Wallet() {
 
   const total = userComissions?.month.totalCommission || 0;
   const sections = 5;
-  const step = Math.ceil(total / sections);
+  const step = total > 0 ? Math.ceil(total / sections) : 1;
   const maxValue = step * sections;
 
-  const yAxisLabelTexts = Array.from({ length: sections + 1 }, (_, i) => `${((step * i) / 1000).toFixed(0)}k`);
+  const yAxisLabelTexts = Array.from(
+    { length: sections + 1 },
+    (_, i) => `${((step * i) / 1000).toFixed(0)}k`
+  );
 
   const renderItem = useCallback(({ item }: { item: BookingResponse }) => {
     const { date, time } = formattedDate(item.programedTo);
@@ -121,51 +129,52 @@ export default function Wallet() {
             height={24}
           />
           <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>
-            ${user?.role === userRoles.USER_HOPPER ? Number(item.hopperCommission).toFixed(2) : Number(item.hoppyCommission).toFixed(2)}
+            ${formatCLP(Number(item?.price ?? 0))}
           </Text>
         </Badge>
       </HStack>
     );
-  }, []);
+  }, [t]);
 
   const handleEndReached = () => {
     if (data?.pagination && data.pagination.page < data.pagination.totalPages - 1) {
-      setPage(page + 1);
+      setPage((prev) => prev + 1);
     }
   };
 
   useEffect(() => {
     navigator.setOptions({
-      header: () => <Header title={t('title', { ns: 'wallet' })} menu onPressMenu={() => router.push(ProfileRoutesLink.BANK_ACCOUNT)} />,
+      header: () => (
+        <Header
+          title={t('title', { ns: 'wallet' })}
+          menu
+          onPressMenu={() => router.push(ProfileRoutesLink.BANK_ACCOUNT)}
+        />
+      ),
     });
-  }, []);
+  }, [navigator, t]);
 
   useEffect(() => {
-    if (data?.result) {
-      setPage(0);
+    if (page === 0 && data?.result) {
+      setBookingDataPaginated(data.result);
+      return;
     }
-  }, [data?.result]);
 
-  useEffect(() => {
     if (data?.result) {
       setBookingDataPaginated((prevData) => {
-        const newData = [...prevData];
-        data.result.forEach((newItem: { id: string }) => {
-          const existingItemIndex = newData.findIndex((existingItem) => existingItem.id === newItem.id);
+        const newItems = data.result.filter(
+          (newItem: { id: string }) => !prevData.some((existingItem) => existingItem.id === newItem.id)
+        );
 
-          if (existingItemIndex !== -1) {
-            newData[existingItemIndex] = newItem;
-          } else {
-            newData.push(newItem);
-          }
-        });
-
-        const updatedData = newData.filter((item) => data.result.some((newItem: { id: string }) => newItem.id === item.id));
-
-        return updatedData;
+        return [...prevData, ...newItems];
       });
     }
-  }, [data?.result]);
+  }, [data?.result, page]);
+
+  useEffect(() => {
+    setPage(0);
+    setBookingDataPaginated([]);
+  }, [currentMonth, currentYear, user?.id]);
 
   return (
     <Container>
@@ -190,10 +199,10 @@ export default function Wallet() {
         </Box>
         <VStack className="items-center mt-7">
           <Text fontSize={32} fontWeight={600} textColor={Colors.DARK_PURPLE}>
-            ${userComissions?.month.totalCommission}
+            ${formatCLP(Number(userComissions?.month?.totalCommission ?? 0))}
           </Text>
         </VStack>
-        <View className="">
+        <View>
           <BarChart
             data={chartData}
             barWidth={30}
@@ -224,7 +233,7 @@ export default function Wallet() {
       </View>
       <Box className="mt-6">
         <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_PURPLE}>
-          {t('last_comissions', { ns: 'wallet' })}
+          {t('last_costs', { ns: 'wallet' })}
         </Text>
         <FlatList
           data={bookingDataPaginated}

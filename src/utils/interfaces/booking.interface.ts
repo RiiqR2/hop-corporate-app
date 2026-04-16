@@ -29,7 +29,7 @@ export interface BookingData {
   time: number | undefined;
   distance: number | undefined;
   price: number,
-  hoppyCommission: number,
+  passengerCommission: number,
   id: string;
   hopperId: string;
   fixedDestinationId?: string;
@@ -54,13 +54,13 @@ export interface BookingResponse {
   totalSuitCases: string;
   passengerAirline: string;
   passengerFligth: string;
-  hoppy: Hoppy;
+  passenger: Passenger;
   price: number;
   vehicleType: string;
   id: string;
-  hoppyCommission: number,
+  passengerCommission: number,
   passengerContactCountryCode: string;
-  hopperCommission: number,
+  passengerCommission: number,
   tollsCommission: number,
   hopper: User,
   appCommission: number;
@@ -77,7 +77,7 @@ export interface From {
   address: string;
 }
 
-export interface Hoppy {
+export interface Passenger {
   id: string;
 }
 
@@ -117,9 +117,9 @@ export interface BookingResponseNotification {
   totalSuitCases: string;
   passengerAirline: string;
   passengerFligth: string;
-  hoppy: User;
-  hoppyCommission: number;
-  hoppyCommissionsPaid: boolean;
+  passenger: User;
+  passengerCommission: number;
+  passengerCommissionsPaid: boolean;
   hopper: User;
   hopperCommission: number;
   hopperCommissionsPaid: boolean;
@@ -151,8 +151,8 @@ export interface CommissionData {
     totalCommission: any;
     weekStart: string;
     weekEnd: string;
-    totalHoppyCommission: number;
-    totalHopperCommission: number;
+    totalPassengerCommission: number;
+    totalPassengerCommission: number;
   }[];
 }
 

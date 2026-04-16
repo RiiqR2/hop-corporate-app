@@ -30,7 +30,7 @@ export const Booking = () => {
   const [bookingDataPaginated, setBookingDataPaginated] = useState<any[]>([]);
   const [isFetchingNextPage, setIsFetchingNextPage] = useState(false);
 
-  const roleType = user?.role === userRoles.USER_HOPPER ? 'hopper' : 'hoppy';
+  const roleType = 'passenger';
 
   const { data, isLoading } = useSWR(
     user?.id ? ['/travels/bookings', user.id, page] : null,
