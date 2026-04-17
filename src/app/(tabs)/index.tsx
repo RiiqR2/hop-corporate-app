@@ -35,6 +35,7 @@ export default function HomeScreen() {
   const { user } = useMe();
 
   const [showHoppyModal, setShowHoppyModal] = useState(false);
+  const [pendingTravelId, setPendingTravelId] = useState<string | null>(null);
   const { setIsDrawerOpen } = useDrawer();
   const { data: notifications } = useSWR('/notifications/', () => getNotifications(user?.id!), {
     revalidateOnMount: true,
@@ -132,6 +133,30 @@ export default function HomeScreen() {
     setIsModalOpen(false);
   };
 
+  const handleHoppyModalMoreInfo = (travelId?: string) => {
+    if (!travelId) return;
+
+    setPendingTravelId(travelId);
+    setShowHoppyModal(false);
+  };
+
+  useEffect(() => {
+    if (showHoppyModal || !pendingTravelId) return;
+
+    const timeout = setTimeout(() => {
+      router.push({
+        pathname: '/(booking)/[id]',
+        params: {
+          id: pendingTravelId,
+          fromBook: 'true',
+        },
+      });
+      setPendingTravelId(null);
+    }, 350);
+
+    return () => clearTimeout(timeout);
+  }, [showHoppyModal, pendingTravelId]);
+
   useEffect(() => {
     if (user && user.status != "ACTIVE") {
       router.replace(AuthRoutesLink.WAITING_VALIDATION);
@@ -178,7 +203,13 @@ export default function HomeScreen() {
       )}
       {isModalOpen && user!.role === userRoles.USER_HOPPER && <ModalBooking isOpen={isModalOpen} handleClose={handleClose} travel={travelData!} user={user} />}
       {showHoppyModal && user?.role! === userRoles.USER_PASSENGER && (
-        <ModalBook isOpen={showHoppyModal} handleClose={() => setShowHoppyModal(false)} travel={travelData!} user={user} />
+        <ModalBook
+          isOpen={showHoppyModal}
+          handleClose={() => setShowHoppyModal(false)}
+          onMoreInfo={handleHoppyModalMoreInfo}
+          travel={travelData!}
+          user={user}
+        />
       )}
     </View>
   );

@@ -2,7 +2,6 @@ import { Image, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
-import { router } from 'expo-router';
 import { AirplaneArrival, AvatarHopper, CalendarActive, ClockActive, DolarCircle, Room, UserSquare } from '@/assets/svg';
 import { Button, Text } from '@/src/components';
 import { Badge } from '@/src/components/ui/badge';
@@ -16,15 +15,20 @@ import { formattedDate } from '@/src/helpers/parse-date';
 import { vehicleName } from '@/src/helpers/parser-names';
 import { getUserById } from '@/src/services/auth.service';
 import { Colors } from '@/src/utils/constants/Colors';
-import { HomeRoutesLink } from '@/src/utils/enum/home.routes';
 import { paymentStatus } from '@/src/utils/enum/payment.enum';
 import { travelTypeValues } from '@/src/utils/enum/travel.enum';
 import { User } from '@/src/utils/interfaces/auth.interface';
 import { TravelNotification } from '@/src/utils/interfaces/booking.notification.interface';
 import { formatCLP } from '@/src/utils/formatters/currency';
 
-export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; travel: TravelNotification; user: User }) => {
-  const { handleClose, travel, user } = props;
+export const ModalBook = (props: {
+  isOpen: boolean;
+  handleClose: VoidFunction;
+  onMoreInfo: (travelId?: string) => void;
+  travel: TravelNotification;
+  user: User;
+}) => {
+  const { isOpen, handleClose, onMoreInfo, travel, user } = props;
   const { t } = useTranslation();
   const { data: userHopper } = useSWR('user/one', () => getUserById(travel?.metadata?.hopper.id));
 
@@ -34,7 +38,7 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
 
   return (
     <Center className="h-auto w-[100%] bg-slate-800">
-      <Modal isOpen={true} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
+      <Modal isOpen={isOpen} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
         <ModalBackdrop />
         <ModalContent className="rounded-[20px] bg-[#E3E1F5] w-[100%]">
           <ModalHeader className="justify-end">
@@ -162,14 +166,7 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
               </Button>
               <Button
                 onPress={() => {
-                  handleClose();
-                  router.navigate({
-                    pathname: '/(booking)/[id]',
-                    params: {
-                      id: travel?.metadata?.travel?.id,
-                      fromBook: 'true',
-                    },
-                  });
+                  onMoreInfo(travel?.metadata?.travel?.id);
                 }}
                 textClassName={{
                   color: Colors.GRAY,
