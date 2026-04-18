@@ -19,14 +19,6 @@ export const getShortcuts = (travel?: BookingResponse) => [
     name: `${travel?.passengerContactCountryCode ?? ''} ${travel?.passengerContact ?? ''}`,
   },
   {
-    icon: Room,
-    name: t('booking.card.room', { ns: 'booking', room: travel?.passengerRoom }),
-  },
-  {
-    icon: AirplaneOutlined,
-    name: travel?.passengerFligth ?? '',
-  },
-  {
     icon: Car,
     name: `${travel?.hopper?.userInfo?.firstName ?? ''} ${travel?.hopper?.userInfo?.lastName ?? ''}`,
   },
@@ -44,14 +36,6 @@ export const getShortcutsHopper = (travel?: BookingResponse, userHoppy?: User) =
   {
     icon: Messages,
     name: `${travel?.passengerContactCountryCode ?? ''} ${travel?.passengerContact ?? ''}`,
-  },
-  {
-    icon: Room,
-    name: t('booking.card.room', { ns: 'booking', room: travel?.passengerRoom }),
-  },
-  {
-    icon: AirplaneOutlined,
-    name: travel?.passengerFligth ?? '',
   },
   {
     icon: ShippingBagColored,

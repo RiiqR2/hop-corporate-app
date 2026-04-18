@@ -1,7 +1,6 @@
 import { Image, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import useSWR from 'swr';
 import { router } from 'expo-router';
 import { AirplaneArrival, AvatarHopper, CalendarActive, ClockActive, DolarCircle, Room, UserSquare } from '@/assets/svg';
 import { Button, Text } from '@/src/components';
@@ -14,7 +13,6 @@ import { Modal, ModalBackdrop, ModalBody, ModalCloseButton, ModalContent, ModalF
 import { VStack } from '@/src/components/ui/vstack';
 import { formattedDate } from '@/src/helpers/parse-date';
 import { vehicleName } from '@/src/helpers/parser-names';
-import { getUserById } from '@/src/services/auth.service';
 import { Colors } from '@/src/utils/constants/Colors';
 import { HomeRoutesLink } from '@/src/utils/enum/home.routes';
 import { paymentStatus } from '@/src/utils/enum/payment.enum';
@@ -26,7 +24,7 @@ import { formatCLP } from '@/src/utils/formatters/currency';
 export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; travel: TravelNotification; user: User }) => {
   const { handleClose, travel, user } = props;
   const { t } = useTranslation();
-  const { data: userHopper } = useSWR('user/one', () => getUserById(travel?.metadata?.hopper.id));
+  const userHopper = travel?.metadata?.hopper;
 
   const { date, time } = formattedDate(travel?.metadata?.travel?.programedTo);
 
@@ -34,11 +32,11 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
 
   return (
     <Center className="h-auto w-[100%] bg-slate-800">
-      <Modal isOpen={true} onClose={() => handleClose()} style={{ paddingHorizontal: 16 }}>
+      <Modal isOpen={props.isOpen} onClose={handleClose} style={{ paddingHorizontal: 16 }}>
         <ModalBackdrop />
         <ModalContent className="rounded-[20px] bg-[#E3E1F5] w-[100%]">
           <ModalHeader className="justify-end">
-            <ModalCloseButton onPress={() => handleClose()} className="items-end">
+            <ModalCloseButton className="items-end">
               <Icon as={CloseCircleIcon} size="md" color={Colors.GRAY} />
             </ModalCloseButton>
           </ModalHeader>
@@ -111,30 +109,12 @@ export const ModalBook = (props: { isOpen: boolean; handleClose: VoidFunction; t
                     height: 44,
                   }}
                 >
-                  <HStack className="gap-2 items-center w-[50%]">
-                    <UserSquare width={28} height={28} />
-                    <Text fontSize={16} fontWeight={400}>
-                      {travel?.metadata?.travel?.passengerName}
-                    </Text>
-                  </HStack>
-                  {(travel?.metadata.travel.type === travelTypeValues.DROPOFF || 
-                  travel?.metadata.travel.type === travelTypeValues.PROGRAMED ||
-                  travel?.metadata.travel.type === travelTypeValues.INSTANT) && (
-                    <HStack className="gap-2 items-center w-[50%]">
-                      <Room width={28} height={28} />
-                      <Text fontSize={16} fontWeight={400}>
-                        {travel?.metadata?.travel?.passengerRoom}
-                      </Text>
-                    </HStack>
-                  )}
-                  {travel?.metadata.travel.type === travelTypeValues.PICKUP && (
-                    <HStack className="gap-2 items-center w-[50%]">
-                      <AirplaneArrival width={28} height={28} />
-                      <Text fontSize={16} fontWeight={400}>
-                        {travel?.metadata?.travel?.passengerFligth}
-                      </Text>
-                    </HStack>
-                  )}
+                <HStack className="gap-2 items-center w-[50%]">
+                  <UserSquare width={28} height={28} />
+                  <Text fontSize={16} fontWeight={400}>
+                    {travel?.metadata?.travel?.passengerName}
+                  </Text>
+                </HStack>
                 </HStack>
                 <HStack className="w-full justify-between items-center">
                   <Text fontSize={14} fontWeight={400} textColor={Colors.DARK_PURPLE}>

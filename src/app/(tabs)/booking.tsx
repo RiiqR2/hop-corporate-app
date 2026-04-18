@@ -45,6 +45,7 @@ export default function Booking() {
     revalidateOnMount: true,
   });
 
+  
   const [bookingDataPaginated, setBookingDataPaginated] = useState<any[]>(data?.result || []);
 
   const { data: notifications } = useSWR('/notifications/', () => getNotifications(user?.id!), {
@@ -106,6 +107,10 @@ export default function Booking() {
     const translatedTravelStatus = travelStatusTranslated(t);
     const travelType = statusTravelType[item.type as travelTypeValues] || item.type;
     const vehicle = translatedVehicleName[item.vehicleType];
+    const hasHopper = !!(
+      item.hopper?.countryCode &&
+      item.hopper?.phone
+    );
     const message = t('message.reservationMessage', {
       ns: 'utils',
       name: item?.hopper?.userInfo?.firstName,
@@ -115,7 +120,7 @@ export default function Booking() {
       fromAddress: item?.from?.address,
       toAddress: item.to.address,
     });
-    console.log(">>>>>>>>>>>>>>>>>>>>> ", item)
+
 
     return (
       <View className="relative py-4">
@@ -182,9 +187,15 @@ export default function Booking() {
           </HStack>
           <HStack className="mt-4 justify-between">
             <Button
+              disabled={!hasHopper}
               onPress={() => {
-                const url = `https://wa.me/${item.hopper?.countryCode}${item.hopper?.phone}?text=${encodeURIComponent(message)}`;
+                if (!hasHopper) return;
+
+                const url = `https://wa.me/${item.hopper.countryCode}${item.hopper.phone}?text=${encodeURIComponent(message)}`;
                 Linking.openURL(url);
+              }}
+              style={{
+                opacity: hasHopper ? 1 : 0.5,
               }}
             >
               {t('booking.card.button', { ns: 'booking' })}
