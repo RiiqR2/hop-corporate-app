@@ -78,6 +78,10 @@ export const Input = (props: CustomInputProps & TextInputProps & IInputFieldProp
         autoCapitalize={props.autoCapitalize}
         style={{
           backgroundColor: props.isDisabled ? Colors.LIGHT_GRADIENT_1 : Colors.WHITE,
+          height: '100%',
+          paddingVertical: 0,
+          includeFontPadding: false,
+          textAlignVertical: 'center',
         }}
         multiline={multiline}
       />
@@ -111,8 +115,10 @@ export const Input = (props: CustomInputProps & TextInputProps & IInputFieldProp
 
 const styles = StyleSheet.create({
   input: {
-    height: 'auto',
-    minHeight: 44,
+    height: 48,
+    minHeight: 48,
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
 
