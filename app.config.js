@@ -21,7 +21,7 @@ export default {
       bundleIdentifier: 'com.hopmobilityapp.hopbusiness',
       supportsTablet: true,
       runtimeVersion: '1.0.0',
-      buildNumber: '5',
+      buildNumber: '6',
       config: {
         googleMaps: {
           googleMapsApiKey: 'TU_GOOGLE_MAPS_API_KEY',
@@ -42,7 +42,7 @@ export default {
 
     android: {
       package: 'com.hopmobilityapp.hopbusiness',
-      versionCode: 5,
+      versionCode: 6,
       allowBackup: false,
       googleServicesFile: './google-services.json',
       runtimeVersion: '1.0.0',
