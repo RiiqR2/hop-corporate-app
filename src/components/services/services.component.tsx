@@ -11,7 +11,7 @@ import { HStack } from '../ui/hstack';
 
 export const Services = () => {
   const { t } = useTranslation();
-  const width = Dimensions.get('window').width / 2 - 25;
+  const width = Dimensions.get('window').width / 2 - 35;
   return (
     <View style={styles.services}>
       <Text fontSize={18} fontWeight={400} textColor={Colors.DARK_PURPLE} style={{ marginBottom: 18 }}>

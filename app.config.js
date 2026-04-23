@@ -3,7 +3,7 @@ export default {
     name: 'Hop Business',
     slug: 'hop-business',
     owner: 'joseoquendo',
-    version: '1.0.0',
+    version: '1.0.1',
     scheme: 'hopbusiness',
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
@@ -21,6 +21,7 @@ export default {
       bundleIdentifier: 'com.hopmobilityapp.hopbusiness',
       supportsTablet: true,
       runtimeVersion: '1.0.0',
+      buildNumber: '5',
       config: {
         googleMaps: {
           googleMapsApiKey: 'TU_GOOGLE_MAPS_API_KEY',
@@ -32,15 +33,8 @@ export default {
         NSMicrophoneUsageDescription:
           'Hop Business necesita acceder al micrófono para grabar el video de confirmación de identidad con Metamap',
         NSLocationWhenInUseUsageDescription:
-          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
-        NSLocationAlwaysAndWhenInUseUsageDescription:
-          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
-        NSLocationAlwaysUsageDescription:
-          'Hop Business necesita acceder a la ubicación para detectar viajes y vehículos cercanos',
-        NSAppTransportSecurity: {
-          NSAllowsArbitraryLoads: true,
-        },
-        UIBackgroundModes: ['fetch', 'remote-notification', 'location'],
+          'Usamos tu ubicación mientras utilizas la app para mostrar viajes y vehículos cercanos.',
+        UIBackgroundModes: ['fetch', 'remote-notification'],
         expoPushNotifications: true,
       },
       // googleServicesFile: './GoogleService-Info.plist',
@@ -48,6 +42,7 @@ export default {
 
     android: {
       package: 'com.hopmobilityapp.hopbusiness',
+      versionCode: 5,
       allowBackup: false,
       googleServicesFile: './google-services.json',
       runtimeVersion: '1.0.0',
@@ -80,9 +75,6 @@ export default {
         'android.permission.RECORD_AUDIO',
         'android.permission.ACCESS_FINE_LOCATION',
         'android.permission.ACCESS_COARSE_LOCATION',
-        'android.permission.ACCESS_BACKGROUND_LOCATION',
-        'android.permission.FOREGROUND_SERVICE',
-        'android.permission.FOREGROUND_SERVICE_LOCATION',
         'android.permission.POST_NOTIFICATIONS',
         'com.google.android.c2dm.permission.RECEIVE',
       ],

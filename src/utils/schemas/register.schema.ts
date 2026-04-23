@@ -13,9 +13,9 @@ export const validationSchema = (t: i18NextType) => Yup.object().shape({
     .max(20, t("validations.signup.lastName.max_length", { ns: 'auth' }))
     .required(t("validations.signup.lastName.required", { ns: 'auth' })),
   contact: Yup.string()
-    .required(t("validations.booking.contact", { ns: 'auth' }))
-    .matches(/^\d+$/, t("validations.booking.contact_invalid", { ns: 'auth' }))
-    .min(8, t("validations.booking.contact_min", { ns: 'auth' }))
+    //.required(t("validations.booking.contact", { ns: 'auth' }))
+    //.matches(/^\d+$/, t("validations.booking.contact_invalid", { ns: 'auth' }))
+    .min(6, t("validations.booking.contact_min", { ns: 'auth' }))
     .max(20, t("validations.booking.contact_max", { ns: 'auth' })),
   password: Yup.string().matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{8,}$/,
@@ -34,7 +34,7 @@ export const validationSchema = (t: i18NextType) => Yup.object().shape({
 
   address: Yup.string()
     .min(2, t("validations.signup.address.min_length", { ns: "auth" }))
-    .required(t("validations.signup.address.required", { ns: "auth" })),
+    //.required(t("validations.signup.address.required", { ns: "auth" })),
 });
 
 export const validationSchemaS1 = (t: i18NextType) =>

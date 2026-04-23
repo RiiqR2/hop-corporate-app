@@ -91,7 +91,7 @@
   "booking": {
     "fullName": "El nombre completo es obligatorio",
     "contact": "El contacto es obligatorio",
-    "contact_min": "El número debe tener al menos 8 dígitos",
+    "contact_min": "El número debe tener al menos 6 dígitos",
     "contact_max": "El número no puede tener más de 20 dígitos",
     "fullNameTooShort": "El nombre debe tener al menos 2 caracteres.",
     "fullNameTooLong": "El nombre no puede tener más de 30 caracteres.",

@@ -91,7 +91,7 @@
   "booking": {
     "fullName": "Fullname is required",
     "contact": "Contact is required",
-    "contact_min": "The number must have at least 8 digits",
+    "contact_min": "The number must have at least 6 digits",
     "contact_max": "The number cannot have more than 20 digits",
     "fullNameTooShort": "The name must be at least 2 characters long.",
     "fullNameTooLong": "The name cannot be longer than 30 characters.",

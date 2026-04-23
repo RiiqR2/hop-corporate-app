@@ -43,11 +43,11 @@ export const Header = (props: HeaderProps) => {
         </Text>
       </View>
       {avatar && <Avatar />}
-      {/* {menu && (
+      {menu && (
         <Pressable onPress={() => onPressMenu?.()}>
           <Menu />
         </Pressable>
-      )} */}
+      )}
       {edit && (
         <Pressable onPress={() => onPressEdit?.()}>
           <Edit width={36} height={36} />
