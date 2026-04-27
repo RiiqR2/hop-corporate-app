@@ -32,7 +32,7 @@ export const Step4Booking = (props: {
 
   const travelId = data.id;
 
-  const socket = useSocket('http://192.168.1.10:3000/');
+  const socket = useSocket('https://apihop.hopmobilityapp.com/');
 
   useEffect(() => {
     if (!socket || !travelId) return;
