@@ -3,7 +3,7 @@ export default {
     name: 'Hop Business',
     slug: 'hop-business',
     owner: 'joseoquendo',
-    version: '1.0.1',
+    version: '1.0.2',
     scheme: 'hopbusiness',
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
@@ -21,7 +21,7 @@ export default {
       bundleIdentifier: 'com.hopmobilityapp.hopbusiness',
       supportsTablet: true,
       runtimeVersion: '1.0.0',
-      buildNumber: '6',
+      buildNumber: '8',
       config: {
         googleMaps: {
           googleMapsApiKey: 'TU_GOOGLE_MAPS_API_KEY',
@@ -42,7 +42,7 @@ export default {
 
     android: {
       package: 'com.hopmobilityapp.hopbusiness',
-      versionCode: 6,
+      versionCode: 8,
       allowBackup: false,
       googleServicesFile: './google-services.json',
       runtimeVersion: '1.0.0',

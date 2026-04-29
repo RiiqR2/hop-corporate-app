@@ -26,6 +26,4 @@ export const validationSchema = (t: i18NextType) => Yup.object().shape({
         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
     ),
   address: Yup.string()
-    .min(2, t("validations.signup.address.min_length", { ns: "auth" }))
-    .required(t("validations.signup.address.required", { ns: "auth" })),
 });

@@ -33,8 +33,6 @@ export const validationSchema = (t: i18NextType) => Yup.object().shape({
     ),
 
   address: Yup.string()
-    .min(2, t("validations.signup.address.min_length", { ns: "auth" }))
-    //.required(t("validations.signup.address.required", { ns: "auth" })),
 });
 
 export const validationSchemaS1 = (t: i18NextType) =>
@@ -101,15 +99,7 @@ export const validationSchemaS3 = (t: i18NextType) =>
       .max(10, t("validations.step_3.reference_code.max", { ns: "auth" })),
 
     hotel_name: Yup.string()
-      .min(2, t("validations.step_3.hotel_name.min", { ns: "auth" }))
       .max(50, t("validations.step_3.hotel_name.max", { ns: "auth" }))
-      .required(
-        t("validations.step_3.hotel_name.required", { ns: "auth" })
-      ),
-
-    home_address: Yup.string().required(
-      t("validations.step_3.address.required", { ns: "auth" })
-    ),
   });
 
 export const validationSchemaS4 = (t: i18NextType) =>
