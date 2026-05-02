@@ -33,11 +33,13 @@
     "production": {
       "autoIncrement": true,
       "distribution": "store",
-      "channel": "production"
+      "channel": "production",
+      "ios": {
+        "image": "latest"
+      }
     }
   },
   "submit": {
     "production": {}
   }
 }
-
