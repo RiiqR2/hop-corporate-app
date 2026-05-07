@@ -21,7 +21,7 @@ export default {
       bundleIdentifier: 'com.hopmobilityapp.hopbusiness',
       supportsTablet: true,
       runtimeVersion: '1.0.0',
-      buildNumber: '8',
+      buildNumber: '9',
       config: {
         googleMaps: {
           googleMapsApiKey: 'TU_GOOGLE_MAPS_API_KEY',
@@ -42,7 +42,7 @@ export default {
 
     android: {
       package: 'com.hopmobilityapp.hopbusiness',
-      versionCode: 8,
+      versionCode: 11,
       allowBackup: false,
       googleServicesFile: './google-services.json',
       runtimeVersion: '1.0.0',
@@ -68,11 +68,14 @@ export default {
         'android.permission.READ_MEDIA_AUDIO',
         'android.permission.READ_EXTERNAL_STORAGE',
         'android.permission.WRITE_EXTERNAL_STORAGE',
+      
+        'android.permission.FOREGROUND_SERVICE_LOCATION',
+        'android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION',
+        'android.permission.FOREGROUND_SERVICE_MICROPHONE',
       ],
       permissions: [
-        'ACCESS_NETWORK_STATE',
+        'android.permission.ACCESS_NETWORK_STATE',
         'android.permission.CAMERA',
-        'android.permission.RECORD_AUDIO',
         'android.permission.ACCESS_FINE_LOCATION',
         'android.permission.ACCESS_COARSE_LOCATION',
         'android.permission.POST_NOTIFICATIONS',
@@ -85,7 +88,6 @@ export default {
       'expo-localization',
       'expo-font',
       'expo-document-picker',
-      'react-native-expo-metamap-sdk',
       'sentry-expo',
       [
         'expo-notifications',
