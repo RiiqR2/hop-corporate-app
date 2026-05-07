@@ -40,7 +40,7 @@ export default {
 
     android: {
       package: 'com.hopmobilityapp.hopbusiness',
-      versionCode: 12,
+      versionCode: 14,
       allowBackup: false,
       googleServicesFile: './google-services.json',
       runtimeVersion: '1.0.0',
