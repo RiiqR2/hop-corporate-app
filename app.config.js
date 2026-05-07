@@ -30,12 +30,9 @@ export default {
       infoPlist: {
         NSCameraUsageDescription:
           'Hop Business necesita acceder a la cámara para permitirte tomar fotos de tu vehículo',
-
         NSLocationWhenInUseUsageDescription:
           'Usamos tu ubicación mientras utilizas la app para mostrar viajes y vehículos cercanos.',
-
         UIBackgroundModes: ['fetch', 'remote-notification'],
-
         expoPushNotifications: true,
       },
       // googleServicesFile: './GoogleService-Info.plist',
@@ -43,7 +40,7 @@ export default {
 
     android: {
       package: 'com.hopmobilityapp.hopbusiness',
-      versionCode: 10,
+      versionCode: 12,
       allowBackup: false,
       googleServicesFile: './google-services.json',
       runtimeVersion: '1.0.0',
@@ -73,7 +70,6 @@ export default {
         'android.permission.READ_MEDIA_AUDIO',
         'android.permission.READ_EXTERNAL_STORAGE',
         'android.permission.WRITE_EXTERNAL_STORAGE',
-
         'android.permission.FOREGROUND_SERVICE',
         'android.permission.FOREGROUND_SERVICE_LOCATION',
         'android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION',
@@ -96,6 +92,27 @@ export default {
       'expo-font',
       'expo-document-picker',
       'sentry-expo',
+
+      [
+        'expo-camera',
+        {
+          cameraPermission:
+            'Hop Business necesita acceder a la cámara para permitirte tomar fotos de tu vehículo',
+          microphonePermission: false,
+          recordAudioAndroid: false,
+        },
+      ],
+
+      [
+        'expo-image-picker',
+        {
+          photosPermission:
+            'Hop Business necesita acceder a tus fotos para seleccionar imágenes cuando sea necesario.',
+          cameraPermission:
+            'Hop Business necesita acceder a la cámara para permitirte tomar fotos de tu vehículo.',
+          microphonePermission: false,
+        },
+      ],
 
       [
         'expo-location',
@@ -129,8 +146,7 @@ export default {
       EXPO_API_URL: 'https://apihop.hopmobilityapp.com/api',
       EXPO_PUBLIC_API_URL: 'https://apihop.hopmobilityapp.com/api',
 
-      EXPO_PUBLIC_API_URL_MAP:
-        process.env.EXPO_PUBLIC_API_URL_MAP,
+      EXPO_PUBLIC_API_URL_MAP: process.env.EXPO_PUBLIC_API_URL_MAP,
 
       sentryDns: 'TU_SENTRY_DSN',
     },

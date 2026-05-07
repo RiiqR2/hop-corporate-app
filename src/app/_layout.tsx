@@ -1,5 +1,6 @@
 import '@/global.css';
 import 'react-native-reanimated';
+
 import { AppState, AppStateStatus } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
@@ -13,19 +14,15 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SWRConfig } from 'swr';
 import { Stack, useRouter, usePathname } from 'expo-router';
 //import { EXPO_SENTRY_URL_DEV } from '@/config';
+
 import { GluestackUIProvider } from '@/src/components/ui/gluestack-ui-provider';
 import { AuthProvider } from '@/src/context/auth.context';
 import { DrawerProvider } from '@/src/context/drawer.context';
 import { AuthRoutesLink } from '@/src/utils/enum/auth.routes';
 import { userRoles } from '@/src/utils/enum/role.enum';
+
 import { useMe } from '../hooks';
 import { initializeI18next } from '../utils/i18n/i18next';
-import { Platform } from 'react-native';
-
-//ubicación
-import * as Location from 'expo-location';
-// Este import define el task en background (NO lo borres)
-import '@/src/location/background-task';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,85 +32,17 @@ SplashScreen.preventAutoHideAsync();
 //   debug: __DEV__,
 // });
 
-// Debe coincidir con el nombre usado en src/location/background-task.ts
-const LOCATION_TASK = 'HOP_LOCATION_TASK';
-
-/** Arranca/para el tracking según sesión + permisos */
-function LocationGate({ isAuthenticated }: { isAuthenticated: boolean }) {
-  const [permsGranted, setPermsGranted] = useState<boolean>(false);
-
-  // Pide/valida permisos sólo con sesión iniciada
-  useEffect(() => {
-    if (!isAuthenticated) {
-      setPermsGranted(false);
-      return;
-    }
-
-    let cancelled = false;
-    (async () => {
-      // foreground
-      const fg = await Location.getForegroundPermissionsAsync();
-      let ok = fg.status === 'granted';
-      if (!ok) {
-        const r = await Location.requestForegroundPermissionsAsync();
-        ok = r.status === 'granted';
-      }
-
-      // background (Android)
-      if (ok) {
-        const bg = await Location.getBackgroundPermissionsAsync();
-        if (bg.status !== 'granted') {
-          const r = await Location.requestBackgroundPermissionsAsync();
-          ok = r.status === 'granted';
-        }
-      }
-
-      if (!cancelled) setPermsGranted(ok);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [isAuthenticated]);
-
-  // Start/stop del servicio según sesión + permisos
-  useEffect(() => {
-    (async () => {
-      const started = await Location.hasStartedLocationUpdatesAsync(LOCATION_TASK);
-
-      if (isAuthenticated && permsGranted) {
-        if (!started) {
-          await Location.startLocationUpdatesAsync(LOCATION_TASK, {
-            accuracy: Location.Accuracy.High,
-            distanceInterval: 25,   // ajusta a tu caso
-            timeInterval: 15000,    // ms
-            pausesUpdatesAutomatically: false,
-            showsBackgroundLocationIndicator: true,
-            activityType: Location.ActivityType.AutomotiveNavigation,
-            // Requisito Android para background
-            foregroundService: Platform.OS === 'android'
-              ? {
-                  notificationTitle: 'Hop en línea',
-                  notificationBody: 'Compartiendo tu ubicación para asignaciones',
-                }
-              : undefined,
-          });
-          console.log('[bg] started with iOS-safe options');
-        }
-      } else {
-        if (started) await Location.stopLocationUpdatesAsync(LOCATION_TASK);
-      }
-    })();
-  }, [isAuthenticated, permsGranted]);
-
-  return null;
-}
-
 export default function RootLayout() {
   const pathname = usePathname();
-  const [token, setToken] = useState<{ token: string; refreshToken?: string } | null>({
+
+  const [token, setToken] = useState<{
+    token: string;
+    refreshToken?: string;
+  } | null>({
     token: '',
     refreshToken: '',
   });
+
   const { user, isLoading } = useMe();
 
   const [loaded] = useFonts({
@@ -129,21 +58,39 @@ export default function RootLayout() {
   });
 
   const [hasRedirected, setHasRedirected] = useState(false);
+
   const router = useRouter();
 
-  const onboardingStep = user?.role === userRoles.USER_HOPPER ? 5 : 4;
-  const publicRoutes = ['/', '/sign-up', '/sign-in', '/recovery-password', '/new-password', '/map', '/onboarding', '/finish-onboarding', '/validation', '/finish-recover-password'];
+  const onboardingStep =
+    user?.role === userRoles.USER_HOPPER ? 5 : 4;
+
+  const publicRoutes = [
+    '/',
+    '/sign-up',
+    '/sign-in',
+    '/recovery-password',
+    '/new-password',
+    '/map',
+    '/onboarding',
+    '/finish-onboarding',
+    '/validation',
+    '/finish-recover-password',
+  ];
 
   // === Auth gate + Splash ===
   useEffect(() => {
     const checkAuth = async () => {
       const stored = await AsyncStorage.getItem('auth_token');
 
-      if (!stored && !publicRoutes.includes(pathname as AuthRoutesLink)) {
+      if (
+        !stored &&
+        !publicRoutes.includes(pathname as AuthRoutesLink)
+      ) {
         if (!hasRedirected) {
           setHasRedirected(true);
           router.replace(AuthRoutesLink.SIGN_IN);
         }
+
         await SplashScreen.hideAsync();
         return;
       }
@@ -151,19 +98,33 @@ export default function RootLayout() {
       if (user) {
         if (!hasRedirected) {
           setHasRedirected(true);
-          if (user.isVerified && user.status != "ACTIVE") {
+
+          if (
+            user.isVerified &&
+            user.status != 'ACTIVE'
+          ) {
             router.replace('/(tabs)/');
-          }
-          else if (!user.isVerified && user.status != "ACTIVE") {
+          } else if (
+            !user.isVerified &&
+            user.status != 'ACTIVE'
+          ) {
             router.replace({
               pathname: AuthRoutesLink.SIGN_UP,
-              params: { step: onboardingStep, user_type: user.role },
+              params: {
+                step: onboardingStep,
+                user_type: user.role,
+              },
             });
-            
-          } else if (user.isVerified && user.status != "ACTIVE") {
-            router.replace(AuthRoutesLink.WAITING_VALIDATION);
+          } else if (
+            user.isVerified &&
+            user.status != 'ACTIVE'
+          ) {
+            router.replace(
+              AuthRoutesLink.WAITING_VALIDATION
+            );
           }
         }
+
         await SplashScreen.hideAsync();
         return;
       }
@@ -174,7 +135,15 @@ export default function RootLayout() {
     if (loaded && !isLoading) {
       checkAuth();
     }
-  }, [loaded, isLoading, user, hasRedirected, router, pathname, onboardingStep]);
+  }, [
+    loaded,
+    isLoading,
+    user,
+    hasRedirected,
+    router,
+    pathname,
+    onboardingStep,
+  ]);
 
   // === i18n + token restore ===
   useEffect(() => {
@@ -186,14 +155,32 @@ export default function RootLayout() {
 
     const loadToken = async () => {
       try {
-        const saved = await AsyncStorage.getItem('auth_token');
-        if (!saved) { setToken(null); return; }
+        const saved = await AsyncStorage.getItem(
+          'auth_token'
+        );
 
-        let parsed: { token: string; refreshToken?: string } | null = null;
+        if (!saved) {
+          setToken(null);
+          return;
+        }
+
+        let parsed: {
+          token: string;
+          refreshToken?: string;
+        } | null = null;
+
         try {
           const obj = JSON.parse(saved);
-          if (obj && typeof obj === 'object' && typeof obj.token === 'string') {
-            parsed = { token: obj.token, refreshToken: obj.refreshToken };
+
+          if (
+            obj &&
+            typeof obj === 'object' &&
+            typeof obj.token === 'string'
+          ) {
+            parsed = {
+              token: obj.token,
+              refreshToken: obj.refreshToken,
+            };
           } else {
             parsed = { token: String(saved) };
           }
@@ -203,7 +190,11 @@ export default function RootLayout() {
 
         setToken(parsed);
       } catch (e) {
-        console.warn('[auth] loadToken error:', (e as Error)?.message);
+        console.warn(
+          '[auth] loadToken error:',
+          (e as Error)?.message
+        );
+
         setToken(null);
       }
     };
@@ -217,10 +208,11 @@ export default function RootLayout() {
     const t = setTimeout(() => {
       SplashScreen.hideAsync().catch(() => {});
     }, 3000);
+
     return () => clearTimeout(t);
   }, []);
 
-  // === autenticación “verdadera” para el LocationGate ===
+  // === autenticación “verdadera” ===
   const isAuthenticated = useMemo(
     () => Boolean(token?.token),
     [token]
@@ -230,28 +222,47 @@ export default function RootLayout() {
 
   return (
     <AuthProvider>
-      {/* Gate de ubicación: solo inicia si hay sesión */}
-      <LocationGate isAuthenticated={isAuthenticated} />
-
       <SWRConfig
         value={{
           provider: () => new Map(),
           isVisible: () => true,
+
           initFocus(callback) {
             let appState = AppState.currentState;
-            const onAppStateChange = (nextAppState: AppStateStatus) => {
-              if (appState.match(/inactive|background/) && nextAppState === 'active') {
+
+            const onAppStateChange = (
+              nextAppState: AppStateStatus
+            ) => {
+              if (
+                appState.match(/inactive|background/) &&
+                nextAppState === 'active'
+              ) {
                 callback();
               }
+
               appState = nextAppState;
             };
-            const sub = AppState.addEventListener('change', onAppStateChange);
+
+            const sub = AppState.addEventListener(
+              'change',
+              onAppStateChange
+            );
+
             return () => sub.remove();
           },
+
           initReconnect(callback) {
-            const unsubscribe = NetInfo.addEventListener((state) => {
-              if (state.isConnected && state.isInternetReachable) callback();
-            });
+            const unsubscribe = NetInfo.addEventListener(
+              (state) => {
+                if (
+                  state.isConnected &&
+                  state.isInternetReachable
+                ) {
+                  callback();
+                }
+              }
+            );
+
             return () => unsubscribe();
           },
         }}
@@ -260,13 +271,22 @@ export default function RootLayout() {
           <GluestackUIProvider mode="light">
             <DrawerProvider>
               <Stack screenOptions={{ headerShown: false }}>
-                {Boolean(token?.token)
-                  ? <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                  : <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-                }
+                {Boolean(token?.token) ? (
+                  <Stack.Screen
+                    name="(tabs)"
+                    options={{ headerShown: false }}
+                  />
+                ) : (
+                  <Stack.Screen
+                    name="(auth)"
+                    options={{ headerShown: false }}
+                  />
+                )}
+
                 <Stack.Screen name="+not-found" />
                 <Stack.Screen name="error" />
               </Stack>
+
               <StatusBar style="auto" />
             </DrawerProvider>
           </GluestackUIProvider>
