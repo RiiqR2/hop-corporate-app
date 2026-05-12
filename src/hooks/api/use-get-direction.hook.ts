@@ -1,8 +1,73 @@
 import axios from 'axios';
-import * as Location from "expo-location";
+import * as Location from 'expo-location';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { EXPO_GOOGLE_MAPS_API_KEY, MAPBOX_ACCESS_TOKEN, PUBLIC_MAPBOX_API_URL } from '@/config';
-import { DirectionsResponse, GooglePlaceAutocompleteResponse, GooglePlaceDetailsResponse } from '@/src/utils/interfaces/geocode.address.interface';
+import { DirectionsResponse, GoogleGeocodeResponse, GooglePlaceAutocompleteResponse, GooglePlaceDetailsResponse } from '@/src/utils/interfaces/geocode.address.interface';
+
+const formatAddressParts = (parts: (string | null | undefined)[]) =>
+  parts
+    .map((part) => part?.trim())
+    .filter((part): part is string => Boolean(part))
+    .join(', ');
+
+const formatExpoAddress = (locationAddress: Location.LocationGeocodedAddress) => {
+  if (locationAddress.formattedAddress?.trim()) {
+    return locationAddress.formattedAddress.trim();
+  }
+
+  const street = formatAddressParts([locationAddress.street, locationAddress.streetNumber]).replace(', ', ' ');
+
+  return formatAddressParts([
+    locationAddress.name,
+    street,
+    locationAddress.district,
+    locationAddress.city,
+    locationAddress.region,
+    locationAddress.country,
+  ]);
+};
+
+const getAddressFromMapbox = async (latitude: number, longitude: number) => {
+  if (!MAPBOX_ACCESS_TOKEN) return null;
+
+  const queryParams = new URLSearchParams({
+    access_token: MAPBOX_ACCESS_TOKEN,
+    language: 'es',
+    limit: '1',
+  });
+  const response = await fetch(`${PUBLIC_MAPBOX_API_URL}/${longitude},${latitude}.json?${queryParams.toString()}`);
+
+  if (!response.ok) return null;
+
+  const data = await response.json();
+  const feature = data?.features?.[0];
+
+  return feature?.place_name?.trim() || formatAddressParts([feature?.text, feature?.address]);
+};
+
+const getAddressFromGoogle = async (latitude: number, longitude: number) => {
+  if (!EXPO_GOOGLE_MAPS_API_KEY) return null;
+
+  const queryParams = new URLSearchParams({
+    latlng: `${latitude},${longitude}`,
+    language: 'es',
+    region: 'cl',
+    key: EXPO_GOOGLE_MAPS_API_KEY,
+  });
+  const response = await axios.get<GoogleGeocodeResponse>(`https://maps.googleapis.com/maps/api/geocode/json?${queryParams.toString()}`);
+  const data = response.data;
+
+  if (data.status !== 'OK') return null;
+
+  return data.results[0]?.formatted_address?.trim() || null;
+};
+
+const getAddressFromDevice = async (latitude: number, longitude: number) => {
+  const locations = await Location.reverseGeocodeAsync({ latitude, longitude });
+  const locationAddress = locations[0];
+
+  return locationAddress ? formatExpoAddress(locationAddress) : null;
+};
 
 export const useGetAddressFromCoordinates = () => {
   const [selectedLocation, setSelectedLocation] = useState<{ latitude: number; longitude: number } | null>(null);
@@ -12,17 +77,24 @@ export const useGetAddressFromCoordinates = () => {
   const getAddress = useCallback(async (latitude: number, longitude: number) => {
     setSelectedLocation({ latitude, longitude });
     setLoadingAddress(true);
+
+    const reverseGeocoders = [getAddressFromMapbox, getAddressFromGoogle, getAddressFromDevice];
+
     try {
-      const response = await fetch(`${PUBLIC_MAPBOX_API_URL}/${longitude},${latitude}.json?access_token=${MAPBOX_ACCESS_TOKEN}`);
-      const data = await response.json();
-      if (data.features && data.features.length > 0) {
-        const placeName = data.features[0].text + ' ' + (data.features[0].address ?? '');
-        setAddress(placeName || 'Dirección no encontrada');
-      } else {
-        setAddress('Dirección no encontrada');
+      for (const reverseGeocoder of reverseGeocoders) {
+        try {
+          const resolvedAddress = await reverseGeocoder(latitude, longitude);
+
+          if (resolvedAddress) {
+            setAddress(resolvedAddress);
+            return;
+          }
+        } catch {
+          continue;
+        }
       }
-    } catch {
-      setAddress('Error al obtener dirección');
+
+      setAddress(`${latitude.toFixed(6)}, ${longitude.toFixed(6)}`);
     } finally {
       setLoadingAddress(false);
     }
